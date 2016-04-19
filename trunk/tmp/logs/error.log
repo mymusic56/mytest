@@ -123,3 +123,34 @@ Stack Trace:
 #1 D:\xampp\platform\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoadImageController), Object(CakeRequest))
 #2 D:\xampp\platform\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2016-04-19 17:07:31 Error: [MissingActionException] Action LoadImageController::style.css() could not be found.
+Exception Attributes: array (
+  'controller' => 'LoadImageController',
+  'action' => 'style.css',
+)
+Request URL: /loadImage/style.css
+Stack Trace:
+#0 D:\xampp\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 D:\xampp\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoadImageController), Object(CakeRequest))
+#2 D:\xampp\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-04-19 17:07:31 Error: [MissingControllerException] Controller class Favicon.icoController could not be found.
+Exception Attributes: array (
+  'class' => 'Favicon.icoController',
+  'plugin' => NULL,
+)
+Request URL: /favicon.ico
+Stack Trace:
+#0 D:\xampp\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-04-19 17:07:33 Error: [MissingActionException] Action LoadImageController::style.css() could not be found.
+Exception Attributes: array (
+  'controller' => 'LoadImageController',
+  'action' => 'style.css',
+)
+Request URL: /loadImage/style.css
+Stack Trace:
+#0 D:\xampp\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 D:\xampp\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoadImageController), Object(CakeRequest))
+#2 D:\xampp\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}

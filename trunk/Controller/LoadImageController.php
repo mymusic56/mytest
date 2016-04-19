@@ -8,4 +8,7 @@ class LoadImageController extends AppController{
 	public function import(){
 		
 	}
+	public function ossUpload(){
+		
+	}
 }
