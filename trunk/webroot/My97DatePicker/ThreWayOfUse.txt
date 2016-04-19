@@ -1,0 +1,5 @@
+﻿<td>
+	<input type="text" class="Y" id="start" onclick="WdatePicker({isShowClear:true,readOnly:true});" placeholder="请填写">
+	&nbsp;到&nbsp;
+	<input type="text" class="Y" id="end" onclick="WdatePicker({isShowClear:true,readOnly:true})" placeholder="请填写">
+</td>

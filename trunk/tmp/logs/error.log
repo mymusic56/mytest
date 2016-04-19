@@ -1,0 +1,125 @@
+2016-04-18 15:41:46 Error: [MissingControllerException] Controller class Favicon.icoController could not be found.
+Exception Attributes: array (
+  'class' => 'Favicon.icoController',
+  'plugin' => NULL,
+)
+Request URL: /favicon.ico
+Stack Trace:
+#0 D:\xampp\platform\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-04-18 15:43:53 Error: [MissingTableException] Table aros for model Aro was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'aros',
+  'class' => 'Aro',
+  'ds' => 'default',
+)
+Request URL: /groups/add
+Stack Trace:
+#0 D:\xampp\platform\mytest\trunk\Lib\Cake\Model\Model.php(3644): Model->setSource('aros')
+#1 D:\xampp\platform\mytest\trunk\Lib\Cake\Model\Model.php(1387): Model->getDataSource()
+#2 D:\xampp\platform\mytest\trunk\Lib\Cake\Model\Model.php(1575): Model->schema()
+#3 D:\xampp\platform\mytest\trunk\Lib\Cake\Model\Behavior\AclBehavior.php(120): Model->create()
+#4 [internal function]: AclBehavior->afterSave(Object(Group), true, Array)
+#5 D:\xampp\platform\mytest\trunk\Lib\Cake\Utility\ObjectCollection.php(128): call_user_func_array(Array, Array)
+#6 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#7 D:\xampp\platform\mytest\trunk\Lib\Cake\Event\CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#8 D:\xampp\platform\mytest\trunk\Lib\Cake\Model\Model.php(1957): CakeEventManager->dispatch(Object(CakeEvent))
+#9 D:\xampp\platform\mytest\trunk\Lib\Cake\Model\Model.php(1751): Model->_doSave(Array, Array)
+#10 D:\xampp\platform\mytest\trunk\Controller\GroupsController.php(61): Model->save(Array)
+#11 [internal function]: GroupsController->add()
+#12 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(GroupsController), Array)
+#13 D:\xampp\platform\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#14 D:\xampp\platform\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(GroupsController), Object(CakeRequest))
+#15 D:\xampp\platform\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2016-04-18 15:51:58 Error: [CakeException] AclNode::node() - Couldn't find Aro node identified by "Array
+(
+    [Aro0.model] => Group
+    [Aro0.foreign_key] => 3
+)
+"
+Request URL: /posts
+Stack Trace:
+#0 D:\xampp\platform\mytest\trunk\Lib\Cake\Model\Permission.php(80): AclNode->node(Array)
+#1 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\Acl\DbAcl.php(74): Permission->check(Array, 'controllers/Pos...', '*')
+#2 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\AclComponent.php(110): DbAcl->check(Array, 'controllers/Pos...', '*')
+#3 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\Auth\ActionsAuthorize.php(38): AclComponent->check(Array, 'controllers/Pos...')
+#4 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\AuthComponent.php(467): ActionsAuthorize->authorize(Array, Object(CakeRequest))
+#5 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\AuthComponent.php(310): AuthComponent->isAuthorized(Array)
+#6 [internal function]: AuthComponent->startup(Object(PostsController))
+#7 D:\xampp\platform\mytest\trunk\Lib\Cake\Utility\ObjectCollection.php(128): call_user_func_array(Array, Array)
+#8 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#9 D:\xampp\platform\mytest\trunk\Lib\Cake\Event\CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#10 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Controller.php(677): CakeEventManager->dispatch(Object(CakeEvent))
+#11 D:\xampp\platform\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(189): Controller->startupProcess()
+#12 D:\xampp\platform\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#13 D:\xampp\platform\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2016-04-18 15:52:06 Error: [CakeException] AclNode::node() - Couldn't find Aro node identified by "Array
+(
+    [Aro0.model] => Group
+    [Aro0.foreign_key] => 3
+)
+"
+Request URL: /posts
+Stack Trace:
+#0 D:\xampp\platform\mytest\trunk\Lib\Cake\Model\Permission.php(80): AclNode->node(Array)
+#1 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\Acl\DbAcl.php(74): Permission->check(Array, 'controllers/Pos...', '*')
+#2 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\AclComponent.php(110): DbAcl->check(Array, 'controllers/Pos...', '*')
+#3 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\Auth\ActionsAuthorize.php(38): AclComponent->check(Array, 'controllers/Pos...')
+#4 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\AuthComponent.php(467): ActionsAuthorize->authorize(Array, Object(CakeRequest))
+#5 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\AuthComponent.php(310): AuthComponent->isAuthorized(Array)
+#6 [internal function]: AuthComponent->startup(Object(PostsController))
+#7 D:\xampp\platform\mytest\trunk\Lib\Cake\Utility\ObjectCollection.php(128): call_user_func_array(Array, Array)
+#8 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#9 D:\xampp\platform\mytest\trunk\Lib\Cake\Event\CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#10 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Controller.php(677): CakeEventManager->dispatch(Object(CakeEvent))
+#11 D:\xampp\platform\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(189): Controller->startupProcess()
+#12 D:\xampp\platform\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#13 D:\xampp\platform\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2016-04-18 15:54:47 Error: [CakeException] AclNode::node() - Couldn't find Aro node identified by "Array
+(
+    [Aro0.model] => Group
+    [Aro0.foreign_key] => 3
+)
+"
+Request URL: /posts
+Stack Trace:
+#0 D:\xampp\platform\mytest\trunk\Lib\Cake\Model\Permission.php(80): AclNode->node(Array)
+#1 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\Acl\DbAcl.php(74): Permission->check(Array, 'controllers/Pos...', '*')
+#2 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\AclComponent.php(110): DbAcl->check(Array, 'controllers/Pos...', '*')
+#3 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\Auth\ActionsAuthorize.php(38): AclComponent->check(Array, 'controllers/Pos...')
+#4 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\AuthComponent.php(467): ActionsAuthorize->authorize(Array, Object(CakeRequest))
+#5 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Component\AuthComponent.php(310): AuthComponent->isAuthorized(Array)
+#6 [internal function]: AuthComponent->startup(Object(PostsController))
+#7 D:\xampp\platform\mytest\trunk\Lib\Cake\Utility\ObjectCollection.php(128): call_user_func_array(Array, Array)
+#8 [internal function]: ObjectCollection->trigger(Object(CakeEvent))
+#9 D:\xampp\platform\mytest\trunk\Lib\Cake\Event\CakeEventManager.php(243): call_user_func(Array, Object(CakeEvent))
+#10 D:\xampp\platform\mytest\trunk\Lib\Cake\Controller\Controller.php(677): CakeEventManager->dispatch(Object(CakeEvent))
+#11 D:\xampp\platform\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(189): Controller->startupProcess()
+#12 D:\xampp\platform\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest))
+#13 D:\xampp\platform\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2016-04-18 18:01:10 Error: [MissingActionException] Action LoadImageController::__STATIC__() could not be found.
+Exception Attributes: array (
+  'controller' => 'LoadImageController',
+  'action' => '__STATIC__',
+)
+Request URL: /loadImage/__STATIC__/css/activity_circle.css
+Stack Trace:
+#0 D:\xampp\platform\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 D:\xampp\platform\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoadImageController), Object(CakeRequest))
+#2 D:\xampp\platform\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-04-18 18:01:13 Error: [MissingActionException] Action LoadImageController::__STATIC__() could not be found.
+Exception Attributes: array (
+  'controller' => 'LoadImageController',
+  'action' => '__STATIC__',
+)
+Request URL: /loadImage/__STATIC__/css/activity_circle.css
+Stack Trace:
+#0 D:\xampp\platform\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 D:\xampp\platform\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoadImageController), Object(CakeRequest))
+#2 D:\xampp\platform\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
