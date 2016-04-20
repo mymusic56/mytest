@@ -154,3 +154,23 @@ Stack Trace:
 #1 D:\xampp\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LoadImageController), Object(CakeRequest))
 #2 D:\xampp\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2016-04-20 10:26:20 Error: [MissingControllerException] Controller class Favicon.icoController could not be found.
+Exception Attributes: array (
+  'class' => 'Favicon.icoController',
+  'plugin' => NULL,
+)
+Request URL: /favicon.ico
+Stack Trace:
+#0 D:\xampp\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-04-20 16:35:13 Error: [MissingActionException] Action ExcelTestsController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'ExcelTestsController',
+  'action' => 'index',
+)
+Request URL: /ExcelTests
+Stack Trace:
+#0 D:\xampp\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 D:\xampp\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ExcelTestsController), Object(CakeRequest))
+#2 D:\xampp\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
