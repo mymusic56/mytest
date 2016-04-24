@@ -10,7 +10,7 @@ class ExcelTestsController extends AppController{
 		
 	}
 	public function export(){
-		
+		set_time_limit(0);
 		$title = ['序号', '商品', '价格'];
 		App::import('Vendor','PHPExcel');
 		$objPHPExcel = new PHPExcel();
