@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)http://mccb.51yilife.com/ThreeGorges/activity_shanrong.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title></title>
+<style type="text/css">
+html {
+  font-size: 20px;
+}
+@media only screen and (min-width: 400px) {
+  html {
+    font-size: 21.33333333px !important;
+  }
+}
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 22.08px !important;
+  }
+}
+@media only screen and (min-width: 480px) {
+  html {
+    font-size: 25.6px !important;
+  }
+}
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+*{
+	padding: 0;
+	margin: 0 auto;
+	box-sizing:border-box;
+}
+body{
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.header{
+	overflow: hidden;
+	overflow-y:auto;
+	width: 100%;
+}
+.header img{
+	width: 100%;
+}
+.Topbar {  width:100%; height:35px; z-index:9999;line-height:36px; background:#4A86DE; font-size:18px; text-align:center; color:#FFFFFF; position:fixed; left:0; top:0; }
+.Back { width:20px;margin-top:0px; height:35px; float:left; margin-left:10px; background:url(http://static.vipgogo.com/cqccb/images/back_ico.png) no-repeat left center; background-size:8px; }
+.Operation { float:right; height:30px; line-height:30px; margin-right:10px; }
+.Occupying {height: 35px;}
+.j-dialog{border-radius:5px;}/* 弹出框圆角 */
+#imgContainer {width: 100%;height: auto;padding:0px;margin:0px;}
+
+
+
+</style>
+
+</head>
+<body>
+<div class="Topbar">
+  <div class="Back" onclick="javascript:history.go(-1)"></div>
+ 	测试
+  <div class="Operation"></div>
+</div>
+<div class="Occupying"></div>
+    <div class="page">
+        <div class="header" id="imgContainer">
+            <img id="imageFullScreen" src="images/111.jpg">
+        </div>
+    </div>
+    
+
+    <!-- <script type="text/javascript" src="js/zepto.min.js"></script> -->
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="js/e-smart-zoom-jquery.js"></script>
+<script>
+/* var init = function(x){alert(x);}
+var fun2 = function(x){alert(x[0])};
+init.apply(fun2, [8]); */
+//$(document).bind('mousewheel', function(){alert(23)});
+    $(document).ready(function() {        
+        $('#imageFullScreen').smartZoom({'containerClass':'zoomableContainer'});        
+        $('#topPositionMap,#leftPositionMap,#rightPositionMap,#bottomPositionMap').bind("click", moveButtonClickHandler);
+        $('#zoomInButton,#zoomOutButton').bind("click", zoomButtonClickHandler);
+        
+        function zoomButtonClickHandler(e){
+            var scaleToAdd = 0.8;
+            if(e.target.id == 'zoomOutButton')
+                scaleToAdd = -scaleToAdd;
+	            //alert(e.target.src);
+            $('#imageFullScreen').smartZoom('zoom', scaleToAdd);
+        }        
+        function moveButtonClickHandler(e){
+            var pixelsToMoveOnX = 0;
+            var pixelsToMoveOnY = 0;
+    
+            switch(e.target.id){
+                case "leftPositionMap":
+                    pixelsToMoveOnX = 50;	
+                break;
+                case "rightPositionMap":
+                    pixelsToMoveOnX = -50;
+                break;
+                case "topPositionMap":
+                    pixelsToMoveOnY = 50;	
+                break;
+                case "bottomPositionMap":
+                    pixelsToMoveOnY = -50;	
+                break;
+            }
+            $('#imageFullScreen').smartZoom('pan', pixelsToMoveOnX, pixelsToMoveOnY);
+        } 
+    });
+</script>
+</body></html>

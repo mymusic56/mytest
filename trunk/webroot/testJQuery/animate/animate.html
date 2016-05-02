@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $(".btn1").click(function(){
+  	autoRun();
+  });
+  /* $(".btn2").click(function(){
+  $("#p1").animate({paddingLeft:"-=100px"});
+  }); */
+	
+	function autoRun(){
+	  	if($("#p1").offset().left>=$(window).width()){
+	  		$("#p1").paddingLeft = 0;
+	  	}else{
+	  		//alert($("#p1").offset().left);
+	  	}
+		$("#p1").animate({paddingLeft:"+=1px"}, 50, autoRun);
+	}
+});
+</script>
+</head>
+<body>
+
+<button class="btn1">Animate +</button>
+<button class="btn2">Animate -</button>
+
+<p>This is a paragraph.</p>
+<p id="p1" style="border:1px solid blue;">This is an animated paragraph.</p>
+<p>This is a paragraph.</p>
+
+</body>
+</html>
