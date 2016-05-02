@@ -83,15 +83,22 @@ class UsersController extends AppController {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+// 			var_dump($this->request->data);die;
 			if ($this->User->save($this->request->data)) {
 				return $this->flash(__('The user has been saved.'), array('action' => 'index'));
 			}
 		} else {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 			$this->request->data = $this->User->find('first', $options);
+// 			var_dump($this->request->data);die;
 		}
 		$groups = $this->User->Group->find('list');
-		$this->set(compact('groups'));
+		/*
+		 * 默认查找name字段， 没有指定，同时也没有指定任何字段， 直接返回id列
+		 */
+		$aaas = $this->User->Aaa->find('list', ['fields'=>['desc']]);
+// 		var_dump($aaas);die;	
+		$this->set(compact('groups', 'aaas'));
 	}
 
 /**

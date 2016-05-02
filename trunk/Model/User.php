@@ -23,6 +23,10 @@ class User extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Aaa' => array(
+				'className' => 'Aaa',
+				'foreignKey' => 'aaa_id',
 		)
 	);
 
