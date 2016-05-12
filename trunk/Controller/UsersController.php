@@ -12,7 +12,7 @@ class UsersController extends AppController {
 		parent::beforeFilter();
 // 		$this->Auth->allow();
 	}
-	public $uses = ['GroupCopy','Aaa', 'User'];
+	public $uses = ['User','Aaa'];
 /**
  * Helpers
  *
@@ -70,7 +70,7 @@ class UsersController extends AppController {
 			}
 		}
 		$groups = $this->User->Group->find('list');
-		$aaas = $this->User->Aaa->find('list');
+		$aaas = $this->Aaa->find('list');
 // 		$bbbs = 
 		$bbbs  = ['a', 'b', 'c', 'd'];
 // 		var_dump($aaas);die;
