@@ -735,3 +735,180 @@ Stack Trace:
 #3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(904): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2016-05-10 22:24:38 Error: [MissingControllerException] Controller class Favicon.icoController could not be found.
+Exception Attributes: array (
+  'class' => 'Favicon.icoController',
+  'plugin' => NULL,
+)
+Request URL: /favicon.ico
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-05-10 22:25:25 Error: [NotFoundException] Invalid user
+Request URL: /users/edit
+Stack Trace:
+#0 [internal function]: UsersController->edit()
+#1 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 D:\Workspace-PHP\GitHub\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-05-10 22:28:57 Error: [MissingControllerException] Controller class LogoutController could not be found.
+Exception Attributes: array (
+  'class' => 'LogoutController',
+  'plugin' => NULL,
+)
+Request URL: /logout
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-05-11 19:37:31 Error: [MissingControllerException] Controller class Favicon.icoController could not be found.
+Exception Attributes: array (
+  'class' => 'Favicon.icoController',
+  'plugin' => NULL,
+)
+Request URL: /favicon.ico
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-05-11 20:31:48 Error: Fatal Error (4): syntax error, unexpected ')' in [D:\Workspace-PHP\GitHub\mytest\trunk\Controller\UsersController.php, line 65]
+2016-05-11 20:31:48 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /users/add
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'D:\\Workspace-PH...', 65)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'D:\\Workspace-PH...', 65, Array)
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'D:\\Workspace-PH...', 65, Array)
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-05-11 22:03:35 Error: Fatal Error (1): Call to undefined method CakeEventManager::name() in [D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Event\CakeEventManager.php, line 230]
+2016-05-11 22:03:35 Error: [FatalErrorException] Call to undefined method CakeEventManager::name()
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', 'D:\\Workspace-PH...', 230)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', 'D:\\Workspace-PH...', 230, Array)
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', 'D:\\Workspace-PH...', 230, Array)
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-05-11 22:33:24 Error: Fatal Error (1): Call to a member function create() on a non-object in [D:\Workspace-PHP\GitHub\mytest\trunk\Controller\GroupsController.php, line 61]
+2016-05-11 22:33:24 Error: [FatalErrorException] Call to a member function create() on a non-object
+Request URL: /groups/add
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'D:\\Workspace-PH...', 61)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'D:\\Workspace-PH...', 61, Array)
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'D:\\Workspace-PH...', 61, Array)
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-05-11 22:38:58 Error: Fatal Error (1): Call to a member function allow() on a non-object in [D:\Workspace-PHP\GitHub\mytest\trunk\Controller\ZhangTestsController.php, line 7]
+2016-05-11 22:38:58 Error: [FatalErrorException] Call to a member function allow() on a non-object
+Request URL: /zhangTests/passwordEncrypt
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'D:\\Workspace-PH...', 7)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'D:\\Workspace-PH...', 7, Array)
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'D:\\Workspace-PH...', 7, Array)
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-05-11 22:39:23 Error: Fatal Error (1): Call to a member function allow() on a non-object in [D:\Workspace-PHP\GitHub\mytest\trunk\Controller\ZhangTestsController.php, line 7]
+2016-05-11 22:39:23 Error: [FatalErrorException] Call to a member function allow() on a non-object
+Request URL: /zhangTests/passwordEncrypt
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'D:\\Workspace-PH...', 7)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'D:\\Workspace-PH...', 7, Array)
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'D:\\Workspace-PH...', 7, Array)
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-05-11 22:39:47 Error: Fatal Error (1): Class 'AuthComponent' not found in [D:\Workspace-PHP\GitHub\mytest\trunk\Model\User.php, line 55]
+2016-05-11 22:39:47 Error: [FatalErrorException] Class 'AuthComponent' not found
+Request URL: /zhangTests/passwordEncrypt
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Class 'AuthComp...', 'D:\\Workspace-PH...', 55)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'AuthComp...', 'D:\\Workspace-PH...', 55, Array)
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Class 'AuthComp...', 'D:\\Workspace-PH...', 55, Array)
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-05-11 22:40:11 Error: Fatal Error (1): Class 'AuthComponent' not found in [D:\Workspace-PHP\GitHub\mytest\trunk\Model\User.php, line 55]
+2016-05-11 22:40:11 Error: [FatalErrorException] Class 'AuthComponent' not found
+Request URL: /zhangTests/passwordEncrypt
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Class 'AuthComp...', 'D:\\Workspace-PH...', 55)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'AuthComp...', 'D:\\Workspace-PH...', 55, Array)
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Class 'AuthComp...', 'D:\\Workspace-PH...', 55, Array)
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-05-12 20:23:40 Error: [MissingControllerException] Controller class Favicon.icoController could not be found.
+Exception Attributes: array (
+  'class' => 'Favicon.icoController',
+  'plugin' => NULL,
+)
+Request URL: /favicon.ico
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-05-12 20:28:16 Error: Fatal Error (1): Call to a member function find() on a non-object in [D:\Workspace-PHP\GitHub\mytest\trunk\Controller\UsersController.php, line 72]
+2016-05-12 20:28:16 Error: [FatalErrorException] Call to a member function find() on a non-object
+Request URL: /users/add
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'D:\\Workspace-PH...', 72)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'D:\\Workspace-PH...', 72, Array)
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'D:\\Workspace-PH...', 72, Array)
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-05-12 20:28:48 Error: Fatal Error (1): Call to a member function find() on a non-object in [D:\Workspace-PHP\GitHub\mytest\trunk\Controller\UsersController.php, line 72]
+2016-05-12 20:28:48 Error: [FatalErrorException] Call to a member function find() on a non-object
+Request URL: /users/add
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'D:\\Workspace-PH...', 72)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'D:\\Workspace-PH...', 72, Array)
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'D:\\Workspace-PH...', 72, Array)
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-05-12 20:30:49 Error: Fatal Error (1): Call to a member function find() on a non-object in [D:\Workspace-PHP\GitHub\mytest\trunk\Controller\UsersController.php, line 72]
+2016-05-12 20:30:49 Error: [FatalErrorException] Call to a member function find() on a non-object
+Request URL: /users/add
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'D:\\Workspace-PH...', 72)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'D:\\Workspace-PH...', 72, Array)
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'D:\\Workspace-PH...', 72, Array)
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-05-12 20:31:07 Error: Fatal Error (1): Call to a member function find() on a non-object in [D:\Workspace-PHP\GitHub\mytest\trunk\Controller\UsersController.php, line 72]
+2016-05-12 20:31:07 Error: [FatalErrorException] Call to a member function find() on a non-object
+Request URL: /users/add
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'D:\\Workspace-PH...', 72)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'D:\\Workspace-PH...', 72, Array)
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'D:\\Workspace-PH...', 72, Array)
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-05-12 20:31:23 Error: [MissingTableException] Table a_a_as for model AAA was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'a_a_as',
+  'class' => 'AAA',
+  'ds' => 'default',
+)
+Request URL: /users/add
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Model.php(3642): Model->setSource('a_a_as')
+#1 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Model.php(1384): Model->getDataSource()
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Model.php(1480): Model->schema()
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Model.php(1467): Model->hasField('title', false)
+#4 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Model.php(906): Model->hasField(Array)
+#5 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Model.php(3188): Model->__get('displayField')
+#6 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Model.php(3053): Model->_findList('before', Array)
+#7 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Model.php(2987): Model->buildQuery('list', Array)
+#8 D:\Workspace-PHP\GitHub\mytest\trunk\Controller\UsersController.php(73): Model->find('list')
+#9 [internal function]: UsersController->add()
+#10 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#11 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#13 D:\Workspace-PHP\GitHub\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}

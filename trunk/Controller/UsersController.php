@@ -12,6 +12,7 @@ class UsersController extends AppController {
 		parent::beforeFilter();
 // 		$this->Auth->allow();
 	}
+	public $uses = ['GroupCopy','Aaa', 'User'];
 /**
  * Helpers
  *
@@ -62,12 +63,18 @@ class UsersController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
-			if ($this->User->save($this->request->data)) {
+			$data = $this->request->data;
+// 			var_dump($data);
+			if ($this->User->save($data)) {
 				return $this->flash(__('The user has been saved.'), array('action' => 'index'));
 			}
 		}
 		$groups = $this->User->Group->find('list');
-		$this->set(compact('groups'));
+		$aaas = $this->User->Aaa->find('list');
+// 		$bbbs = 
+		$bbbs  = ['a', 'b', 'c', 'd'];
+// 		var_dump($aaas);die;
+		$this->set(compact('groups', 'aaas', 'bbbs'));
 	}
 
 /**

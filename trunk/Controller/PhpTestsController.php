@@ -7,6 +7,7 @@ class PhpTestsController extends AppController{
 		$this->Auth->allow();
 	}
 	public function index(){
+		$this->getHttpInfo();
 		$this->arrayAdd();die;
 	}
 	public function stringTest(){
@@ -28,5 +29,12 @@ class PhpTestsController extends AppController{
 	}
 	public function testUpdate(){
 		$this->User->updateAll($fields);
+	}
+	public function getHttpInfo(){
+		$host = env('HTTP_HOST');
+		$agent = env('HTTP_USER_AGENT');
+		$addr = env('SERVER_ADDR');
+		var_dump($addr);
+		die;
 	}
 }

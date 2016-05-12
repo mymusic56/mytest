@@ -227,12 +227,11 @@ class CakeEventManager {
 		if (is_string($event)) {
 			$event = new CakeEvent($event);
 		}
-
 		$listeners = $this->listeners($event->name());
+		
 		if (empty($listeners)) {
 			return $event;
 		}
-
 		foreach ($listeners as $listener) {
 			if ($event->isStopped()) {
 				break;

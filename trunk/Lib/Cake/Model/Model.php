@@ -806,7 +806,6 @@ class Model extends Object implements CakeEventListener {
 			$this->_eventManager->attach($this->Behaviors);
 			$this->_eventManager->attach($this);
 		}
-
 		return $this->_eventManager;
 	}
 
@@ -1219,7 +1218,6 @@ class Model extends Object implements CakeEventListener {
 			if (!is_array($fieldSet)) {
 				continue;
 			}
-
 			if (!isset($this->data[$modelName])) {
 				$this->data[$modelName] = array();
 			}
@@ -1234,11 +1232,10 @@ class Model extends Object implements CakeEventListener {
 				if (is_array($fieldValue) || is_object($fieldValue)) {
 					$fieldValue = $this->deconstruct($fieldName, $fieldValue);
 				}
-
+				
 				$this->data[$modelName][$fieldName] = $fieldValue;
 			}
 		}
-
 		return $data;
 	}
 
@@ -1740,7 +1737,6 @@ class Model extends Object implements CakeEventListener {
 		} else {
 			$options = $validate + $defaults;
 		}
-
 		if (!$options['atomic']) {
 			return $this->_doSave($data, ``);
 		}
@@ -1748,6 +1744,7 @@ class Model extends Object implements CakeEventListener {
 		$db = $this->getDataSource();
 		$transactionBegun = $db->begin();
 		try {
+
 			$success = $this->_doSave($data, $options);
 			if ($transactionBegun) {
 				if ($success) {
@@ -1795,7 +1792,6 @@ class Model extends Object implements CakeEventListener {
 		} elseif ($options['fieldList'] === null) {
 			$this->whitelist = array();
 		}
-
 		$this->set($data);
 
 		if (empty($this->data) && !$this->hasField(array('created', 'updated', 'modified'))) {
@@ -1852,9 +1848,10 @@ class Model extends Object implements CakeEventListener {
 			}
 			$this->set($updateCol, $time);
 		}
-
+		
 		if ($options['callbacks'] === true || $options['callbacks'] === 'before') {
 			$event = new CakeEvent('Model.beforeSave', $this, array($options));
+			
 			list($event->break, $event->breakOn) = array(true, array(false, null));
 			$this->getEventManager()->dispatch($event);
 			if (!$event->result) {
@@ -1862,7 +1859,7 @@ class Model extends Object implements CakeEventListener {
 				return false;
 			}
 		}
-
+		
 		if (empty($this->data[$this->alias][$this->primaryKey])) {
 			unset($this->data[$this->alias][$this->primaryKey]);
 		}
@@ -1905,7 +1902,7 @@ class Model extends Object implements CakeEventListener {
 
 		if ($count > 0) {
 			$cache = $this->_prepareUpdateFields(array_combine($fields, $values));
-
+			
 			if (!empty($this->id)) {
 				$this->__safeUpdateMode = true;
 				try {
@@ -2199,6 +2196,7 @@ class Model extends Object implements CakeEventListener {
  *     values, or empty if no foreign keys are updated.
  */
 	protected function _prepareUpdateFields($data) {
+		
 		$foreignKeys = array();
 		foreach ($this->belongsTo as $assoc => $info) {
 			if (isset($info['counterCache']) && $info['counterCache']) {
