@@ -133,7 +133,7 @@ class PaginatorComponent extends Component {
 		}
 
 		$object = $this->_getObject($object);
-
+		
 		if (!is_object($object)) {
 			throw new MissingModelException($object);
 		}

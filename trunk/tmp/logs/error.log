@@ -912,3 +912,58 @@ Stack Trace:
 #12 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
 #13 D:\Workspace-PHP\GitHub\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #14 {main}
+2016-05-12 22:14:25 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'www' for key 'username'
+Request URL: /zhangTests
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('INSERT INTO `my...', Array)
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `my...')
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Model.php(1925): DboSource->create(Object(User), Array, Array)
+#4 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Model.php(1748): Model->_doSave(Array, Array)
+#5 D:\Workspace-PHP\GitHub\mytest\trunk\Controller\ZhangTestsController.php(29): Model->save(Array)
+#6 [internal function]: ZhangTestsController->passwordEncrypt()
+#7 D:\Workspace-PHP\GitHub\mytest\trunk\Controller\ZhangTestsController.php(11): call_user_func(Array)
+#8 [internal function]: ZhangTestsController->index()
+#9 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ZhangTestsController), Array)
+#10 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ZhangTestsController), Object(CakeRequest))
+#12 D:\Workspace-PHP\GitHub\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2016-05-12 22:22:40 Error: [MissingTableException] Table group_copies for model GroupCopy was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'group_copies',
+  'class' => 'GroupCopy',
+  'ds' => 'default',
+)
+Request URL: /users
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Model.php(3642): Model->setSource('group_copies')
+#1 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Model.php(3020): Model->getDataSource()
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Model\Model.php(2992): Model->_readDataSource('all', Array)
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#4 D:\Workspace-PHP\GitHub\mytest\trunk\Controller\UsersController.php(38): PaginatorComponent->paginate()
+#5 [internal function]: UsersController->index()
+#6 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#9 D:\Workspace-PHP\GitHub\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2016-05-12 23:30:00 Error: Fatal Error (1): Wrong parameters for Exception([string $exception [, long $code [, Exception $previous = NULL]]]) in [D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Error\exceptions.php, line 238]
+2016-05-12 23:30:00 Error: [FatalErrorException] Wrong parameters for Exception([string $exception [, long $code [, Exception $previous = NULL]]])
+Request URL: /users/index
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Error\ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Wrong parameter...', 'D:\\Workspace-PH...', 238)
+#1 [internal function]: ErrorHandler::handleError(1, 'Wrong parameter...', 'D:\\Workspace-PH...', 238, Array)
+#2 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(931): call_user_func('ErrorHandler::h...', 1, 'Wrong parameter...', 'D:\\Workspace-PH...', 238, Array)
+#3 D:\Workspace-PHP\GitHub\mytest\trunk\Lib\Cake\Core\App.php(904): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-05-17 23:27:33 Error: [MissingControllerException] Controller class Favicon.icoController could not be found.
+Exception Attributes: array (
+  'class' => 'Favicon.icoController',
+  'plugin' => NULL,
+)
+Request URL: /favicon.ico
+Stack Trace:
+#0 D:\Workspace-PHP\GitHub\mytest\trunk\webroot\index.php(114): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

@@ -1,12 +1,16 @@
 <?php
 App::uses('AppController', 'Controller');
 class PhpTestsController extends AppController{
+	public $content = 2;
 	public $uses = ['User'];
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow();
 	}
 	public function index(){
+		$this->myTest();
+		$this->myTest();
+		$this->myTest();die;
 		$this->getHttpInfo();
 		$this->arrayAdd();die;
 	}
@@ -36,5 +40,10 @@ class PhpTestsController extends AppController{
 		$addr = env('SERVER_ADDR');
 		var_dump($addr);
 		die;
+	}
+	function myTest() {
+		static $x=0;
+		echo $x;
+		$x++;
 	}
 }

@@ -7,8 +7,9 @@ class ZhangTestsController extends AppController{
 		$this->Auth->allow();
 	}
 	public function index(){
-		call_user_func(['ZhangTestsController', 'passwordEncrypt']);die;
-		var_dump(session_id());die;
+		$this->Session->write('user1', 111);
+// 		call_user_func(['ZhangTestsController', 'passwordEncrypt']);die;
+		var_dump($this->Session->read('user1'));die;
 	}
 	
 	public function importPicture(){
