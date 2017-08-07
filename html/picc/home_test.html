@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta content="telephone=no" name="format-detection" />
+	<title>全城扑获PICC</title>
+	<style>
+	@charset "utf-8";
+	html {
+	  font-size: 20px;
+	}
+	@media only screen and (min-width: 400px) {
+	  html {
+		font-size: 21.33333333px !important;
+	  }
+	}
+	@media only screen and (min-width: 414px) {
+	  html {
+		font-size: 22.08px !important;
+	  }
+	}
+	@media only screen and (min-width: 480px) {
+	  html {
+		font-size: 25.6px !important;
+	  }
+	}
+	html {
+	  font-family: sans-serif;
+	  -ms-text-size-adjust: 100%;
+	  -webkit-text-size-adjust: 100%;
+	  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	}
+	</style>
+	<style>
+	*{
+		margin:0 auto;
+	}
+	
+	.bg1{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -667px;
+		margin-left: -375px;
+		-webkit-transform-origin: 414px 571px;
+		transform-origin: 414px 571px;
+		-webkit-animation:rotate 2s linear infinite;
+		animation:rotate 2s linear infinite;
+	}
+	@-webkit-keyframes rotate{
+		0% {
+			-webkit-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+		100% {
+			-webkit-transform: rotate(360deg);
+			transform: rotate(360deg);
+		}
+	}
+	.page .bg3{
+		width:100%;
+		height:100%;
+		position:absolute;
+	}
+	.big_box{
+		position:absolute;
+		width:100%;
+		height:100%;
+		top:0;
+		left:0;
+	}
+	.logo{
+		width:5.2rem;
+		margin-left:1.25rem;
+		margin-top:1rem;
+	}
+	.big_box img.theme{
+		width:70%;
+		margin-top:-3rem;
+		float:right;
+	}
+	img.rule{
+		position:absolute;
+		top:40%;
+		width:1.6rem;
+		left:0;
+	}
+	.instruction{
+		width:100%;
+	}
+	.btn{
+		width:60%;
+		margin-top:1.1rem;
+		border:none;
+		background:transparent;
+		#display:block;
+		margin-left:20%;
+	}
+
+	</style>
+	<!--
+		浏览器下默认字体尺寸是16px，这时1em=16px
+		
+		如何计算？
+			相对宽度/屏幕字体尺寸
+			当前想要的宽度为90px， 字体尺寸16， 换成rem约为：5.6rem
+			不同尺寸的屏幕注意修改字体尺寸的大小。
+			
+		为什么display:block; 就达到了margin-left:20%;的效果？？？
+		
+		产生动画效果？
+	-->
+</head>
+<body>
+<div class="page">
+	<img class="bg1" src="img/bg_1.jpg"/>
+	<img class="bg3" src="img/bg_3.png"/>
+	<div class="big_box">
+		<img src="img/logo.png" class="logo"/>
+		<img src="img/theme.png" class="theme"/>
+		<img src="img/btn_rule.png" class="rule"/>
+		<img src="img/instruction.png" class="instruction"/>
+			<img src="img/btn_1.png" class="btn"/>
+	</div>
+	
+</div>
+
+</body>
+</html>

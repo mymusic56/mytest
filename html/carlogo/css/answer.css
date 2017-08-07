@@ -1,0 +1,232 @@
+@charset "utf-8";
+html {
+  font-size: 20px;
+}
+@media only screen and (min-width: 400px) {
+  html {
+    font-size: 21.33333333px !important;
+  }
+}
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 22.08px !important;
+  }
+}
+@media only screen and (min-width: 480px) {
+  html {
+    font-size: 25.6px !important;
+  }
+}
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+*{
+	padding: 0;
+	margin: 0 auto;
+	box-sizing:border-box;
+}
+body{
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+} 
+a{
+	text-decoration: none;
+}
+.page{
+	max-width: 640px;
+	height: 100%;
+	background-color: #EDD597;
+}
+.content{
+	position: relative;
+}
+@media screen and (min-height:548px) {
+	.content{
+		height: 100%;
+	}
+}
+.bg{
+	display: block;
+	width: 100%;
+}
+@media screen and (min-height:548px) {
+	.bg{
+		height: 100%;
+	}
+}
+.time{
+	position: absolute;
+	top: 2.64%;
+	right: 9.3%;
+	width: 3.8rem;
+	height: 1.25rem;
+	line-height: 1.25rem;
+	border: 1px solid #000;
+	background-color: #fff;
+	border-radius: 5px;
+	text-align: center;
+	color: #e60012;
+	font-weight: bolder;
+}
+.logo{
+	position: absolute;
+	top: 8%;
+	left: 50%;
+	width: 56%;
+	margin-left: -28%;
+}
+.logo img{
+	display: block;
+	width: 100%;
+}
+.box{
+	position: absolute;
+	left: 0;
+	top: 44.5%;
+	width: 100%;
+}
+.option{
+	position: relative;
+	margin-top: .8rem;
+}
+.option .one{
+	display: block;
+	width: 80%;
+}
+.option .two{
+	position: absolute;
+	top: 10%;
+	left: 15%;
+	height: 80%;
+}
+.option .three{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 15%;
+	height: 100%;
+}
+.option .four{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 15%;
+	height: 100%;
+}
+.option p{
+	position: absolute;
+	top: 20%;
+	left: 35%;
+	color: #aaaaaa;
+}
+/* 答案正确绿色 */
+.option p.green{
+	color: #04b850;
+}
+/* 答案错误红色 */
+.option p.red{
+	color: #EA2534;
+}
+/* 遮罩 */
+.cover{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.75);
+}
+/* 通关 */
+.cover1 img.one{
+	position: absolute;
+	top: 16%;
+	left: 0;
+	width: 100%;
+}
+.cover1 img.two{
+	position: absolute;
+	top: 80%;
+	left: 50%;
+	width: 5rem;
+	margin-left: -2.5rem;
+}
+@media screen and (max-height:568px) {
+	.cover1 img.two{
+		top: 80%;
+	}
+}
+/* 超时 */
+.cover2 .box{
+	position: relative;
+	left: 50%;
+	top: 50%;
+	width: 12rem;
+	margin-left: -6rem;
+	margin-top: -6.8rem;
+}
+.cover2 p{
+	position: absolute;
+	top: 10%;
+	width: 100%;
+	padding: 0 11%;
+	color: #de421a;
+	font-weight: bolder;
+	text-align: center;
+}
+.cover2 img.one{
+	display: block;
+	width: 100%;
+	
+}
+.cover2 img.two{
+	position: absolute;
+	left: 50%;
+	bottom: 1rem;
+	width: 4rem;
+	margin-left: -2rem;
+}
+/* 猜错 */
+.cover3 .box{
+	position: relative;
+	left: 50%;
+	top: 50%;
+	width: 12rem;
+	margin-left: -6rem;
+	margin-top: -6.8rem;
+}
+.cover3 p{
+	position: absolute;
+	top: 10%;
+	width: 100%;
+	padding: 0 11%;
+	color: #de421a;
+	font-weight: bolder;
+	text-align: center;
+}
+.cover3 img.one{
+	display: block;
+	width: 100%;
+	
+}
+.cover3 img.two{
+	position: absolute;
+	left: 50%;
+	bottom: 1rem;
+	width: 4rem;
+	margin-left: -2rem;
+}

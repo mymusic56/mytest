@@ -1,0 +1,285 @@
+@charset "utf-8";
+body{
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC","Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+	/*background: url(../img/bg_2.jpg) no-repeat top center/100% 100%;*/
+}
+input,button{
+	-webkit-appearance:none; /*去除input默认样式*/
+	outline: none; /*去除input轮廓的颜色*/
+}
+#uploader .statusBar .info{
+	display: none;
+}
+#filePicker2 {
+    display: none;
+}
+#wrapper{
+	margin: 20px;
+	margin-top: 40px;
+}
+#container{
+	border: none;
+	border-radius: 10px;
+	/*background: url(../img/bg_3.jpg) no-repeat center top/100% 100%;*/
+}
+#uploader .placeholder{
+	border: none;
+}
+#uploader .placeholder .webuploader-pick{
+	/*width: 108px;
+	height: 44px;*/
+	background: url(../img/btn_bg.png) no-repeat center center/100% 100%;
+	box-shadow: 0 0 0;
+}
+#uploader .statusBar .btns .uploadBtn{
+	margin-left: 0;
+}
+#uploader .statusBar .btns{
+	top: auto;
+	bottom: 10px;
+	left: 50%;
+	right: auto;
+	-webkit-transform:translate(-50%,0);
+	transform:translate(-50%,0);
+}
+#uploader .filelist{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+#uploader .filelist li{
+	display: block;
+	float: none;
+	margin: 0 auto;
+}
+#uploader .statusBar .progress{
+	top: -50px;
+	left: 50%;
+	-webkit-transform:translate(-50%,0);
+	transform:translate(-50%,0);
+	margin-right: 0;
+}
+.page{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url(../img/bg_2.jpg) no-repeat center center/100% 100%;
+}
+/* 弹窗 */
+.cover{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.7);
+	z-index: 1000;
+}
+/* 提交成功 */
+.cover1 .message_box{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	width: 14rem;
+	height: 7rem;
+	background-color: #ffffff;
+	border-radius: 5px;
+}
+.cover1 .message_box img.close{
+	position: absolute;
+	top: .5rem;
+	right: .5rem;
+	width: 1.2rem;
+}
+.cover1 .message_box img.word_1{
+	position: absolute;
+	top: -.5rem;
+	left: 0;
+	height: 1.5rem;
+}
+.cover1 .message_box .head{
+	width: 90%;
+	height: 30%;
+	border-bottom: 1px solid #e3e3e3;
+	margin: 0 auto;
+}
+.cover1 .message_box p{
+	margin-top: .5rem;
+	text-align: center;
+	font-size: 15px;
+	color: #3e3d3d;
+	font-weight: bold;
+	font-family: "Microsoft YaHei";
+}
+/* 中奖 */
+.cover2 .message_box{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	width: 100%;
+}
+.cover2 .message_box img.Congratulation{
+	display: block;
+	width: 100%;
+}
+.cover2 .message_box img.close{
+	position: absolute;
+	top: 5%;
+	right: 5%;
+	display: block;
+	width: 1.2rem;;
+}
+.cover2 .message_box .detail{
+	position: absolute;
+	top: 20%;
+	left: 14%;
+	width: 72%;
+	text-align: center;
+}
+.cover2 .message_box .detail .word{
+	font-size: 15px;
+	font-family: "Microsoft YaHei";
+	font-weight: bold;
+	color: #3e3d3d;
+}
+.cover2 .message_box .detail .word span{
+	color: #ff4a52;
+}
+.cover2 .message_box .common_box{
+	width: 100%;
+	height: 2.6rem;
+	line-height: 2.6rem;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 0 auto;
+	margin-top: .6rem;
+	border: 2px solid #55bcf6;
+	border-radius: 10px;
+	box-sizing: border-box;
+}
+@media screen and (min-width: 375px){
+	.cover2 .message_box .common_box{
+		width: 90%;
+	}
+}
+.cover2 .message_box .common_box .group{
+	display: block;
+	width: 100%;
+	height: 100%;
+	white-space: nowrap;
+}
+.cover2 .message_box .common_box span{
+	height: 100%;
+	line-height: 2rem;
+	font-size: 14px;
+	color: #313131;
+	vertical-align: middle;
+	float: left;
+}
+.cover2 .message_box .common_box .import{
+	vertical-align: middle;
+	width: 9rem;
+	height: 100%;
+	line-height: 2rem;
+	/*padding-top: 2px;*/
+	padding-bottom: 2px;
+	font-size: 14px;
+	float: left;
+	background-color: transparent;
+}
+/*.cover2 .message_box .common_box i{
+	height: 100%;
+	line-height: 2rem;
+	font-size: 14px;
+	color: #ed4249;
+	vertical-align: middle;
+	float: right;
+}*/
+.cover2 .message_box .detail .tip{
+	margin: .3rem auto;
+	font-size: 10px;
+	font-family: "Microsoft YaHei";
+	font-weight: bold;
+	color: #ed4249;
+	text-align: left;
+	line-height: 1.2rem;
+}
+@media screen and (min-width: 375px){
+	.cover2 .message_box .detail .tip{
+		width: 90%;
+	}
+}
+.cover2 .message_box .detail .option{
+	font-size: 15px;
+	font-weight: bold;
+	color: #3e3d3d;
+	margin-top: .5rem;
+	margin-bottom: .5rem;
+}
+.cover2 .draw_box .checkRadio{
+	display: block;
+	text-align: left;
+	margin-bottom: .5rem;
+}
+.cover2 .draw_box .checkRadio img{
+	width: 16px;
+	vertical-align: middle;
+}
+.cover2 .draw_box .checkRadio input[type="radio"]{
+	display: none;
+}
+.cover2 .draw_box .checkRadio span{
+	font-size: 12px;
+	color: #303030;
+	vertical-align: middle;
+}
+.cover2 .message_box .word_2{
+	font-size: 14px;
+	color: #afafaf;
+}
+.cover2 .message_box .submit{
+	display: block;
+	margin: 0 auto;
+	width: 7.5rem;
+	border: none;
+	background-color: transparent;
+}
+.cover2 .message_box .submit img{
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+}
+/* 未中奖 */
+.cover3 .message_box{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	width: 100%;
+}
+.cover3 .message_box img.partake{
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+}
+.cover3 .message_box img.close{
+	position: absolute;
+	top: -3%;
+	right: 5%;
+	display: block;
+	width: 1.2rem;;
+}

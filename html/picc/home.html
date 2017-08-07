@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta content="telephone=no" name="format-detection" />
+	<title>全城扑获PICC</title>
+	<link rel="stylesheet" type="text/css" href="css/home.css">
+
+</head>
+<body>
+    <div class="page">
+    	<img src="img/bg_1.jpg" class="bg">
+        <img src="img/bg_3.png" class="bg_2">
+        <div class="big_box">
+            <img src="img/logo.png" class="logo">
+            <img src="img/theme.png" class="theme">
+            <img src="img/btn_rule.png" class="rule">
+            <img src="img/instruction.png" class="instruction">
+            <button class="btn">
+                <img src="img/btn_1.png">
+            </button>
+        </div>
+
+        <div class="cover cover1">
+            <img src="img/bg_rule.png" class="bg_rule">
+            <div class="rule_box">
+                <p class="one">1、中奖用户上传照片不符合要求将取消获奖资格；</p>
+                <p>2、上传照片须为<span>含有PICC标识的实物载体</span>，包含但不限于门店标识、出险车车身标识、广告牌等；</p>
+                <p>3、所有用户均可参与本活动；</p>
+                <p>4、用户上传符合要求照片成功后有机会中奖，共计抽取24位中奖用户；</p>
+                <p>5、奖项设置（任选一项）</p>
+                <p class="two">a.鲁花菜籽油(5L)*1+十月稻田五常大米*2</p>
+                <p class="two">b.九阳豆浆机</p>
+                <p class="two">c.洗车券10次；</p>
+                <p>6、中奖用户请认真填写个人信息，<span>以便我们进行奖品邮寄</span>；</p>
+            </div>
+            <img src="img/close.png" class="close">
+        </div>
+    </div>
+    
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //按钮按下
+            $(".big_box .btn").on("touchstart",function(){
+                $(this).find("img").attr("src","img/btn_2.png");
+            });
+            $(".big_box .btn").on("touchend",function(){
+                $(this).find("img").attr("src","img/btn_1.png");
+                window.location = "imgUpload.html";
+            });
+
+            // 显示规则
+            $(".big_box img.rule").click(function(){
+                $(".cover1").show();
+            });
+            // 隐藏规则
+            $(".cover1 img.close").click(function(){
+                $(".cover1").hide();
+            });
+        });
+    </script>
+</body>
+</html>

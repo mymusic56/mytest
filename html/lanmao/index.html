@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <title>懒猫试玩</title>
+    <link href="http://static.nineton.cn/11static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://static.nineton.cn/11static/mfront/css/common.css" rel="stylesheet">
+    <link href="http://static.nineton.cn/11static/mfront/css/guide.css" rel="stylesheet">
+    <link href="http://static.nineton.cn/11static/swiper/css/swiper.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://static.nineton.cn/12static/css/aui.css">
+    <link rel="stylesheet" type="text/css" href="http://static.nineton.cn/12static/css/main.css">
+    <script src="http://static.nineton.cn/12static/js/require.js"></script>
+    <script src="http://static.nineton.cn/12static/js/jquery.js"></script>
+    <script>
+    requirejs.config({
+        baseUrl: 'http://static.nineton.cn/12static/js',
+        urlArgs: 'release=20170721'
+    });
+    var developfrom = "lazycat";
+</script>
+    <script type="text/javascript">
+        require( ["jquery","guide","bootstrap.min","swiper/js/swiper.min","lmmodal","index"],function($,guide,bootstrap,swiper,lmmodal,index) {
+					
+                    var clientBaseurl = "http://localhost:35941";
+//                    guide.dologin(clientBaseurl);
+                    index.checkweixin();
+                    if(window.navigator.userAgent.toLowerCase().match(/android/) != null){
+                        $(".guide_down_con").find("a").attr("href","http://7xls5r.com1.z0.glb.clouddn.com/lazycat.apk");
+                        $(".app-ico").attr("src","http://static.nineton.cn/12static/img/ic_lanmao.png");
+                        document.location.href = "/Guide/login_android.html";
+                    }
+                    $('#myModal').on('shown.bs.modal', function (e) {
+                        var swiper = new Swiper('.swiper-container');
+                    });
+                    setInterval(function () {
+                        $('.swiper-wrapper>div').each(function (i, k) {
+                            if ($(this).hasClass('swiper-slide swiper-slide-active')) {
+                                $('.dian').each(function () {
+                                    $(this).removeClass('dian-active');
+                                });
+                                $('.dian').eq(i).addClass('dian-active');
+                            }
+                        });
+                    }, 300);
+                    //显示弹窗
+                    $("#step-set").click(function () {
+                        $('#myModal').modal('show');
+                    });
+                    //如果不是安卓，就需要判断盘本号
+                    if(window.navigator.userAgent.toLowerCase().match(/android/) == null){
+                        //判断系统版本号
+                        var version = window.navigator.userAgent.match(/([\d]+)_([\d+])/);
+
+                        if (version[1] < 9 && version[1] > 6) {
+                        }else{
+                            //在线版不需要显示第二步
+//                        $('#step-set').hide();
+                            $('#btn03').attr('src', "http://static.nineton.cn/11static/mfront/img/btn05.png");
+                        }
+                        if(version[1] >= 10){
+                            $("#myModalLabel").html("iOS10用户设置");
+                            $(".step-go").hide();
+                        }
+                    }else{
+//                    $("#step-open").hide();
+//                    $("#step-set").hide();
+                        $("#download_button").click(function () {
+                            $(this).attr("href","http://7xls5r.com1.z0.glb.clouddn.com/lazycat.apk");
+                            return true;
+                        });
+                    }
+                }
+        );
+
+    </script>
+</head>
+<body class="">
+<div class="aui-content storeguide">
+    <div class="top_background_new">
+        <img src="http://static.nineton.cn/12static/img/logostore2.png" class="app-ico">
+        <div class="app-down-des">
+            安装
+            <img src="http://static.nineton.cn/12static/img/jiantou_right.png">
+            <span>懒猫试玩</span>
+        </div>
+        <div class="pro">
+            懒猫试玩首装获 <span>3元现金</span> ,试玩更多 <span>月入上万</span>
+        </div>
+        <img src="http://static.nineton.cn/12static/img/guide_bl.png" alt="" style="margin-bottom: 0px; width: 100%; margin-bottom: -10px;">
+    </div>
+    <div class="aui-text-center guide_down_con guide_down_con_new">
+        <a href="itms-services://?action=download-manifest&amp;url=https://oi7tiikk9.qnssl.com/new_lazy_cat_4.3.4.plist"><img class="down-btn" src="http://static.nineton.cn/12static/img/_0002_1.png"></a>
+        <div><img class="xiangxia-jiantou" src="http://static.nineton.cn/12static/img/guide_jiantou_new.png" alt=""></div>
+        <a href="javascript:void(0)" id="step-set"><img class="down-btn" src="http://static.nineton.cn/12static/img/_0001_2.png"></a>
+        <div><img class="xiangxia-jiantou" src="http://static.nineton.cn/12static/img/guide_jiantou_new.png" alt=""></div>
+        <a href="lazycat://"><img class="down-btn" src="http://static.nineton.cn/12static/img/_0000_3.png" style="padding-top: 10px;"></a>
+    </div>
+    <div class="aui-text-center guide_down_con guide_down_con_new" style="margin-top: 8%;">
+        <a href="http://m.miaopai.com/show/channel/-I~kcacbJkE8cj9TPkkHtQ__">
+            <h4 style="color:#FF5C63;font-family: 宋体;font-weight: bold;">观看懒猫试玩教学视频&gt;&gt;</h4>
+        </a>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="myModalLabel">iOS9用户设置</h4>
+            </div>
+            <div class="modal-body" style="padding:15px 0;">
+                <div id="set-step center-block">
+                    <div class="swiper-container swiper-container-horizontal">
+                        <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-596px, 0px, 0px);">
+                            <div class="swiper-slide" style="width: 298px;">
+                                <img src="http://static.nineton.cn/11static/mfront/img/step1.jpg">
+                            </div>
+                            <div class="swiper-slide swiper-slide-prev" style="width: 298px;">
+                                <img src="http://static.nineton.cn/11static/mfront/img/step2.png">
+                            </div>
+                            <div class="swiper-slide swiper-slide-active" style="width: 298px;">
+                                <img src="http://static.nineton.cn/11static/mfront/img/step3.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-circle">
+                        <div class="dian"></div>
+                        <div class="dian"></div>
+                        <div class="dian dian-active"></div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="step-go">
+                    <a id="iosconfig-go" href="prefs:root=General&amp;path=ManagedConfigurationList">去设置</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display:none">
+	<iframe src="http://www.cattry.com/guide/lmshare.html?channel_id=baidusem"></iframe>
+</div>
+<script>
+</script>
+<!-- Modal -->
+
+</body></html>

@@ -1,0 +1,210 @@
+@charset "utf-8";
+html {
+  font-size: 20px;
+}
+@media only screen and (min-width: 400px) {
+  html {
+    font-size: 21.33333333px !important;
+  }
+}
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 22.08px !important;
+  }
+}
+@media only screen and (min-width: 480px) {
+  html {
+    font-size: 25.6px !important;
+  }
+}
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+*{
+	padding: 0;
+	margin: 0 auto;
+	box-sizing:border-box;
+}
+body{
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+} 
+a{
+	text-decoration: none;
+}
+.page{
+	max-width: 640px;
+	height: 100%;
+	background-color: #EDD597;
+}
+.content{
+	position: relative;
+}
+img.head{
+	display: block;
+	width: 100%;
+}
+.group{
+	position: absolute;
+	bottom: 2.8rem;
+	width: 80%;
+	height: 2.8rem;
+	left: 50%;
+	margin-left: -40%;
+}
+.group a{
+	display: block;
+	width: 45%;
+	background-color: #de421a;
+	text-align: center;
+	line-height: 2.5rem;
+	border-radius: 25px;
+	color: #fff;
+	font-size: 1rem;
+}
+.rule{
+	position: absolute;
+	bottom: 1.6rem;
+	width: 100%;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	text-align: center;
+	font-size: .8rem;
+	
+}
+.rule img{
+	display: inline-block;
+	height: .8rem;
+	vertical-align: middle;
+	margin-left: .5rem;
+}
+.rule1{
+	display: none;
+	position: absolute;
+	bottom: 1.6rem;
+	width: 100%;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	text-align: center;
+	font-size: .8rem;
+	
+}
+.rule1 img{
+	display: inline-block;
+	height: .8rem;
+	vertical-align: middle;
+	margin-left: .5rem;
+}
+.bottom{
+	display: none;
+	position: relative;
+	background-color: #edd597;
+	padding: 0 .7rem .5rem;
+	margin-top: -1.4rem;
+}
+.bottom .activity{
+	display: block;
+	width: 100%;
+	margin-bottom: .5rem;
+}
+.bottom p{
+	position: relative;
+	z-index: 2;
+	color: #444444;
+	font-size: .7rem;
+	line-height: 1.4rem;
+}
+.bottom .base{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+.bottom .copy{
+	position: relative;
+	z-index: 2;
+	display: block;
+	width: 6rem;
+}
+.footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
+.footer img{
+	width: 6rem;
+}
+
+/* 遮罩 */
+.cover{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.75);
+}
+.cover1 .box,.cover2 .box{
+	position: relative;
+	left: 50%;
+	top: 50%;
+	width: 12rem;
+	margin-left: -6rem;
+	margin-top: -6.8rem;
+}
+.cover1 p,.cover2 p{
+	position: absolute;
+	top: 10%;
+	width: 100%;
+	padding: 0 11%;
+	color: #de421a;
+	font-size: .8rem;
+	font-weight: bolder;
+	text-align: center;
+}
+.cover1 img.one,.cover2 img.one{
+	display: block;
+	width: 100%;
+	
+}
+.cover1 img.two,.cover2 img.two{
+	position: absolute;
+	left: 50%;
+	bottom: 1rem;
+	width: 4rem;
+	margin-left: -2rem;
+}
+/* 分享 */
+.cover5 img.one{
+	display: block;
+	width: 70%;
+	margin-right: 5%;
+	margin-top: 5%;
+}
+.cover5 img.two{
+	display: block;
+	width: 90%;
+	margin-top: -8%;
+}
+.cover5 img.three{
+	display: block;
+	width: 37%;
+	margin-top: 7%;
+}
+

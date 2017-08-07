@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>猜车标</title>
+	<link rel="stylesheet" type="text/css" href="css/loading.css">
+
+</head>
+<body>
+    <div class="page">
+        <img src="img/loading.jpg" class="bg">
+        <div class="box">
+        	<div class="content">
+        		<img src="img/gas.png" class="gas gas1">
+        		<img src="img/gas.png" class="gas gas2">
+        		<img src="img/gas.png" class="gas gas3">
+        		<img src="img/car.png" class="car">
+        	</div>
+        	<p>LOADING</p>
+        </div>
+    </div>
+    
+    <script src="js/zepto.min.js"></script>
+    <script>
+        ;(function($){
+            setTimeout(function(){
+                window.location="home.html";
+            },1000);
+        })(Zepto);
+    </script>
+</body>
+</html>

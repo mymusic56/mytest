@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="gb312">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	
+	<style>
+		.dialog-mask{
+			position:fixed;
+			top:0;
+			left:0;
+			width:100%;
+			height:100%;
+			background-color:rgba(0,0,0,.40);
+		}
+		.dialog-box{
+			z-index:1024;
+			background-color:white;
+			position:absolute;
+			width:80%;
+			top:15%;
+			left:10%;
+			height:70%;
+			overflow:hidden;
+			font-family: tahoma, helvetica, "microsoft yahei", "宋体",arial;
+			
+		}
+		.dialog-box .dialog-title{
+			background:url(img/title-bg.png);
+			line-height:10px;
+			padding-top:10px;
+			padding-bottom:10px;
+			font-size:15px;
+			text-indent:10px;
+		}
+		
+		.dialog-box .dialog-close{
+			background:url(img/dialog-btns.gif) no-repeat -141px -8px;
+			width:18px;
+			float:right;
+			position:absolute;
+			right:10px;
+			top:10px;
+			text-decoration:none;
+		}
+		.dialog-box .dialog-content .dialog-body{
+			height:290px;
+			overflow-y:auto;
+			padding:10px;
+			font-size:14px;
+		}
+		
+		
+		<!--
+			.dialog-mask:
+				background-color:rgba(0,0,0,.40);
+			
+			.dialog-box:
+				font-family: tahoma, helvetica, "microsoft yahei", "宋体",arial;
+
+			.dialog-close
+				background:url(img/dialog-btns.gif) no-repeat -141px -8px;
+				#-141px:x轴位置，可以使用left、right；  -8px: y轴位置， 可以用top  bottom， 这里主要是获取叉形图案
+				text-decoration:none;
+				<a>标签里面的&nbsp;没有则不会显示x形符号
+			.dialog-body
+			
+				dialog-body 中高度直接影响里面的内容是否能被完全看到
+		-->
+	</style>
+</head>
+
+<body>
+<h1>Test Cover!</h1>
+<div class="dialog-mask"></div>
+<div class="dialog-box">
+	<a href="#" class="dialog-close">&nbsp;</a>
+	<div class="dialog-title"><span class="dialog-title-txt">标题</span></div>
+	<div class="dialog-content">
+		<div class="dialog-body">
+		<span style="color: rgb(255, 102, 0);">预定时间：</span><br>游玩当天17:00前预定<br><span style="color: rgb(255, 102, 0);">包含项目：</span><br>成人票一张。<br><span style="color: rgb(255, 102, 0);">退改规则：</span><br>(1)本产品预订后订单支持全部退款，不支持部分退，并可随时申请，无需支付手续费。
+		<span style="color: rgb(255, 102, 0);">预定时间：</span><br>游玩当天17:00前预定<br><span style="color: rgb(255, 102, 0);">包含项目：</span><br>成人票一张。<br><span style="color: rgb(255, 102, 0);">退改规则：</span><br>(1)本产品预订后订单支持全部退款，不支持部分退，并可随时申请，无需支付手续费。
+		<span style="color: rgb(255, 102, 0);">预定时间：</span><br>游玩当天17:00前预定<br><span style="color: rgb(255, 102, 0);">包含项目：</span><br>成人票一张。<br><span style="color: rgb(255, 102, 0);">退改规则：</span><br>(1)本产品预订后订单支持全部退款，不支持部分退，并可随时申请，无需支付手续费。
+		</div>
+	</div>
+</div>
+</body>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script>
+	$(".dialog-close").on("click", function(){
+		$(".dialog-mask").hide();
+		$(".dialog-box").hide();
+	})
+</script>
+</html>

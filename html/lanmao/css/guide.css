@@ -1,0 +1,116 @@
+
+body{
+    background: url("../img/guide-bg.png") no-repeat #e6253d center top;
+    background-size: 100% auto;
+}
+body .row,body .container-fluid{
+    background-color:transparent;
+}
+#step{
+   margin-top: 150px;
+ }
+#ios-tip{
+    text-align: center; color: white;font-size: 1.2em;
+}
+#ios-tip a{
+    text-decoration: dashed;
+    color: #ffffff;
+}
+a{
+    text-decoration: dashed;
+}
+
+
+
+#set-step {
+    width: 297px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.swiper-container {
+    margin: 10px auto;
+    text-align: center;
+}
+
+.close-window {
+    height: 30px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.close-window span {
+    font-size: 30px;
+    font-weight: 300;
+    color: #666666;
+}
+
+.swiper-container img {
+    width: 250px;
+    height: auto;
+}
+
+.step-circle {
+    width: 65px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.dian {
+    width: 12px;
+    height: 12px;
+    float: left;
+    border: 1px solid #949494;
+    border-radius: 6px;
+    margin: 5px 2px;
+}
+
+.dian-active {
+    background-color: red;
+
+}
+
+.step-go {
+    text-align: center;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.step-go a {
+    padding: 5px 50px;
+    font-size: 18px;
+    background-color: #007aff;
+    color: #ffffff;
+    border-radius: 5px;
+}
+#login .modal-content{
+    border-radius: 0;
+
+}
+#login .modal-header{
+    border-bottom: none;
+}
+
+.disabled{
+    background: #e6253d ;
+    opacity: 0.7;
+}
+
+#fenxiangyindao{
+    position: fixed;
+    top:0;
+    left: 0;
+    background: #000000;
+    opacity: 0.9;
+    width: 100%;
+    height: 100%;
+    text-align: right;
+    display: none;
+}
+#fenxiangyindao .zhiyin{
+    width: 248px;
+}
+#fenxiangyindao .list{
+    margin-top: 50px;
+    width: 300px;
+}

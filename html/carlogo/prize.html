@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>猜车标</title>
+	<link rel="stylesheet" type="text/css" href="css/prize.css">
+
+</head>
+<body>
+    <div class="page">
+        <div class="content">
+            <img src="img/bg4.jpg" class="bg">
+           <!-- 抽奖区 -->
+           <div class="area">
+               <img id="redux" src="img/scratchArea1.png" />
+			   <p>你获得啦一部iPhone6s plus 64G</p>
+               <img id="robot"  src="img/scratchArea4.png" />
+           </div>
+        </div>
+         
+    </div>
+    
+    <!-- 遮罩 -->
+    <!-- 注册会员 -->
+    <div class="cover cover1">
+        <div class="box fl">
+            <p>“捡耙豁”专属通道</p>
+            <img src="img/activity.png" class="one">
+            <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfbeb333938c553cc&redirect_uri=http%3A%2F%2Fwww.cqins.com%2Fmember%2FauthCenter.php%3Fmenuid%3Dhui_yuan_zhuan_qu&response_type=code&scope=snsapi_base&state=#wechat_redirect"><img src="img/cheap.png" class="two"></a>
+        </div>
+    </div>
+    <!-- 获奖 -->
+    <div class="cover cover2">
+        <div class="box fl">
+            <p>恭喜获得1000元油卡</p>
+            <img src="img/activity1.png" class="one">
+            <input type="number" placeholder="请输入电话号码" />
+            <a href="javascript:"><img src="img/confirm.png" class="two"></a>
+            <span>客服会在24小时内和你联系，请保持开机</span>
+        </div>
+    </div>
+    <!-- 机会用完 -->
+    <div class="cover cover3">
+        <div class="box fl">
+            <p>亲，你的机会已用完了敬请期待人保下次的活动</p>
+            <img src="img/activity.png" class="one">
+            <a href="javascript:"><img src="img/confirm.png" class="two"></a>
+        </div>
+    </div>
+    <!-- 未获奖 -->
+    <div class="cover cover4">
+        <div class="box fl">
+            <p>很遗憾，未能抽中，赶紧分享好友再来一次</p>
+            <img src="img/activity.png" class="one">
+            <a href="javascript:"><img src="img/again.png" class="two"></a>
+        </div>
+    </div>
+    <!-- 分享 -->
+    <div class="cover cover5">
+        <img src="img/arrow1.png" class="one">
+        <!-- 还有一次机会 -->
+        <img src="img/chance.png" class="two">
+        <!-- 抽奖机会用完 -->
+        <!-- <img src="img/chance1.png" class="two"> -->
+        <a href="javascript:"><img src="img/know.png" class="three"></a>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.eraser.js"></script>
+    <script type = "text/javascript">
+          $(function(){
+                // 刮奖区
+                var notice = 0;
+                var show = 0;
+                //size 指定一个画笔大小,添加一些选项(默认值为40)
+                //progressFunction 擦出后的回调函数，他接收一个参数，为擦出后的比率（0.0 – 1.0）
+                $('#redux').eraser({
+                  size: 30,
+                  progressFunction: function(p) {
+                      if(!show)
+                    {
+                          $("#robot").show();
+                          show = 1;
+                    }
+                      var progres = Math.round(p*100);
+                      if(!notice)
+                      {
+                          if(progres >= 20)
+                            {
+                                notice = 1;
+                                $('#redux').eraser('clear');
+                                $(".cover4").show();
+                            }
+                      }
+                  }
+                });
+
+
+                //出现遮罩的时候不滑动
+                $(".cover").on("touchmove",function(event){
+                    if($(event.target).children()){
+                        event.preventDefault();
+                    }
+                });
+
+                //获奖之后提示注册
+                $(".cover2 a").on("click",function(){
+                    $(".cover2").hide();
+                    $(".cover1").show();
+                });
+
+                //抽奖未中提示分享
+                $(".cover4 a").on("click",function(){
+                    $(".cover4").hide();
+                    $(".cover5").show();
+                });
+
+                //取消分享
+                $(".cover5 a").on("click",function(){
+                    setTimeout(function(){
+                        $(".cover5").hide();
+                        window.location="loading.html";
+                    },1000);
+                });
+
+
+              });
+
+                
+
+
+
+    </script>
+    
+</body>
+</html>

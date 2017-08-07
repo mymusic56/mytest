@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="/Public/js/jquery1.11.3.js"></script>
+<script type="text/javascript">
+$(function () {
+	var data = '{"number": "home_page2", "key":"d1d3a4bb67183b0df8db6922abacc032",  "param":{"idfa":"1234","imei":"3333", "designId": 29,"platform":"android"}}';
+    $.ajax({
+		type:"POST",
+		dataType:"json",
+		url:"/index.php/php/ccc",
+		data: {
+			"data": data
+		},
+		success:function(result){
+			 console.log(result)
+		}
+    });
+});
+
+</script>
+<head/>
+<body>
+<h1>发送ajax请求</h1>
+<img alt="" src="http://nineton.oss-cn-hangzhou.aliyuncs.com/named/xgoodspic3/img_dingdan_jkpa@3x.png">
+<ul>
+
+</ul>
+</body>
+</html>

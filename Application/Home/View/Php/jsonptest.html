@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="__PUBLIC__/js/jquery1.11.3.js"></script>
+<script type="text/javascript">
+$(function () {
+    $.getJSON('http://admin.qm.com/test.php?callback=?', function (data) {
+        console.log(data);
+    });
+    <!--为什么还是要指定回调函数才生效呢？-->
+});
+function getUserInfo(data){
+	 console.log('invoke getUserInfo.');
+	 console.log(data);
+}
+</script>
+<!-- 另一种方式 -->
+<!-- <script type="text/javascript" src="http://admin.qm.com/test.php?callback=getUserInfo"></script> -->
+<head/>
+<body>
+<h1>JSONP测试跨域请求</h1>
+<img alt="" src="http://nineton.oss-cn-hangzhou.aliyuncs.com/named/xgoodspic3/img_dingdan_jkpa@3x.png">
+<ul>
+<volist name="dataList" id="vo">
+    <li>{$vo['name']} -- {$vo['age']}</li>
+</volist>
+</ul>
+</body>
+</html>

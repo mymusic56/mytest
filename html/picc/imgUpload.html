@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta content="telephone=no" name="format-detection" />
+    <title>全城扑获PICC</title>
+    <link rel="stylesheet" type="text/css" href="css/webuploader.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/imgUpload.css" />
+</head>
+<body>
+    <div class="page">
+        <div id="wrapper">
+            <div id="container">
+                <!--头部，相册选择和格式选择-->
+
+                <div id="uploader">
+                    <div class="queueList">
+                        <div id="dndArea" class="placeholder">
+                            <div id="filePicker"></div>
+                            <p>单次最多可选1张</p>
+                        </div>
+                    </div>
+                    <div class="statusBar" style="display:none;">
+                        <div class="progress">
+                            <span class="text">0%</span>
+                            <span class="percentage"></span>
+                        </div><div class="info"></div>
+                        <div class="btns">
+                            <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 提交成功 -->
+    <div class="cover cover1">
+        <div class="message_box">
+            <img src="img/close_3.png" class="close">
+            <img src="img/word_1.png" class="word_1">
+            <div class="head"></div>
+            <p>您的资料及照片已经上传审核</p>
+            <p>我们将在下期公布获奖名单</p>
+        </div>
+    </div>
+    <!-- 弹窗 中奖 -->
+    <div class="cover cover2">
+        <div class="message_box">
+            <img src="img/Congratulation.png" class="Congratulation">
+            <img src="img/close_4.png" class="close">
+            <div class="detail">
+                <p class="word">请留下<span>您的联系方式</span>以便我们联系</p>
+                <div class="common_box">
+                    <label class="group">
+                        <span>姓&nbsp;&nbsp;&nbsp;名：</span><input type="text" placeholder="张三" class="import" id="name" />
+                    </label>
+                </div>
+                <div class="common_box">
+                    <label class="group">
+                        <span>手机号：</span><input type="tel" placeholder="13500000000" maxlength="11" class="import" id="mobile" />
+                    </label>
+                </div>
+                <div class="common_box">
+                    <label class="group">
+                        <span>地&nbsp;&nbsp;&nbsp;址：</span><input type="text" placeholder="请留下您收货的地址" class="import" id="address" />
+                    </label>
+                </div>
+                <div class="tip"></div>
+                <p class="option">请从以下商品中选择一项</p>
+                <div class="draw_box">
+                    <label class="checkRadio first">
+                        <img src="img/check_2.png">
+                        <input type="radio" name="choice" checked="checked">
+                        <span>鲁花菜籽油(5L)*1+十月稻田五常大米*2</span>
+                    </label>
+                    <label class="checkRadio">
+                        <img src="img/check_1.png">
+                        <input type="radio" name="choice">
+                        <span>洗车券10次</span>
+                    </label>
+                    <label class="checkRadio">
+                        <img src="img/check_1.png">
+                        <input type="radio" name="choice">
+                        <span>九阳豆浆机</span>
+                    </label>
+                </div>
+                <!-- <img src="img/describe.png" class="describe"> -->
+                <p class="word_2">上传照片不符要求将被取消获奖资格</p>
+                <button class="submit">
+                    <img src="img/btn_submit.png">
+                </button>
+                
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗 未中奖 -->
+    <div class="cover cover3">
+        <div class="message_box">
+            <img src="img/partake.png" class="partake">
+            <img src="img/close_4.png" class="close">
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/webuploader.js"></script>
+    <script type="text/javascript" src="js/upload.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            // 关闭中奖弹窗
+            $(".cover2 .message_box img.close").click(function(){
+                $(".cover2").hide();
+            });
+            // 关闭未中奖弹窗
+            $(".cover3 .message_box img.close").click(function(){
+                $(".cover3").hide();
+            });
+            // 关闭提交成功弹窗
+            $(".cover1 .message_box img.close").click(function(){
+                $(".cover1").hide();
+            });
+
+            //检查名字是否为空
+            function checkEmpty(obj,tip){
+                $(obj).blur(function(){
+                    //是否为空
+                    var mobile = $(obj).val().trim();
+                    if(mobile == "")
+                    {
+                      $(tip).text("姓名不能为空。");
+                      return false;
+                    }else{
+                        $(tip).text("");
+                    }
+                });
+            }
+
+            //失去焦点事件
+            function mobileBlur(obj,tip){
+                $(obj).blur(function(){
+                    //判断手机号
+                    var mobile = $(obj).val().trim();
+                    var patt_str = /^1[3|4|5|7|8]\d{9}$/;
+                    var RegExpObj = new RegExp(patt_str);
+                    if(!RegExpObj.test(mobile))
+                    {
+                      $(tip).text("手机号有误，请确认。");
+                      return false;
+                    }else{
+                        $(tip).text("");
+                    }
+                });
+            }
+
+            //检查是否输入的是数字
+            function checkNum(id,tip){
+              var obj = document.getElementById(id);
+              obj.addEventListener("input",function(){
+                var mobile = $("#"+id).val().trim();
+                var patt_str = /^1[3|4|5|7|8]\d{9}$/;
+                var RegExpObj = new RegExp(patt_str);
+                if(isNaN(mobile)){      //判断是否是数字
+                  $(obj).val("");
+                }else{
+                    if(!RegExpObj.test(mobile) && mobile.length == 11)
+                    {
+                      $(tip).text("手机号有误，请确认。");
+                      return false;
+                    }else{
+                        $(tip).text("");
+                    }
+                  
+                } 
+              });
+            }
+
+
+
+            //调用函数
+            mobileBlur("#mobile",".tip");
+            checkNum("mobile",".tip");
+            checkEmpty("#name",".tip");
+
+            //单选按钮
+            $(".checkRadio").click(function(){
+                $(".checkRadio").find("img").attr("src","img/check_1.png");
+                $(".checkRadio").find("input").removeAttr("checked");
+                $(this).find("img").attr("src","img/check_2.png");
+                $(this).find("input").attr("checked","checked");
+            });
+
+            
+            //提交
+            $(".cover2 .message_box .submit").click(function(){
+                $(".cover2").hide();
+                $(".cover1").show();
+            });
+
+        });
+        
+    </script>
+</body>
+</html>

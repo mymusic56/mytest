@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>猜车标</title>
+	<link rel="stylesheet" type="text/css" href="css/home.css">
+
+</head>
+<body>
+    <div class="page">
+        <div class="content">
+            <img src="img/bg1.jpg" class="head">
+            <div class="group">
+                <a href="javascript:" class="left fl">开始猜标</a>
+                <a href="list.html" class="right fr">获奖名单</a>
+            </div>
+            <div class="rule">了解规则<img src="img/arrow.png"></div>
+            <div class="rule1">收起<img src="img/arrow-top.png"></div>
+            <div class="footer"><img src="img/copy.png"></div>
+        </div>
+        <div class="bottom">
+            <img src="img/rule.png" class="activity">
+            <p>活动时间：7月18日-7月24日</p>
+            <p>如何中奖：所闯关卡越多，中奖几率越大</p>
+            <p>活动奖品：千元加油卡、三网通流量</p>
+            <p>注意事项：</p>
+            <p>1、每个微信号最高限参与两次竞猜，竞猜中奖则不再享有第二次竞猜资格，若竞猜后未中奖，则可转发该文章至朋友圈，再获一次竞猜资格；</p>
+            <p>2、活动结束后3个工作日内，由重庆人保工作人员与获奖客户联系兑换中石油加油卡；</p>
+            <p>3、赠送流量为三网通流量，客户中奖后填写手机号码即可完成充值，也可指定其他手机号进行充值；</p>
+            <p>4、活动过程中，请务必准确填写您的个人信息，关闭或退出信息填写页面，或填写信息有误，视为自动放弃获奖资格；</p>
+            <p>5、对于任何通过不正当手段参与活动者，活动主办方有权在不事先通知的情况下取消其活动参与及获奖资格，并保留相关法律权利；</p>
+            <p>6、如遇不可抗力因素，本次活动因故无法进行时，活动主办方在法律允许的范围内有权决定终止、取消、修改或暂停本活动；</p>
+            <p>7、获奖名单及正确答案将一并在下期微刊公布。</p>
+            <img src="img/copy.png" class="copy">
+            <img src="img/footer.png" class="base">
+        </div>
+    </div>
+    
+    <!-- 遮罩 -->
+    <div class="cover cover1">
+        <div class="box fl">
+            <img src="img/attend.png" class="one">
+        </div>
+    </div>
+    <div class="cover cover2">
+        <div class="box fl">
+            <p>亲，每个关卡只有15秒(⊙o⊙)检验你一指神功的时候到了</p>
+            <img src="img/activity.png" class="one">
+            <a href="answer.html"><img src="img/start.png" class="two"></a>
+        </div>
+    </div>
+    <!-- 分享 -->
+    <div class="cover cover5">
+        <img src="img/arrow1.png" class="one">
+        <!-- 还有一次机会 -->
+        <img src="img/chance.png" class="two">
+        <!-- 抽奖机会用完 -->
+        <!-- <img src="img/chance1.png" class="two"> -->
+        <a href="javascript:"><img src="img/know.png" class="three"></a>
+    </div>
+
+    <script src="js/zepto.min.js"></script>
+    <script>
+        ;(function($){
+            // 出现遮罩
+            $(".group .left").on("click",function(){
+                $(".cover2").show();
+            });
+
+            //出现遮罩的时候不滑动
+            $(".cover").on("touchmove",function(event){
+                if($(event.target).children()){
+                    event.preventDefault();
+                }
+            });
+
+
+            // 展开规则
+            $(".rule").click(function(){
+                $(".bottom").show();
+                $(this).hide();
+                $(".rule1").show();
+            });
+            // 收起规则
+            $(".rule1").click(function(){
+                $(".bottom").hide();
+                $(this).hide();
+                $(".rule").show();
+            });
+        })(Zepto);
+    </script>
+</body>
+</html>

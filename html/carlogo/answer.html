@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>猜车标</title>
+	<link rel="stylesheet" type="text/css" href="css/answer.css">
+
+</head>
+<body>
+    <div class="page">
+        <div class="content">
+            <img src="img/bg3.jpg" class="bg">
+            <div class="time">
+                15S
+            </div>
+            <div class="logo">
+                <!-- 改变图片路径，换车标 -->
+                <img src="images/logo1.png">
+            </div>
+            <div class="box">
+                <div class="option option1">
+                    <img src="img/option.png" class="one">
+                    <img src="img/a.png" class="two">
+                    <!-- 对 -->
+                    <img src="img/true.png" class="three" style="display:block;">
+                    <!-- 错 -->
+                    <img src="img/false.png" class="four">
+                    <p class="green">塔尔伯特</p>
+                </div>
+                <div class="option option2">
+                    <img src="img/option.png" class="one">
+                    <img src="img/b.png" class="two">
+                    <!-- 对 -->
+                    <img src="img/true.png" class="three">
+                    <!-- 错 -->
+                    <img src="img/false.png" class="four">
+                    <p>文图瑞</p>
+                </div>
+                <div class="option option3">
+                    <img src="img/option.png" class="one">
+                    <img src="img/c.png" class="two">
+                    <!-- 对 -->
+                    <img src="img/true.png" class="three">
+                    <!-- 错 -->
+                    <img src="img/false.png" class="four" style="display:block;">
+                    <p  class="red">纳赛尔</p>
+                </div>
+                <div class="option option4">
+                    <img src="img/option.png" class="one">
+                    <img src="img/d.png" class="two">
+                    <!-- 对 -->
+                    <img src="img/true.png" class="three">
+                    <!-- 错 -->
+                    <img src="img/false.png" class="four">
+                    <p>巴博斯</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 遮罩 -->
+    <!-- 通关 -->
+    <div class="cover cover1">
+        <img src="img/clearance.png" class="one">
+        <img src="img/scratch.png" class="two">
+    </div>
+    <!-- 超时 -->
+    <div class="cover cover2">
+        <div class="box fl">
+            <p>超时啦！居然超时了，好笨，奖励你抽奖机会！</p>
+            <img src="img/activity.png" class="one">
+            <a href="answer.html"><img src="img/scratch.png" class="two"></a>
+        </div>
+    </div>
+    <!-- 猜错 -->
+    <div class="cover cover3">
+        <div class="box fl">
+            <p>猜错了！好笨，奖励你去抽奖啦！！</p>
+            <img src="img/activity.png" class="one">
+            <a href="answer.html"><img src="img/scratch.png" class="two"></a>
+        </div>
+    </div>
+
+    <script src="js/zepto.min.js"></script>
+    <script src="json/answer.js"></script>
+    <script>
+        ;(function($){
+            //出现遮罩的时候不滑动
+            $(".cover").on("touchmove",function(event){
+                if($(event.target).children()){
+                    event.preventDefault();
+                }
+            });
+            
+            //选车标答题
+            /*$('.option').click(function(){
+                alert(carLogo.logo1.first);
+            });*/
+            /*alert(window.screen.availWidth+","+window.screen.availHeight);*/
+        })(Zepto);
+    </script>
+</body>
+</html>

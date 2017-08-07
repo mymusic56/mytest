@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+	<title>猜车标</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0 auto;
+		box-sizing: border-box;
+	}
+	.page{
+		max-width: 640px;
+		height: 100%;
+		background-color: #EDD597;
+	}
+	.content{
+		position:relative;
+		height:100%;
+	}
+	.bg{
+		width:100%;
+		height:100%;
+	}
+	.box{
+		position:absolute;
+		top:50%;
+		left:0;
+		width:100%;
+	}
+	.option{
+		position:relative;
+		display:block;
+		margin-top:20px;;
+	}
+	.option .one{
+		width:80%;
+		display:block;
+	}
+	.option .two{
+		position:absolute;
+		top:10%;
+		left:15%;
+		height:80%;
+	}
+	.option .three{
+		display:none;
+		position:absolute;
+		top:0;
+		left:18%;
+		height:100%;
+	}
+	
+	.option .four{
+		display:none;
+		position:absolute;
+		top:0;
+		left:18%;
+		height:100%;
+	}
+	.option p{
+		display:block;
+		position:absolute;
+		top:10px;
+		left:45%;
+		font-size:19px;
+		color:#aaaaaa;
+	}
+	.option p.green{
+		color:#04b850;
+	}
+	.option p.red{
+		color:#EA2534;
+	}
+	
+	.time{
+		position: absolute;
+		top: 2.64%;
+		right: 9.3%;
+		width: 3.8rem;
+		height: 1.25rem;
+		line-height: 1.25rem;
+		border: 1px solid #000;
+		background-color: #fff;
+		border-radius: 5px;
+		text-align: center;
+		color: #e60012;
+		font-weight: bolder;
+	}
+	.logo{
+		position:absolute;
+		top: 8%;
+		left: 50%;
+		width: 56%;
+		margin-left: -28%;
+	}
+	.logo img{
+		display:block;
+		width:100%;
+	}
+	</style>
+</head>
+<body>
+<!--
+	字体大小设置：
+		给一个默认大小，然后根据屏幕的宽度设置字体的大小
+		
+
+	背景图片:
+		1、用背景图实现
+		2、用绝对定位实现
+	如何才能实现， 在不同尺寸的屏幕上展示的相对位置比例不变？？？？
+		绝对定位和相对定位
+		
+	page:定义背景页面的大小
+	content：采用相对定位，位置是相对于page而言
+	选项中，几张图片在视觉上是放在同一个位置， 采用绝对定位实现， 同样横排的文字也用绝对定位实现
+	但是选项之间，又是基于整个选项的box而相对定位的。
+
+-->
+<div class="page">
+	<div class="content">
+		<img src="img/bg3.jpg" class="bg"/>
+		<div class="time">15S</div>
+		<div class="logo">
+			<img src="images/logo1.png"/>
+		</div>
+		<div class="box">
+			<div class="option option1">
+				<img src="img/option.png" class="one"/>
+				<img src="img/a.png" class="two"/>
+				<img src="img/true.png" class="three" style="display:block"/>
+				<img src="img/false.png" class="four"/>
+				<p class="green">塔尔伯特</p>
+			</div>
+			<div class="option option2">
+				<img src="img/option.png" class="one"/>
+				<img src="img/b.png" class="two"/>
+				<img src="img/true.png" class="three"/>
+				<img src="img/false.png" class="four"/>
+				<p class="">塔尔伯特</p>
+			</div>
+			<div class="option option3">
+				<img src="img/option.png" class="one"/>
+				<img src="img/c.png" class="two"/>
+				<img src="img/true.png" class="three"/>
+				<img src="img/false.png" class="four" style="display:block"/>
+				<p class="red">塔尔伯特</p>
+			</div>
+			<div class="option option4">
+				<img src="img/option.png" class="one"/>
+				<img src="img/d.png" class="two"/>
+				<img src="img/true.png" class="three"/>
+				<img src="img/false.png" class="four"/>
+				<p class="">塔尔伯特</p>
+			</div>
+	</div>
+</div>
+</div>
+
+</body>
+
+</html>
