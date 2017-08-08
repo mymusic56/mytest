@@ -1,0 +1,27 @@
+{
+    "name": "stomp",
+    "version": "1.0.9",
+    "type": "extension",
+    "license": [
+        "PHP License"
+    ],
+    "authors": [
+        {
+            "name": "Pierrick Charron",
+            "email": "pierrick@php.net"
+        },
+        {
+            "name": "Gennady Feldman",
+            "email": "gena01@php.net"
+        }
+    ],
+    "description": "Stomp client extension",
+    "extra": {
+        "configure-options": {
+            "with-openssl-dir": {
+                "default": "\/usr",
+                "prompt": "OpenSSL install prefix (no to disable SSL support)"
+            }
+        }
+    }
+}
