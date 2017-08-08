@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/main.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/home.css"></link>
+</head>
+<body>
+	<div class="title">
+	    <div>八字起名</div>
+	</div>
+	<div class="body">
+	<img src="img/bg_1@3x.png" class="bg"/>
+	</div>
+	<div class="b_bottom"></div>
+	<div class="toolbox">
+	   <div class="tool">
+	               起名
+	       <img src="img/tool-activity.png" class="one" style="display:block;"/>
+	   </div>
+	   <div class="tool">
+	           工具
+	       <img src="img/tool-activity.png" class="two"/>
+	   </div>
+	   <div class="tool">
+	           学堂
+	       <img src="img/tool-activity.png" class="three"/>
+	   </div>
+	   <div class="tool">
+	           订单
+	       <img src="img/tool-activity.png" class="four"/>
+	   </div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+$(".tool").on("click",function(){
+	$(".tool").find("img").hide();
+	$(this).find("img").attr("style","display:block");
+});
+</script>
+</html>
