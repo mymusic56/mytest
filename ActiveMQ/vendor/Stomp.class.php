@@ -2,7 +2,9 @@
 class Stomp {
     private static $_instance;
     
-    private static $_link;
+    private $_link;
+    
+    private $_config;
     
     private function __construct(){
         
@@ -12,6 +14,12 @@ class Stomp {
         
     }
     
+    public static function getInstance() {
+        if(!self::$_instance instanceof self){
+            self::$_instance = new self();
+        }
+        return self::$_instance;
+    }
     /**
      * Connect to server
      *
@@ -20,14 +28,9 @@ class Stomp {
      * @param string $password The password
      * @param array $headers additional headers (example: receipt).
      */
-    public static function getInstance($broker = null, $username = null, $password = null, array $headers = array()) {
-        if(!self::$_instance instanceof Stomp){
-            self::$_instance = new self();
-            self::$_link = stomp_connect($broker, $username, $password, $headers);
-        }
-        return self::$_instance;
+    public function connect($broker = null, $username = null, $password = null, array $headers = array()){
+        $this->_link = stomp_connect($broker, $username, $password, $headers);
     }
-    
     /**
      * Get the current stomp session ID
      *
