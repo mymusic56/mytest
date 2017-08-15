@@ -1,4 +1,10 @@
 <?php
+namespace ActiveMQ\vendor;
+/**
+ * 
+ * @author zhangshengji
+ *
+ */
 class Stomp {
     private static $_instance;
     
@@ -57,7 +63,7 @@ class Stomp {
      * @return boolean TRUE on success, or FALSE on failure
      */
     public function send($destination, $msg, array $headers = array()) {
-        return stomp_send(self::$_link, $destination, $msg, $headers);
+        return stomp_send($this->_link, $destination, $msg, $headers);
     }
     
     /**
@@ -68,7 +74,7 @@ class Stomp {
      * @return boolean TRUE on success, or FALSE on failure
      */
     public function subscribe($destination, array $headers = array()) {
-        
+        return stomp_subscribe($this->_link, $destination, $headers);
     }
     
     /**
@@ -98,7 +104,7 @@ class Stomp {
      * @return object on success, or FALSE on failure
      */
     public function readFrame($className = 'stompFrame') {
-        
+        return stomp_read_frame($this->_link);
     }
     
     /**
@@ -134,12 +140,11 @@ class Stomp {
     /**
      * Acknowledge consumption of a message from a subscription using client acknowledgment
      *
-     * @param string|StompFrame $msg message/messageId to be acknowledged
-     * @param array $headers additional headers (example: receipt).
+     * @param string|StompFrame $frame message/messageId to be acknowledged
      * @return boolean TRUE on success, or FALSE on failure
      */
-    public function ack($msg, array $headers = array()) {
-        
+    public function ack($frame) {
+    	return stomp_ack($this->_link, $frame['headers']['message-id']);;
     }
     
     /**
@@ -171,6 +176,10 @@ class Stomp {
         
     }
     
+    public static function version(){
+    	return stomp_version();
+    }
+    
 }
 
 class StompFrame {
@@ -194,7 +203,7 @@ class StompFrame {
     public $body;
 }
 
-class StompException extends Exception {
+class StompException extends \Exception {
     
     /**
      * Get the stomp server error details
