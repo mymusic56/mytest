@@ -124,6 +124,14 @@ class File extends Cache {
         }
         $filename   =   $this->filename($name);
         $data   =   serialize($value);
+        
+        /*
+        * 添加时间：2017-08-29
+        * https://bbs.aliyun.com/read/324044.html 阿里云建议
+        * 原因：序列化后换行符仍然存在
+        */
+        $data = str_replace(PHP_EOL, '', $data);
+        
         if( C('DATA_CACHE_COMPRESS') && function_exists('gzcompress')) {
             //数据压缩
             $data   =   gzcompress($data,3);
