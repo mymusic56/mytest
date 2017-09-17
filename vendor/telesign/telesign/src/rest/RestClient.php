@@ -39,7 +39,7 @@ class RestClient {
     $api_key,
     $rest_endpoint = "https://rest-api.telesign.com",
     $timeout = 10,
-    $proxy = null,
+    $proxy = '',//tcp://127.0.0.1:1080
     $handler = null
   ) {
     $this->customer_id = $customer_id;
@@ -49,6 +49,7 @@ class RestClient {
       "base_uri" => $rest_endpoint,
       "timeout" => $timeout,
       "proxy" => $proxy,
+      "verify" =>false,
       "handler" => $handler
     ]);
 
@@ -116,7 +117,6 @@ class RestClient {
     $string_to_sign_builder[] = "\n$resource";
 
     $string_to_sign = join("", $string_to_sign_builder);
-
     $signature = base64_encode(
       hash_hmac("sha256", utf8_encode($string_to_sign), base64_decode($api_key), true)
     );
