@@ -4,13 +4,24 @@
  *
  */
 class ClosureTest {
-	private $count = null;
+	public $calculate = null;
 	public function getCount($a, $b){
-		$count = function($a, $b){
-			return $a+$b;
-		};
-		return $count($a, $b);
+		
+	    if($this->calculate){
+	        $data = call_user_func($this->calculate, $a, $b);
+	        if($data){
+	            return $data['msg'].$data['result'];
+	        }
+	    }
+	    
+		return "SUM: $a + $b";
 	}
 }
 $a = new ClosureTest();
-var_dump($a->getCount(1,2));
+
+$a->calculate = function ($a, $b){
+    $data['msg'] = "$a x $b = ";
+    $data['result'] = $a*$b;
+    return $data;
+};
+var_dump($a->getCount(3,2));
