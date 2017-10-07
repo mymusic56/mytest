@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>JS drag upload</title>
+<style type="text/css">
+#div1 {width:198px; height:66px;padding:10px;border:1px solid #aaaaaa;}
+</style>
+<script type="text/javascript">
+//然后监听拖拽过程中的dragenter、dragleave、drop等事件
+document.addEventListener("dragenter", function(e){  
+    dropbox.style.borderColor = 'gray';  
+}, false);  
+document.addEventListener("dragleave", function(e){  
+    dropbox.style.borderColor = 'silver';  
+}, false);  
+dropbox.addEventListener("dragenter", function(e){  
+    dropbox.style.borderColor = 'gray';  
+    dropbox.style.backgroundColor = 'white';  
+}, false);  
+dropbox.addEventListener("dragleave", function(e){  
+    dropbox.style.backgroundColor = 'transparent';  
+}, false);  
+dropbox.addEventListener("dragenter", function(e){  
+    e.stopPropagation();  
+    e.preventDefault();  
+}, false);  
+dropbox.addEventListener("dragover", function(e){  
+    e.stopPropagation();  
+    e.preventDefault();  
+}, false);  
+dropbox.addEventListener("drop", function(e){  
+    e.stopPropagation();  
+    e.preventDefault();  
+       
+    handleFiles(e.dataTransfer.files);  
+       
+    submit.disabled = false;  
+}, false);  
+
+//其中最主要的是drop事件中用handleFiles()依次处理所有文件
+handleFiles = function(files) {  
+    for (var i = 0; i < files.length; i++) {  
+        var file = files[i];  
+   
+    }  
+}  
+
+//对于图片类型的文件可以直接读取内容，显示预览图
+if (!file.type.match(/image*/)) {  
+    continue;  
+}  
+   
+var img = document.createElement("img");  
+img.classList.add("obj");  
+img.file = file;  
+preview.appendChild(img);  
+   
+var reader = new FileReader();  
+reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);  
+reader.readAsDataURL(file);  
+
+//ajax上传。首先新建一个XHR请求
+var xhr = new XMLHttpRequest();  
+xhr.open('post', '/javascript/drag-upload-test.php', true);  
+
+//监听上传进度和完成事件
+xhr.upload.addEventListener("progress", function(e) {  
+    if (e.lengthComputable) {  
+        var percentage = Math.round((e.loaded * 100) / e.total);  
+        img.style.opacity = 1-percentage/100.0;  
+    }  
+}, false);  
+   
+xhr.upload.addEventListener("load", function(e){  
+       
+}, false);  
+
+//最后把数据模拟成multipart/form-data的格式上传
+xhr.setRequestHeader("Content-Type", "multipart/form-data, boundary="+boundary); // simulate a file MIME POST request.  
+xhr.setRequestHeader("Content-Length", fileSize);  
+   
+var body = '';  
+body += "--" + boundary + "\r\n";  
+body += "Content-Disposition: form-data; name=\""+dropbox.getAttribute('name')+"\"; filename=\"" + fileName + "\"\r\n";  
+body += "Content-Type: "+fileType+"\r\n\r\n";  
+body += fileData + "\r\n";  
+body += "--" + boundary + "--\r\n";  
+   
+xhr.sendAsBinary(body);  
+
+</script>
+</head>
+<body>
+
+<p>拖拽测试</p>
+<!-- 首先提供一个区域来放置文件 -->
+<div name="image" id="dropbox" style="min-width:300px;min-height:100px;border:3px dashed silver;"></div>  
+</body>
+</html>

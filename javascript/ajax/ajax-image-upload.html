@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>文件控件</title>
+<style>
+</style>
+</head>
+
+<body>
+<div id="main">
+	<form action="/javascript/drag-upload-test.php" method="POST" enctype="multipart/form-data">
+	<input name="picture" type="file" id="selectfile" style="display:none"/>
+	<div>
+	<a href="javascript:" id="selectpicture">选择图片</a><span id="pic-name"></span>
+	<div id="pic-preview"></div>
+	</div>
+	<input type="button" id="upload" value="上传"/>
+	</form>
+</div>
+<script src="/html/lib/jquery-2.1.1.min.js"></script>
+<script>
+console.log(location.host);
+var inputButton = document.getElementById("selectfile");
+var fileFilter = [];//过滤后的文件数组
+var url = "/javascript/ajax/ajax-image-upload.php";
+
+document.getElementById("selectpicture").addEventListener("click",function(e){
+	//模拟点击事件
+	document.getElementById("selectfile").click();
+});
+
+inputButton.addEventListener("change",function(e){
+	//获取文件对象列表
+	var files = e.target.files || e.dataTransfer.files;
+	files = this.files;
+	var arrFiles = [], filenames=[];
+	for (var i = 0, file; file = files[i]; i++) {
+		filenames.push(file.name);
+		if (file.type.indexOf("image") == 0) {
+			if (file.size >= 512000) {
+				alert('您这张"'+ file.name +'"图片大小过大，应小于500k');	
+				arrFiles.push(file);	
+			} else {
+				arrFiles.push(file);	
+			}			
+		} else {
+			alert('文件"' + file.name + '"不是图片。');	
+		}
+		document.getElementById("pic-name").innerHTML = file.name;
+		
+		//生成预览图
+		onselect(file);
+		
+	}
+	console.log(filenames);
+	fileFilter = arrFiles;
+	return arrFiles;
+});
+
+//选择图片后，生成预览图
+function onselect(file){
+	var reader = new FileReader();
+	//资源加载完成时触发事件
+	reader.addEventListener("load",function(){
+		var image = new Image();
+		image.height = 200;
+		image.title = this.name;
+		image.src = this.result;
+		document.getElementById("pic-preview").appendChild(image);
+	});
+	reader.readAsDataURL(file);
+}
+
+//上传
+$("#upload").click(function(){
+	if(fileFilter.length > 0){
+		var file = fileFilter[0];
+		var xhr = new XMLHttpRequest();
+		if (xhr.upload) {
+			var form = new FormData();
+            form.append("username", "zhangsan");                // 可以增加表单数据
+            form.append("pic", file);                           // 文件对象
+
+			// 上传中
+			xhr.upload.addEventListener("progress", function(e) {
+				console.log((e.loaded / e.total * 100).toFixed(2) + '%');
+			}, false);
+
+			// 文件上传成功或是失败
+			xhr.onreadystatechange = function(e) {
+				if (xhr.readyState == 4) {
+					if (xhr.status == 200) {
+						//上传成功
+						console.log("success");
+					} else {
+						//上传失败
+						console.log("filed");
+					}
+				}
+			};
+
+			// 开始上传
+			xhr.open("POST", url, true);
+			console.log(file.name);
+			//xhr.setRequestHeader("X_FILENAME", encodeURIComponent(file.name));
+			//xhr.setRequestHeader("Content-Type", "multipart/form-data");
+			//xhr.send(file);
+			xhr.send(form);
+		}	
+	}
+});
+
+</script>
+</body></html>
