@@ -1,0 +1,7 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "6.*",
+		"monolog/monolog" : "1.2.*",
+		"telesign/telesign":"^2.2"
+    }
+}
