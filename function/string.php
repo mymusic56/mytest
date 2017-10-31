@@ -1,4 +1,8 @@
 <?php
+/**
+ * 生成10唯一码
+ * @return string|number
+ */
 function function_coupon_create_number() {
     $return_code = '';
     /* 根据毫秒加随机数进行MD5运算并删除字母 */
@@ -15,3 +19,11 @@ function function_coupon_create_number() {
 $string=strtoupper(md5('123456'));
 var_dump($string, $string{3});
 function_coupon_create_number();
+
+/**
+ * 生成订单号
+ * @return string
+ */
+function generate_order_number(){
+    return date('ymdHis').substr(microtime(), 2,6).strtoupper(chr(rand(65,90))).rand(1000, 9999);
+}
