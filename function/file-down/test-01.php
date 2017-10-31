@@ -10,6 +10,7 @@ function downfile($fileName,$filePath){
 	header('Content-Length: ' . filesize($filePath));
 	readfile($filePath);//读取文件并写入到输出缓冲
 }
+
 $fileName = '640.jpg';
-$filePath = 'D:\Workspace-PHP\mytest\Public\img\640.jpg';
+$filePath = realpath($_SERVER['DOCUMENT_ROOT']).'/Public/img/640.jpg';
 downfile($fileName,$filePath);
