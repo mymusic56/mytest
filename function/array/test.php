@@ -6,5 +6,8 @@ function aaa(){
 	);
 	while (list ($key, $val) = each ($para)){
 		var_dump($key, $val);
+		var_dump("-----------");
 	}
 }
+
+aaa();
