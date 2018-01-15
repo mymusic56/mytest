@@ -1,0 +1,64 @@
+/*reset css重置样式*/
+*,
+::before,
+::after {
+	/*选中所有的元素和伪元素*/
+	margin:0;
+	padding:0;
+	/*針對移動端*/
+	box-sizing: border-box;
+	/*主流浏览器移动端兼容*/
+	-webkit-box-sizing: border-box;
+	
+	/*点击高亮效果清除*/
+	-webkit-tap-highlight-color: transparent;
+}
+
+body{
+	font-size: 14px;
+	color: #333;
+	font-family: 'Microsoft Yahei',sans-serif;
+}
+
+ul,ol{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+	color: #333;
+}
+
+input,textarea{
+	outline: none;/*选中时的样式*/
+	border: none;/*边框*/
+	resize: none;/*不能改变大小*/
+	/*清楚移动端输入框的样式，移动端有特有的样式*/
+	-webkit-appearance: none;
+}
+
+/*common css*/
+/*浮动*/
+.f_left{
+	float: left;
+}
+
+.f_right{
+	float: right;
+}
+
+
+/*清除浮动*/
+.clearfix::before,
+.clearfix::after{
+	content: "";
+	display: block;
+	height: 0;
+	line-height: 0;
+	visibility: hidden;
+	clear: both;
+}
+
+
+
+
