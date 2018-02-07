@@ -10,7 +10,64 @@
 </head>
 <body>
 <!-- 版心容器 在320 - 640之间自适应 -->
-<div class="container"></div>
+<div class="container">
+    <!-- 搜索栏 -->
+    <!-- 
+                最外层 search：固定搜索栏位置
+      search_box: 定位搜索栏内部元素
+     -->
+    <header class="search">
+        <div class="search_box">
+            <a href="#" class="icon_logo"></a>
+            <form action="#">
+                <span class="icon_search"></span>
+	            <input type="search" placeholder="请输入关键字"/>
+            </form>
+            <a href="#" class="login">登录</a>
+        </div>
+    </header>
+    <!-- 轮播图 -->
+    <div class="banner">
+        <ul>
+            <!-- 6张轮播图，收尾加一张，实现无缝轮播 -->
+            <li><a href="#"><img src="images/banner_6.jpg"/></a></li>
+            <li><a href="#"><img src="images/banner_2.jpg"/></a></li>
+            <li><a href="#"><img src="images/banner_1.jpg"/></a></li>
+            <li><a href="#"><img src="images/banner_3.jpg"/></a></li>
+            <li><a href="#"><img src="images/banner_4.jpg"/></a></li>
+            <li><a href="#"><img src="images/banner_5.jpg"/></a></li>
+            <li><a href="#"><img src="images/banner_6.jpg"/></a></li>
+            <li><a href="#"><img src="images/banner_2.jpg"/></a></li>
+        </ul>
+        <!-- 原点 -->
+        <ul>
+            <!-- 首先被选中的点 -->
+            <li class="now"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <!-- 导航栏 -->
+    <nav class="nav">
+        <ul>
+            <li><a href="#"><img src="images/nav1.png"/><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav2.png"/><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav3.png"/><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav4.png"/><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav5.png"/><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav6.png"/><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav7.png"/><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav8.png"/><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav9.png"/><p>分类</p></a></li>
+            <li><a href="#"><img src="images/nav10.png"/><p>分类</p></a></li>
+        </ul>
+    </nav>
+    <!-- 商品栏 -->
+    <div class="product"></div>
+</div>
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 </body>

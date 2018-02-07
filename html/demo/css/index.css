@@ -13,3 +13,144 @@
 	min-width: 320px;/*320 保证网页内容的布局*/
 	margin: 0 auto;
 }
+
+/*搜索框*/
+.search{
+	position: fixed;/*fixed是基于浏览器宽度定位的， 内容有多宽，元素就有多宽，margin不起作用*/
+	width: 100%;
+	left: 0;
+	top: 0;
+	z-index: 9999;/*避免搜索框被遮盖*/
+}
+
+.search .search_box{
+	width: 100%;
+	height: 40px;
+	max-width: 640px;/*保持和基准版心容器一致*/
+	min-width: 320px;
+	background: red;
+	margin: 0 auto;
+	position: relative;
+}
+.search .search_box a{
+	position: absolute;/*需要在父元素中设置 position: reloative*/
+	top: 0;
+}
+.search .search_box .icon_logo{
+	width: 60px;
+	height: 40px;
+	left: 0;
+	background: url("../images/top-jdlogo.png") no-repeat;
+	background-size: 40px 40px;
+}
+.search .search_box .login{
+	width: 50px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	right: 0px;
+	color: #fff;
+}
+.search .search_box form{
+	position: relative;
+	width: 100%;
+	padding-left: 60px;
+	padding-right: 50px;
+}
+.search .search_box form input{
+	width: 100%;/*百分比宽度 相对于父元素的内容宽度和高度*/
+	height: 25px;
+	border-radius: 10px;
+	margin-top: 8px;
+	padding-left: 30px;
+}
+.search .search_box form .icon_search{
+	width: 20px;
+	height: 20px;
+	background: green;
+	position: absolute;
+	left: 65px;
+	top: 10px;
+}
+
+/*轮播图*/
+.banner{
+	width: 100%;
+	overflow: hidden;/*banner图中超出最大宽度的内容将会被隐藏*/
+	margin-top: 40px;/*搜索框的高度*/
+	position: relative;/*原点需要使用绝对定位， 父元素必须使用相对定位*/
+}
+.banner ul:first-child{
+	width: 800%;/*一共要装8张图 ，是父元素的8倍*/
+	transform: translateX(-12.5%);/*首先显示第一张图片*/
+	-webkit-transform: translateX(-12.5%);/*兼容处理，适配更多浏览器*/ 
+}
+.banner ul:first-child li{
+	width: 12.5%;/*一共8张图，每张图占12.5%*/
+	float: left;
+}
+.banner ul:first-child li a{
+	width: 100%;
+	display: block;
+}
+.banner ul:first-child li a img{
+	width: 100%;
+	display: block;
+}
+/*注意： 宽度计算是相对于父元素来计算的*/
+
+/*banner 圆点*/
+.banner ul:last-child{
+	position: absolute;
+	bottom: 8px;/*定位到父元素的底部*/
+	/*原点居中： 假设宽度75px（6个点，宽度6px;，间隔10px; 6x16-10）, 定位到正中间，然后向左偏移宽度的一半的距离*/
+	width: 86px;
+	left: 50%;
+	margin-left: -43px;
+}
+.banner ul:last-child li{
+	width: 6px;
+	height: 6px;
+	border: 1px solid #fff;/*白色边框*/
+	border-radius: 3px;/*圆角显示*/
+	float: left;/*显示到一排*/
+	margin-left: 10px;/*间距*/
+}
+/*第一个点不用偏移*/
+.banner ul:last-child li:first-child{
+	margin-left: 0;
+}
+/*被选中的点显示实体*/
+.banner ul:last-child li.now{
+	background: #fff;
+}
+/*导航栏*/
+.nav{
+	width: 100%;
+}
+.nav ul{
+	width: 100%;
+}
+.nav ul li{
+	width: 20%;
+	float: left;
+}
+.nav ul li a{
+	display: block;
+	width: 100%;
+}
+.nav ul li a img{
+	width: 40px;
+	height: 40px;
+	display: block;
+	margin: 0 auto;
+}
+.nav ul li a p{
+	color: #666;
+	font-size: 12px;
+	padding: 5px 0;
+	text-align: center;
+}
+
+
+/*商品列表*/
