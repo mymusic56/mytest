@@ -49,6 +49,7 @@ input,textarea{
 
 
 /*清除浮动*/
+/*举例： ul不清楚浮动就没有高度*/
 .clearfix::before,
 .clearfix::after{
 	content: "";

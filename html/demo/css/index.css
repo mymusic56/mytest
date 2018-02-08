@@ -1,3 +1,6 @@
+body{
+	background: #f5f5f5;/*设置灰色背景*/
+}
 .container{
 	width: 100%;
 	/*
@@ -125,15 +128,23 @@
 	background: #fff;
 }
 /*导航栏*/
+/*导航栏 375x0是怎么回事, 因为里面的ul没有清除浮动，没有高度高度，导致父元素也就没有高度*/
 .nav{
 	width: 100%;
+	background: url("../images/nav_bg.jpg") no-repeat;
+	background-size: 100% auto;/*背景图片宽度*
+	/* background: #fff; *//*没有背景图片时，可能需要设置成白色*/
 }
+
+/*ul 也没有高度*/
 .nav ul{
 	width: 100%;
+	border-bottom: 1px solid #ccc;/*ul下灰色边框*/
 }
 .nav ul li{
 	width: 20%;
 	float: left;
+	margin-top: 5px;
 }
 .nav ul li a{
 	display: block;
@@ -146,7 +157,7 @@
 	margin: 0 auto;
 }
 .nav ul li a p{
-	color: #666;
+	color:#ffffff;
 	font-size: 12px;
 	padding: 5px 0;
 	text-align: center;
@@ -154,3 +165,27 @@
 
 
 /*商品列表*/
+.product{
+	width: 100%;
+	padding: 0 5px;
+}
+.product .pro_box{
+	width: 100%;
+	min-height: 200px;
+	margin-top: 10px;
+	background: #fff;
+	/*给盒子加阴影*/
+	box-shadow: 0 0 1px red;/*上下0偏移 1px的模糊度 颜色 red*/
+}
+.product .pro_box .pro_tittle{
+	width: 100%;
+	height: 34px;
+	line-height: 34px;
+	border-bottom: 1px solid #ccc;
+}
+/*取消边框nb no border*/
+.product .pro_box .nb{
+	border-bottom: none;
+}
+.product .pro_box .pro_content{}
+
