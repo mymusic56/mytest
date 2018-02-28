@@ -59,7 +59,7 @@ input,textarea{
 	visibility: hidden;
 	clear: both;
 }
-
-
-
-
+/*margin-right:10px*/
+.m_r10{
+	margin-right: 10px;
+}

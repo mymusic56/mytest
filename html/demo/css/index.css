@@ -175,7 +175,7 @@ body{
 	margin-top: 10px;
 	background: #fff;
 	/*给盒子加阴影*/
-	box-shadow: 0 0 1px red;/*上下0偏移 1px的模糊度 颜色 red*/
+	box-shadow: 0 0 10px red;/*上下0偏移 1px的模糊度 颜色 red*/
 }
 .product .pro_box .pro_tittle{
 	width: 100%;
@@ -183,9 +183,119 @@ body{
 	line-height: 34px;
 	border-bottom: 1px solid #ccc;
 }
+.product .pro_box .pro_tittle h3{
+	position: relative;
+	font-weight: normal; /*原始样式*/
+	text-indent: 20px; /*缩进20px*/
+}
+
+/*短竖线*/
+.product .pro_box .pro_tittle h3:before{
+	content: "";/*伪元素为什么要加 content:""*/
+	display: block;
+	width: 3px;
+	height: 12px;
+	background: red;
+	position: absolute;
+	top: 11px;
+	left: 5px;
+}
+
 /*取消边框nb no border*/
 .product .pro_box .nb{
 	border-bottom: none;
 }
-.product .pro_box .pro_content{}
+.product .pro_box .pro_content{
+	width: 100%;
+}
 
+.sk_icon{
+	display: block;
+	width: 16px;
+	height: 20px;
+	background: url("../images/sk_icon.png") no-repeat;
+	background-size: 16px 20px;
+	float: left;
+	margin-left: 5px;
+	margin-top: 6px;
+}
+.sk_text{
+	float: left;
+	margin-left: 5px;
+	font-size: 16px;
+}
+.sk_time{
+	float: left;
+	margin-left: 5px;
+}
+
+.sk_time span{
+	width: 16px;
+	height: 16px;
+	text-align: center;
+	background: black;
+	color: #fff;
+}
+
+.sk_time span:nth-child(3n){
+	background: #fff;
+	color: black;
+	margin: 0 5px;
+}
+
+/*秒杀商品*/
+.sk_product{
+	width: 100%;
+	padding: 10px 0;
+}
+.sk_product li{
+    float: left;
+    width: 33.3333%;
+}
+.sk_product li a{
+	width: 100%;
+	display: block;
+	border-right: 1px solid #ddd;
+}
+
+/*最后一个li取消边框*/
+.sk_product li:last-child a{
+	border-right: none;
+}
+.sk_product li a img{
+	width: 60%;
+	margin: 0 auto;/*让商品居中显示*/
+	display: block;/*让商品居中显示*/
+}
+
+.sk_product li p{
+	text-align: center;
+	margin-top: 5px;
+}
+
+.sk_product li .now_price{
+	color: red;
+}
+.sk_product li .old_price{
+	color: #666;
+	text-decoration: line-through;
+	margin-bottom: 5px;
+}
+
+/*组合样式*/
+.w_p50{
+	width: 50%;
+}
+.w_p50 img{
+	display:block;
+	width: 100%;
+}
+.b_right{
+	border-right: 1px solid #ddd;
+}
+.b_left{
+	border-left: 1px solid #ddd;
+}
+.b_bottom{
+	border-bottom: 1px solid #ddd;
+}
