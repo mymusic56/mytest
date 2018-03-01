@@ -31,7 +31,7 @@ body{
 	height: 40px;
 	max-width: 640px;/*保持和基准版心容器一致*/
 	min-width: 320px;
-	background: red;
+	background: rgba(216,80,92, 0);
 	margin: 0 auto;
 	position: relative;
 }
@@ -70,7 +70,8 @@ body{
 .search .search_box form .icon_search{
 	width: 20px;
 	height: 20px;
-	background: green;
+	background: url("../images/search_icon.png") no-repeat;
+	background-size: 20px 20px;
 	position: absolute;
 	left: 65px;
 	top: 10px;
@@ -80,7 +81,7 @@ body{
 .banner{
 	width: 100%;
 	overflow: hidden;/*banner图中超出最大宽度的内容将会被隐藏*/
-	margin-top: 40px;/*搜索框的高度*/
+	/* margin-top: 40px; *//*搜索框的高度*/
 	position: relative;/*原点需要使用绝对定位， 父元素必须使用相对定位*/
 }
 .banner ul:first-child{
