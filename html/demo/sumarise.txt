@@ -11,3 +11,5 @@
     
 伪元素:
     content:"" 起什么作用，为什么不加，短竖线就不显示
+    
+document.querySelector("#id1") 和getElementById("#id1")的区别？
