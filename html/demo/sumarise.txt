@@ -13,3 +13,20 @@
     content:"" 起什么作用，为什么不加，短竖线就不显示
     
 document.querySelector("#id1") 和getElementById("#id1")的区别？
+
+移动端JS手势事件： 基于touchstart, touchmove, touchend实现左滑、右滑、上滑、下滑手势 
+移动端click事件：
+	1. 是基于 touchstart 和 touchend实现
+	2. 有300ms延时
+	
+	问题：1） 造成相应过慢， 2） 用户体验下降  
+	解决： 
+		方案一：
+			tap 事件（click响应更快，touch事件的衍生）
+			满足tap的两个条件：
+				比click快 ，150ms以内
+				不能滑动
+			zepto移动端的js库，包含tap事件。
+			
+		方案二：插件fastclick.js
+			对click进行了封装，达到快速响应。

@@ -127,6 +127,54 @@ var banner = function(){
 		points[index-1].classList.add('now');
 	}
 	
+	/*滑动*/
+	var startX = 0, distanceX = 0;
+	document.addEventListener('touchstart', function(e){
+		//清除定时器
+		clearInterval(timer);
+		startX = e.touches[0].clientX;
+	});
+	document.addEventListener('touchmove', function(e){
+		var moveX = e.touches[0].clientX;
+		distanceX = moveX - startX;
+		setTranslateX(-index*bannerWidth + distanceX);
+	});
+	document.addEventListener('touchend', function(e){
+		/*
+		 * 1. 超过图片的三分之一才切进行切换，否则吸附到原来的位置
+		 */
+		if (Math.abs(distanceX) > (bannerWidth/3)) {
+			index = distanceX > 0 ? index - 1 : index + 1;
+			
+			//index的值始终在1-6之间
+			index >= 7 ? index = 1 : '';
+			index <= 0 ? index = 6 : '';
+		}
+		
+		/*
+		 * 2. 位移
+		 */
+		setTranslateX(-index*bannerWidth);
+		setPoint();
+		
+		/*
+		 * 3. 恢复定时器
+		 */
+		clearInterval(timer);
+		timer = setInterval(function(){
+			index ++;
+			/*过渡效果*/
+			addTransition();
+			/*位移*/
+			setTranslateX(-index*bannerWidth);
+		},1000);
+		
+		/*
+		 * 4. 重置参数
+		 */
+		distanceX = 0;
+		startX = 0;
+	});
 }
 var downTime = function(){
 	
