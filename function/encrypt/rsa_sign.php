@@ -45,10 +45,11 @@ function rsaVerify($data, $ali_public_key_path, $sign)  {
     return $result;
 }
 
-$private_key_path = '/windows/www/mytest/function/sign/crt/test.rsa_private_key.pem';
-$ali_public_key_path = '/windows/www/mytest/function/sign/crt/test.rsa_public_key.pem';
+$private_key_path = '/windows/www/mytest/function/encrypt/crt/test.rsa_private_key.pem';
+$ali_public_key_path = '/windows/www/mytest/function/encrypt/crt/test.rsa_public_key.pem';
 
 $data= '332ikeowapfjieowa';
+
 $sign = rsaSign($data, $private_key_path);
 var_dump($sign);
 

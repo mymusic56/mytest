@@ -12,9 +12,6 @@ function downfile($fileName,$filePath){
 	header('Content-Length: ' . $size);
 	readfile($filePath);//读取文件并写入到输出缓冲
 	
-	while () {
-	    
-	}
 }
 
 $fileName = '640.jpg';
