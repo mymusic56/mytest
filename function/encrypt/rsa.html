@@ -1,0 +1,67 @@
+<!doctype html>
+<!-- https://github.com/travist/jsencrypt -->
+<html>
+  <head>
+    <title>JavaScript RSA Encryption</title>
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="bin/jsencrypt.min.js"></script>
+    <script type="text/javascript">
+
+      // Call this code when the page is done loading.
+      $(function() {
+
+        // Run a quick encryption/decryption when they click.
+        $('#testme').click(function() {
+
+          // Encrypt with the public key...
+          var encrypt = new JSEncrypt();
+          encrypt.setPublicKey($('#pubkey').val());
+          var encrypted = encrypt.encrypt($('#input').val());
+
+          $("#encrypted").val(encrypted);
+          // Decrypt with the private key...
+          var decrypt = new JSEncrypt();
+          decrypt.setPrivateKey($('#privkey').val());
+          var uncrypted = decrypt.decrypt(encrypted);
+
+          // Now a simple check to see if the round-trip worked.
+          if (uncrypted == $('#input').val()) {
+            alert('It works!!!');
+          }
+          else {
+            alert('Something went wrong....');
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <label for="privkey">Private Key</label><br/>
+    <textarea id="privkey" rows="15" cols="65">-----BEGIN RSA PRIVATE KEY-----
+MIICWwIBAAKBgQDBjcFMwlEepFz0w+xvwBYXjuHS486+mQwVd5nL5iD/lZXtTDu9
+JdtiGQViFTeXOPK3FyzZzWLvqZhlzZ+udAR5pUmEtSG9m+LRwtvTVNeYBmwojLN1
+7fsLSYFXa6+lU+Ypzc1ETYC06yCUI1xnXG4CuXW3seeziurN6ijWU5T6OwIDAQAB
+AoGALobu8o67hUwpdEUsruhT5zHXoyRT7IlJ2Fc5x0P4prfEpJhwu9U/2WL+YkeL
+Z3SvE8gkZe7zW30/PymguwT0lgXKY5qCePOzCzWNpdTc/Eo/qEY8lgsWVjRfVW+F
+53VOuSW0SdfUyix+G53lsYYI7ELQWdEV7GOJFSRDpVbF8WECQQD2pWZ9Zo2tVnt8
+wYjHbjtMEKY6faCjhfpLJrCZWV2YSRrE/I0FPR1SC1+KfdYK0q0HXhHVmxwx1R05
+6Md41CyTAkEAyOTmVg1a7RX1WZ7/Vv5rZdOekKkjMqlODIgOi/QVLRl1yp69IVoE
+UjJKeCdHYuv+gNhs/skbJJs4avK3GTqsuQJAauDrk6WP+TADnOEEk176BREl5yyv
+Io0ZE921Iw5tl2L+XaQOu9lqzjWtdgbnbJM0dX/W/JgVVKbD3mc3oO1YTwJAFiAv
+xjZ+VzJd7Vr3oGsxBOwDwMcAG2pOME8j2wIs+uSc9o35Ip05cJwdW5Jn6Fs5kpND
+neQkWynFUvIcfGjb8QJAYXmZP4i5fgkDusRvwqXrc1m0c7GJs99I2+MyF7gu3QPx
+AGv/ucQlv7VecVQFRRZkmR+/Ld092iPzMpA2gQ3GkA==
+-----END RSA PRIVATE KEY-----</textarea><br/>
+    <label for="pubkey">Public Key</label><br/>
+    <textarea id="pubkey" rows="15" cols="65">-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDBjcFMwlEepFz0w+xvwBYXjuHS
+486+mQwVd5nL5iD/lZXtTDu9JdtiGQViFTeXOPK3FyzZzWLvqZhlzZ+udAR5pUmE
+tSG9m+LRwtvTVNeYBmwojLN17fsLSYFXa6+lU+Ypzc1ETYC06yCUI1xnXG4CuXW3
+seeziurN6ijWU5T6OwIDAQAB
+-----END PUBLIC KEY-----</textarea><br/>
+    <label for="input">Text to encrypt:</label><br/>
+    <textarea id="input" name="input" type="text" rows=4 cols=70>This is a test!</textarea><br/>
+    <textarea id="encrypted" name="encrypted" type="text" rows=4 cols=70></textarea><br/>
+    <input id="testme" type="button" value="Test Me!!!" /><br/>
+  </body>
+</html>
