@@ -1,16 +1,16 @@
 window.onload = function(){
 	/*左侧菜单栏滑动*/
-	leftWiper();
-	rightWiper();
+	//leftWiper();
+	//rightWiper();
 	iScrollLeftWiper();
 	iScrollRightWiper();
 }
 
 var iScrollLeftWiper = function(){
-	
+	new IScroll(document.querySelector(".cate_left"));
 }
 var iScrollRightWiper = function(){
-	
+	new IScroll(document.querySelector(".cate_right"));
 }
 
 var leftWiper = function(){
