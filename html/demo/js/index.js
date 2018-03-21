@@ -176,6 +176,30 @@ var banner = function(){
 		startX = 0;
 	});
 }
+
+/*抢购倒计时*/
 var downTime = function(){
+	var leftTime = 3600*12 - Math.random()*1000;
+	var sk_time = document.querySelector('.sk_time');
+	var spans = sk_time.querySelectorAll('span');
+	var timer = setInterval(function(){
+		
+		var hour = parseInt(leftTime/3600);
+		var minutes = parseInt(leftTime%3600/60);
+		var seconds = parseInt(leftTime%60);
+		
+		spans[0].innerHTML = Math.floor(hour/10);
+		spans[1].innerHTML = hour%10;
+		spans[3].innerHTML = Math.floor(minutes/10);
+		spans[4].innerHTML = minutes%10;
+		spans[6].innerHTML = Math.floor(seconds/10);
+		spans[7].innerHTML = seconds%10;
+		leftTime --;
+		
+		//倒计时结束
+		if (leftTime < 0) {
+			clearInterval(timer);
+		}
+	}, 1000);
 	
 }

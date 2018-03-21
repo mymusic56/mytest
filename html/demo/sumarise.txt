@@ -30,3 +30,7 @@ document.querySelector("#id1") 和getElementById("#id1")的区别？
 			
 		方案二：插件fastclick.js
 			对click进行了封装，达到快速响应。
+
+
+图片居中：
+	margin: 0 auto;

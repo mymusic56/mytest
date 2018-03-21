@@ -1,0 +1,151 @@
+/*header*/
+.cate_container{
+	position: absolute;
+	width: 100%;
+	height: 100%;;
+}
+
+.cate_header{
+	width: 100%;
+	height: 45px;
+	border-bottom: 1px solid #ddd;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+}
+.cate_header a{
+	width: 40px;
+	height: 44px;
+	background: url(../images/jd-sprites.png) no-repeat;
+	background-size: 200px 200px;/*精灵图压缩一倍*/
+	position: absolute;
+	top: 0;
+	padding: 12px 10px;/*缩小图标尺寸*/
+	/*让图片在元素中居中显示*/
+	background-origin: content-box;/*specifies the background positioning area*/
+	background-clip: content-box;/*specifies the background painting area. */
+	/*content-box: the poistion is relative to the content box*/
+}
+.cate_header .icon_back{
+	left: 0;
+	background-position: -20px 0;/*图片位移*/
+}
+.cate_header .icon_menu{
+	right: 0;
+	background-position: -60px 0;
+}
+.cate_container form{
+	width: 100%;
+	padding-left: 40px;
+	padding-right: 40px;
+	line-height: 40px;
+}
+.cate_container form .icon_search{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	margin-top: 15px;
+	margin-left: 0px;
+	background-position: -80px 0;
+}
+.cate_container form input{
+	width: 100%;
+	height: 25px;
+	padding-left: 20px;
+	margin-top: 10px;
+	border: 1px solid green;
+	border-radius: 15px;
+}
+
+.cate_main{
+	width: 100%;
+	height: 100%;
+	padding-top: 45px;
+}
+
+/*一侧浮动，固定宽度，另一侧使用overflow:hidden 可以实现两栏自适应*/
+.cate_main .cate_left{
+	width: 80px;
+	height: 100%;
+	float: left;
+	overflow: hidden;
+}
+
+.cate_main .cate_right{
+	overflow: hidden; /*更多解释，参考bfc*/
+	height: 100%;
+}
+
+.cate_main .cate_left ul{
+	width: 80px;
+}
+.cate_main .cate_left ul li{
+	width: 100%;
+	height: 46px;
+	text-align: center;
+	line-height: 46px;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+}
+.cate_main .cate_left ul li a{
+	display: block;/*以块级元素显示，占满整个父容器*/
+	color: black;
+	font-weight: bold;
+	font-size: 13px;
+}
+.cate_main .cate_left ul .now{
+	border-right: none;
+}
+.cate_main .cate_left ul .now a{
+	color: #f23030;
+}
+
+
+/*右半边商品盒子*/
+.combo_box{
+	width: 100%;
+	padding: 10px;
+	overflow-y: auto;
+}
+.combo_box .box_banner{
+	width: 100%;
+	display: block;
+}
+.combo_box .box_banner img{
+	width: 100%;
+	height: 80px;
+	display: block;
+	margin: 0 auto;
+}
+.combo_box .box_hot{
+	margin-top: 10px;
+}
+.combo_box .box_hot .title{
+	font-size: 14px;
+}
+.combo_box .box_hot ul{
+	width: 100%;
+}
+.combo_box .box_hot ul li{
+	width: 33.3333%;
+	float: left;
+}
+.combo_box .box_hot ul li a{
+	width: 100%;
+	display: block;
+}
+.combo_box .box_hot ul li a img{
+	display: block;
+	width: 60px;
+	height: 60px;
+	margin: 0 auto;/*图片居中*/
+}
+.combo_box .box_hot ul li a p{
+	font-size: 12px;
+	text-align: center;
+	color: #666;
+	padding: 5px 0;
+}
+
+

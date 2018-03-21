@@ -1,16 +1,16 @@
-/*reset cssÖØÖÃÑùÊ½*/
+/*reset cssé‡ç½®æ ·å¼*/
 *,
 ::before,
 ::after {
-	/*Ñ¡ÖĞËùÓĞµÄÔªËØºÍÎ±ÔªËØ*/
+	/*é€‰ä¸­æ‰€æœ‰çš„å…ƒç´ å’Œä¼ªå…ƒç´ */
 	margin:0;
 	padding:0;
-	/*á˜Œ¦ÒÆ„Ó¶Ë*/
+	/*é‡å°ç§»å‹•ç«¯*/
 	box-sizing: border-box;
-	/*Ö÷Á÷ä¯ÀÀÆ÷ÒÆ¶¯¶Ë¼æÈİ*/
+	/*ä¸»æµæµè§ˆå™¨ç§»åŠ¨ç«¯å…¼å®¹*/
 	-webkit-box-sizing: border-box;
 	
-	/*µã»÷¸ßÁÁĞ§¹ûÇå³ı*/
+	/*ç‚¹å‡»é«˜äº®æ•ˆæœæ¸…é™¤*/
 	-webkit-tap-highlight-color: transparent;
 }
 
@@ -30,15 +30,15 @@ a{
 }
 
 input,textarea{
-	outline: none;/*Ñ¡ÖĞÊ±µÄÑùÊ½*/
-	border: none;/*±ß¿ò*/
-	resize: none;/*²»ÄÜ¸Ä±ä´óĞ¡*/
-	/*Çå³şÒÆ¶¯¶ËÊäÈë¿òµÄÑùÊ½£¬ÒÆ¶¯¶ËÓĞÌØÓĞµÄÑùÊ½*/
+	outline: none;/*é€‰ä¸­æ—¶çš„æ ·å¼*/
+	border: none;/*è¾¹æ¡†*/
+	resize: none;/*ä¸èƒ½æ”¹å˜å¤§å°*/
+	/*æ¸…æ¥šç§»åŠ¨ç«¯è¾“å…¥æ¡†çš„æ ·å¼ï¼Œç§»åŠ¨ç«¯æœ‰ç‰¹æœ‰çš„æ ·å¼*/
 	-webkit-appearance: none;
 }
 
 /*common css*/
-/*¸¡¶¯*/
+/*æµ®åŠ¨*/
 .f_left{
 	float: left;
 }
@@ -48,8 +48,8 @@ input,textarea{
 }
 
 
-/*Çå³ı¸¡¶¯*/
-/*¾ÙÀı£º ul²»Çå³ş¸¡¶¯¾ÍÃ»ÓĞ¸ß¶È*/
+/*æ¸…é™¤æµ®åŠ¨*/
+/*ä¸¾ä¾‹ï¼š ulä¸æ¸…æ¥šæµ®åŠ¨å°±æ²¡æœ‰é«˜åº¦*/
 .clearfix::before,
 .clearfix::after{
 	content: "";
@@ -62,4 +62,11 @@ input,textarea{
 /*margin-right:10px*/
 .m_r10{
 	margin-right: 10px;
+}
+
+/*ç²¾çµå›¾ - å…¬å…±æ ·å¼ï¼Œæ‰€æœ‰ç”¨åˆ°ç²¾çµå›¾çš„åœ°æ–¹éƒ½å¯ä»¥ç”¨icon_å¼€å¤´çš„ç±»è¿›è¡Œè¡¨ç¤º*/
+/*classå¯èƒ½ç”±ä¸¤ç§å½¢å¼ï¼Œ class="icon_back" æˆ–è€…æ˜¯ class="head_left icon_back"*/
+[class^="icon_"],[class*=" icon_"]{
+	background: url(../images/jd-sprites.png) no-repeat;
+	background-size: 200px 200px;
 }
