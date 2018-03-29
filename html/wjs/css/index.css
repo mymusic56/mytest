@@ -1,0 +1,80 @@
+/*公共样式*/
+
+@font-face {
+	font-family: wjs_font_icon;
+	src: url(../fonts/MiFie-Website-Font.ttf) format('truetype');
+}
+/*index.css*/
+.wjs_top{
+	width: 100%;
+	height: 40px;
+	font-size: 12px;
+	border-bottom: 1px solid #ccc;
+	line-height: 40px;
+	margin: 0 auto;
+	width: 1200px;
+	
+}
+.wjs_top .top_left{
+	left: 0;
+	float: left;
+}
+.wjs_top span{
+	float: left;
+	display: block;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+.wjs_top .line{
+	color: #ccc;
+	margin: 0 10px;
+}
+.wjs_top a{
+	color: #000000;
+	text-decoration: none;
+	float: left;
+	display: block;
+}
+.wjs_top a:hover{
+	cursor: pointer;
+}
+/*top bar图标*/
+.wjs_top .icon{
+	font-family: wjs_font_icon;
+}
+.wjs_top .icon_tel::before{
+	content: "\e926";
+}
+.wjs_top .icon_service_on::before{
+	content: "\e941";
+}
+.wjs_top .icon_client_mo::before{
+	content: "\e943";
+}
+.wjs_top .icon_wx::before{
+	content: "\e933";
+}
+
+.wjs_top .icon_money::before{
+	content: "\e936";
+}
+
+.top_right{
+	right: 0;
+	float: right;
+}
+.top_right .line{
+	float: left;
+	display: block;
+	margin-left: 10px;
+}
+.top_right .in_stock{
+	background: #d63536;
+	color: #fff;
+	padding: 0 20px;
+	margin-right: 10px;
+}
+.register {
+	margin-right: 10px;
+}
