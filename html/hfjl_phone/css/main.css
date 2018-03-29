@@ -20,18 +20,18 @@
 }
 
 .comment{
-	position: absolute;
-	display: block;
+	overflow: hidden;
 	width: 100%;
-	height: 300px;
+	height: 400px;
 	padding: 0;
 	margin: 0;
 }
 .comment ul{
 	list-style: none;
+	display: block;
 }
 .comment ul li{
-	float: left;
+	display: block;
 	width: 100%;
 	height: auto;
 	padding: 10px 0.42rem;
@@ -47,7 +47,6 @@
 }
 .comment ul li .content{
 	margin-left: 1.72rem;
-	right: 0;
 }
 
 .content .con_title,.con_date{

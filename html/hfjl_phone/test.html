@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+		<link rel="stylesheet" href="css/base.css" />
+		<title>测试滚动</title>
+		
+		<script>
+			document.getElementsByTagName('html')[0].style.fontSize = window.screen.width/10+"px";
+		</script>
+		<style>
+			/*加了浮动之后，.comment .photo 和 .content加了浮动之后， ul高度不是由里面的li的实际高度撑开的了*/
+			.comment{
+				width: 100%;
+				height: 300px;
+				overflow: hidden;
+			}
+			.comment ul{
+				list-style: none;
+				display: block;
+			}
+			.comment ul li{
+				padding: 10px 0.42rem;
+			}
+			.comment .photo{
+				width: 1.3rem;
+				float: left;
+			}
+			
+			.comment .photo img{
+				width: 100%;
+			}
+			
+			.content{
+				margin-left: 1.72rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="comment">
+			<ul id="slide1">
+				<li>
+					<div class="photo">
+						<img src="images/photo_3.png" />
+					</div>
+					<div class="content">
+						<p class="con_title">大蜗牛***</p>
+						<p class="con_date">30分钟前</p>
+						<p class="con_desc">不小心把短信和联系人都删除了，马上就能恢复，不错。总的来说，价格还算是很实惠的，有时候点一个外卖都不止这个价，我推荐大家购买</p>
+					</div>
+				</li>
+				<li>
+					<div class="photo">
+						<img src="images/photo_9.png" />
+					</div>
+					<div class="content">
+						<p class="con_title">Xing女郎</p>
+						<p class="con_date">1小时前</p>
+						<p class="con_desc">不错，已经安装了，操作非常方便，冉冉很耐心的指导，需要的赶紧下手呼。</p>
+					</div>
+				</li>
+				<li>
+					<div class="photo">
+						<img src="images/photo_4.jpg" />
+					</div>
+					<div class="content">
+						<p class="con_title">小妖</p>
+						<p class="con_date">3小时前</p>
+						<p class="con_desc">很不错的一个工具，一万个赞</p>
+					</div>
+				</li>
+				<li>
+					<div class="photo">
+						<img src="images/photo_11.jpeg" />
+					</div>
+					<div class="content">
+						<p class="con_title">不走寻常路</p>
+						<p class="con_date">昨天</p>
+						<p class="con_desc">非常好用，推荐给身边有需要的朋友，可以是安装一下，不会吃亏的</p>
+					</div>
+				</li>
+				<li>
+					<div class="photo">
+						<img src="images/photo_5.jpg" />
+					</div>
+					<div class="content">
+						<p class="con_title">健康果果</p>
+						<p class="con_date">昨天</p>
+						<p class="con_desc">下载了无数个数据恢复软件，结果仅有这个软件能扫描到， 人工服务很不错，态度很好，赞赞</p>
+					</div>
+				</li>
+			</ul>
+			<ul id="slide2"></ul>
+		</div>
+		
+		<script>
+			window.onload = function(){
+				var slide1 = document.querySelector("#slide1");
+				var comment = document.querySelector(".comment");
+				document.querySelector("#slide2").innerHTML = slide1.innerHTML;
+				var slide2 = document.querySelector("#slide2");
+				
+				function myScroll(){
+					if (slide2.offsetTop - comment.scrollTop <= 0) {
+						comment.scrollTop -= slide1.offsetHeight;
+					}else{
+						comment.scrollTop += 2;
+					}
+					console.log(slide2.offsetTop +"--"+ comment.scrollTop)
+				}
+				var timer = setInterval(myScroll, 30);
+			}
+			
+		</script>
+	</body>
+
+</html>

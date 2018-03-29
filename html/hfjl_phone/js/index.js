@@ -1,22 +1,16 @@
-var comment = document.querySelector(".comment ul");
-var commentList = comment.querySelectorAll("li");
-
-console.log(comment.offsetTop +"--"+ comment.scrollTop);
 var scrollUp = function() {
-	console.log(comment.offsetHeight)
-
-	var scrollDis = 0;
+	var comment = document.querySelector(".comment");
 	var slide1 = document.querySelector("#slide1");
-	var slide2 = document.querySelector("#slide2").innerHTML = slide1.innerHTML;
-	
+	document.querySelector("#slide2").innerHTML = slide1.innerHTML;
 	var speed = 30;
+	
 	function mySlide(){
-		if (slide2.offsetTop - comment.scrollTop <= 0) {
-			comment.scrollTop -= slide2.offsetHeight;
+		if (slide1.offsetTop - comment.scrollTop <= 0) {
+			comment.scrollTop -= slide1.offsetHeight;
 		}else{
 			comment.scrollTop++;
 		}
-	    console.log("timer1: "+ slide2.offsetTop +"--"+ comment.scrollTop)
+//	    console.log(slide1.offsetTop +"--"+ comment.scrollTop)
 	}
 	
 	var timer = setInterval(mySlide, speed);
