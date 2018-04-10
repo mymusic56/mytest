@@ -1,0 +1,105 @@
+.jl_header_box{
+	width: 100%;
+	position: relative;
+}
+.jl_header{
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	width: 80%;
+	z-index: 999;
+	height: 60px;
+}
+.jl_header .logo{
+	display: block;
+	width: 213px;
+	background: url(../images/logo.png) no-repeat;
+	height: 60px;
+	float: left;
+}
+.jl_header ul{
+	display: block;
+	width: 70%;
+	height: 60px;
+	float: right;
+}
+.jl_header ul li{
+	display: block;
+	float: left;
+	width: 25%;
+	color: #FFFFFF;
+}
+
+
+.jl_home_banner{
+	position: relative;
+	width: 100%;
+	height: 577px;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+.jl_home_banner .b_list{
+	width: 300%;
+	height: 577px;
+	padding: 0;
+	margin: 0;
+}
+
+.jl_home_banner .b_list li{
+	width: 33.33333%;
+	display: block;
+	float: left;
+}
+
+.jl_home_banner .b_list li a:hover{
+	cursor: default;
+}
+
+/*content*/
+.jl_content{
+	
+}
+
+.jl_content .item{
+	width: 100%;
+	height: 300px;
+	padding: 20px 50px;
+	text-align: center;
+	display: flex;
+    align-items: center;
+}
+
+.jl_content .item .item_txt{
+}
+
+.jl_content .item_activiy{
+	background: #F3F3F3;
+}
+
+.jl_content .item img{
+	width: 100%;
+}
+
+
+.per_50{
+	width: 50%;
+	padding: 0 5%;;
+}
+
+.clearfix::before,
+.clearfix::after{
+	content: "";
+	display: block;
+	height: 0;
+	line-height: 0;
+	visibility: hidden;
+	clear: both;
+}
+
+@media only screen and (min-width: 1200px) {
+	.jl_content .item img{
+		width: 424px;
+	}
+}

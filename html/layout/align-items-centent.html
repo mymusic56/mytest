@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			/*align-items*/
+			.div1{
+				height: 240px;
+				width: 100%;
+				border: 1px solid yellowgreen;
+				display: flex;
+				align-items: center;
+				-webkit-align-items: center;
+			}
+			.div1 .child{
+				margin: 0 auto;
+				width: 200px;
+				height: 200px;
+				border: 1px solid #000000;
+			}
+			
+			/*align-content*/
+			.div2{
+				height: 240px;
+				width: 100%;
+				border: 1px solid yellowgreen;
+				display: flex;
+				align-content: center;
+				-webkit-align-content: center;
+			}
+			.div2 .child{
+				margin: 0 auto;
+				width: 200px;
+				height: 200px;
+				border: 1px solid #000000;
+			}
+			.div3{
+				height: 240px;
+				width: 100%;
+				border: 1px solid yellowgreen;
+				display: flex;
+				align-items: center;
+				-webkit-align-items: center;
+				flex-wrap: wrap;
+			}
+			.div3 .child{
+				margin: 0 auto;
+				width: 200px;
+				height: 200px;
+				border: 1px solid #000000;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1">
+			<div class="child"></div>
+			<div class="child"></div>
+		</div>
+		
+		<div class="div2">
+			<div class="child"></div>
+			<div class="child"></div>
+		</div>
+		
+		<div class="div3">
+			<div class="child"></div>
+			<div class="child"></div>
+			<div class="child"></div>
+			<div class="child"></div>
+			<div class="child"></div>
+			<div class="child"></div>
+			<div class="child"></div>
+			<div class="child"></div>
+			<div class="child"></div>
+			<div class="child"></div>
+			<div class="child"></div>
+			<div class="child"></div>
+		</div>
+	</body>
+</html>
