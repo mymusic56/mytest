@@ -72,6 +72,16 @@
 <script type="text/javascript">
 
     var logbox;
+    
+    window.onload = function(){
+    	var userinfo = localStorage.getItem("userInfo");
+	    if (userinfo) {
+	    	var info = JSON.parse(userinfo);
+	    	doLogin(info.uname, info.avar);
+	    }
+    	
+    }
+    
     $(function(){
         //check login
         checkLogin();
@@ -89,7 +99,12 @@
                 layer.alert('用户名不能为空', {"title":"友情提示", "icon":2});
                 return false;
             }
-            doLogin( $("#uname").val() );
+          //获取头像
+            var avar = parseInt(Math.random() * 10);
+            if( avar == 0 ) avar = 1;
+            avar = 'a' + avar + '.jpg';
+            
+            doLogin( $("#uname").val(), avar);
             layer.close( logbox );
         });
 
@@ -102,6 +117,9 @@
             showLogin();
         }else{
             user_info = $.parseJSON( user_info );
+            
+	        console.log("用户登录信息： ");
+	        console.log(user_info);
         }
 
         return user_info;
@@ -121,12 +139,7 @@
 
     }
 
-    function doLogin( name ){
-        //获取头像
-        var avar = parseInt(Math.random() * 10);
-        if( avar == 0 ) avar = 1;
-        avar = 'a' + avar + '.jpg';
-
+    function doLogin( name, avar){
         // 创建一个Socket实例
         ws = new WebSocket('ws://192.168.88.128:8090');
         var loading = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
@@ -177,6 +190,9 @@
         ws.send( msg );
         localStorage.setItem('userInfo', '');
 
+        //或者
+        //localStorage.removeItem('userInfo');
+        
         layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
         setTimeout( function(){
             window.location.reload();

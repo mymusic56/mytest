@@ -36,9 +36,13 @@ class SocketChat
 
         while( true ){
             $readFds = self::$connectPool;
+            echo count($readFds);
             //阻塞接收客户端链接
+            //accepts arrays of sockets and waits for them to change status
+            //$readFds: The sockets listed in the read array will be watched to see if characters become available for reading
             @socket_select( $readFds, $writeFds, $e = null, $this->timeout );
 
+            echo count($readFds);
             foreach( $readFds as $socket ){
                 //当前链接 是主进程
                 if( $this->master == $socket ){
