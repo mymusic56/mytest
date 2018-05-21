@@ -1,5 +1,6 @@
 <?php
-$sock = stream_socket_server("tcp://127.0.0.1:8080", $errno, $errstr);
+
+$sock = stream_socket_server("tcp://127.0.0.1:8080", $errno, $errstr) or exit('stream_socket_server() error.');
 
 for ( ; ; ) {
     $conn = stream_socket_accept($sock);
