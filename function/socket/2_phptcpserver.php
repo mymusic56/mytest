@@ -7,7 +7,6 @@
  */
 
 $servsock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP); // 创建一个socket
-
 if (FALSE === $servsock) {
     $errcode = socket_last_error();
     fwrite(STDERR, "socket create fail: " . socket_strerror($errcode));
@@ -41,8 +40,9 @@ while (1) {
     $tmp_writes = $write_socks;
     
     // int socket_select ( array &$read , array &$write , array &$except , int $tv_sec [, int $tv_usec = 0 ] )
+    //获取$tmp_reads数组中状态发生改变的socket，并删除没有状态没有发生改变的socket
     $count = socket_select($tmp_reads, $tmp_writes, $except_socks, NULL); // timeout 传 NULL 会一直阻塞直到有结果返回
-    
+
     foreach ($tmp_reads as $read) {
         
         if ($read == $servsock) {
