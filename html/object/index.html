@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>测试Object</title>
+	</head>
+	<body>
+		<h1>Test Object</h1>
+	</body>
+	<script>
+		//参考博客： https://www.cnblogs.com/jnslove/p/7028487.html
+		
+		//工厂方法模式
+		function createPerson1(name){
+			var obj = new Object();
+			obj.name = name;
+			obj.showName = function(){
+				return this.name;
+			}
+			
+			return obj;
+		}
+		var f1_p1 = createPerson1('小明');
+		var f1_p2 = createPerson1('小明');
+		console.log("-----工厂方法模式------");
+		console.log(f1_p1.showName());
+		console.log(f1_p2.showName());
+		
+		
+		// 构造函数模式
+		console.log("-----构造函数模式------");
+		function CreatePerson(name){
+			this.name = name;
+			this.showName = function(){
+				return this.name;
+			}
+		}
+		var p1_1 = new CreatePerson('小明');
+		var p1_2 = new CreatePerson('小明');
+		console.log(p1_1.showName());
+		console.log(p1_2.showName());
+		console.log(p1_1.showName == p1_2.showName);
+		
+		//原型模式
+		console.log("-----原型模式------");
+		var arr1 = [1,2,3];
+		var arr2 = [1,1,1,1];
+		
+		Array.prototype.sum = function(){
+			var res = 0;
+			var len = this.length;
+			for (var i = 0; i < len; i++) {
+				res += this[i];
+			}
+			return res;
+		}
+		
+		console.log("arr1.sum="+arr1.sum());
+		console.log("arr2.sum="+arr2.sum());
+		
+		
+		//工厂原型模式
+		function CreatePerson2(name){
+			this.name = name;
+		}
+		
+		CreatePerson2.prototype.showName = function(){
+			return this.name;
+		}
+		var p2_1 = new CreatePerson2('小明');
+		var p2_2 = new CreatePerson2('小明');
+		console.log("-----------工厂原型模式-----------");
+		console.log(p2_1.showName());
+		console.log(p2_2.showName());
+		console.log(p2_1.showName == p2_2.showName);//对比工厂模式
+		
+	</script>
+</html>
