@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JS继承</title>
+	</head>
+	<body>
+		<h1><a href="https://mp.weixin.qq.com/s/xYTPWvp0z3O-LLVkDA3iww">JS继承</a></h1>
+		<p>1. 原型链继承 , 原型里的方法，所有实例所共享</p>
+		<p>博客中提到的弊端没有看明白？？？？</p>
+	</body>
+	<script>
+		function Super(){
+			this.name = "super";
+		}
+		Super.prototype.showName = function(){
+			return this.name;
+		}
+		function Sub(){
+			this.name = "sub";
+		}
+		Sub.prototype = new Super();
+		var a = new Sub();
+		console.log("a:"+a.showName());
+		Sub.prototype.showName = function(){
+			return "重写";
+		}
+		var b = new Sub();
+		console.log("a:"+a.showName()+",b:"+b.showName());
+		/**
+		 * 弊端：
+		 * 	被继承者中的方法被重写后，其他对象的值也会受影响
+		 */
+		
+		console.log("------------------------------原型链继承-------------------------------")
+		function Person(){
+			this.job = 'job';
+			this.studyJob = 'nojob';
+		}
+		Person.prototype.showJob = function(){
+			return this.studyJob;
+		}
+		function Student(){
+			Person.call(this);
+			this.studyJob = 'sutudy';
+		}
+		
+		Student.prototype = new Person();
+		var stu = new Student();
+		
+		Student.prototype.showJob = function(){
+			return "重写父类方法";
+		}
+		
+		var stu2 = new Student();
+		console.log(stu.job+","+stu.studyJob+",stu:"+stu.showJob()+",stu2:"+stu2.showJob());
+		
+		console.log("-------------------------------------------------------------")
+		
+		
+	</script>
+</html>
