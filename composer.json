@@ -1,11 +1,17 @@
 {
-    "require": {
-        "guzzlehttp/guzzle": "^6.3",
+	"require" : {
+		"guzzlehttp/guzzle" : "^6.3",
 		"monolog/monolog" : "1.2.*",
-		"telesign/telesign":"^2.2",
-		"pda/pheanstalk": "^3.1",
-        "workerman/workerman": "^3.5",
-        "facebook/webdriver": "^1.6",
-        "predis/predis": "^1.1"
-    }
+		"telesign/telesign" : "^2.2",
+		"pda/pheanstalk" : "^3.1",
+		"workerman/workerman" : "^3.5",
+		"facebook/webdriver" : "^1.6",
+		"predis/predis" : "^1.1",
+		"mongodb/mongodb" : "^1.2",
+		"james-heinrich/getid3": "^1.9",
+		"firebase/php-jwt": "^5.0"
+	},
+	"require-dev" : {
+		"eaglewu/swoole-ide-helper" : "dev-master"
+	}
 }
