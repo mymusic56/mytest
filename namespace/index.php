@@ -1,6 +1,6 @@
 <?php
 define('MYNAMESPACE', dirname(__FILE__).DIRECTORY_SEPARATOR);
-require MYNAMESPACE.'Think\Think.php';
+require MYNAMESPACE.'Think/Think.php';
 //注册相关自动加载 停止
 Think\Think::start();
 

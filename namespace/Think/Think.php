@@ -5,6 +5,7 @@ use Think\B\Bb;
 class Think{
 	private static $_map = array();
 	public static function autoLoad($class){
+        $class = str_replace('\\', '/',$class);
 		include MYNAMESPACE.$class.'.php';
 	}
 	public static function start(){
@@ -17,7 +18,7 @@ class Think{
 	}
 	public static function testCallSatic(){
 		Bb::connect('File');
-		$filename = MYNAMESPACE.'Think\Think.php';
+		$filename = MYNAMESPACE.'Think/Think.php';
 		var_dump(Bb::isFile($filename));
 	}
 }
