@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style type="text/css">
+        .box {
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: relative;
+        }
+
+        .move-line {
+            animation: move-line 5s;
+            -webkit-animation: move-line 5s;
+            animation-direction:alternate;
+            animation-timing-function:linear;
+            animation-delay:2s;
+            animation-iteration-count:infinite;
+        }
+        .move-square {
+            animation: move-square 5s;
+            -webkit-animation: move-square 5s;
+            animation-direction:alternate;
+            animation-timing-function:linear;
+            animation-delay:2s;
+            animation-iteration-count:infinite;
+        }
+
+        @keyframes move-line {
+            from { background: red; left: 0px; top: 0px }
+            to { background: yellow; left: 450px; top: 0px; }
+        }
+
+        @-webkit-keyframes move-line{
+            from {background: red; left: 0px; top: 0px;}
+            to {background: yellow; left: 450px; top: 0px;}
+        }
+        
+        @keyframes move-square {
+            0% {background: yellow; left: 0px; top: 0px}
+            25% {background: green; left: 450px; top: 0px}
+            50% {background: black; left: 450px; top: 450px}
+            75% {background: red; left: 0px; top: 450px}
+            100% {background: red; left: 0px; top: 0px}
+        }
+        @-webkit-keyframes move-square {
+            0% {background: yellow; left: 450px; top: 0px}
+            25% {background: green; left: 450px; top: 450px}
+            50% {background: black; left: 0px; top: 450px}
+            75% {background: red; left: 0px; top: 0px}
+            100% {background: red; left: 0px; top: 0px}
+        }
+    </style>
+</head>
+<!-- 
+http://www.runoob.com/try/try.php?filename=trycss3_box-shadow4
+ -->
+
+<body>
+<div style="width: 500px; height: 500px; border: 1px solid black;">
+    <div class="box" id="box"></div>
+</div>
+<input type="button" value="水平直线运动" onclick="move('move-line');"/>
+<input type="button" value="绕正方运动" onclick="move('move-square');"/>
+<script>
+/*这样只能移动一次，怎样实现多次移动呢*/
+    function move($className) {
+        document.getElementById("box").classList.add($className);
+    }
+
+</script>
+</body>
+</html>
