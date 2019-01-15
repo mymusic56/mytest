@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- https://www.cnblogs.com/zhangkaiqiang/p/8183926.html -->
+	<!-- 
+		使用a标签的download属性
+		https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a
+		
+		同源
+		
+		如何下载不同源图片？
+		1. 图片设置header， Content-Type: application/octet-stream
+		
+		
+		2. https://blog.csdn.net/ruthywei/article/details/73253045
+	 -->
+	<img id="image1" src="./dfccfc5e6aa559ad3facd54f84742a47.png"></img>
+	<input type="button" value="download_image" onclick="downloadIamge('#image1','dfccfc5e6aa559ad3facd54f84742a47.png')">  
+	<script type="text/javascript">
+	function downloadIamge(selector, name) {
+		
+	    // 通过选择器获取img元素，
+	    var img = document.querySelector(selector)
+	    // 将图片的src属性作为URL地址
+	    var url = img.src
+	    var a = document.createElement('a')
+	    var event = new MouseEvent('click')
+	    
+	    a.download = name || '下载图片名称'
+	    a.href = url
+	    
+	    a.dispatchEvent(event)
+	}
+	</script>
+</body>
+</html>
