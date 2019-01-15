@@ -8,7 +8,7 @@ class MainEmail implements EmailBody
      */
     public function body()
     {
-        echo "公司准备为您加薪50%。\n";
+        var_dump('公司准备为您加薪50%。');
     }
 
 }

@@ -1,7 +1,7 @@
 <?php
 
 
-class OutputStrategy
+interface OutputStrategy
 {
-
+    public function render(array $data);
 }
