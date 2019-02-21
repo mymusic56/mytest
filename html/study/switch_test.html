@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Title</title>
+    <style>
+        .toggle input{
+            display: none;
+        }
+        .item{
+            width: 100%;
+            height: 50px;
+            border: 1px solid #DDDDDD;
+            position: relative;
+        }
+        .toggle{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .toggle-1 .track{
+            width: 50px;
+            height: 30px;
+            background: #33cd5f;
+            border-color: #33cd5f;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            border-radius: 15px;
+        }
+
+        .toggle-2 .track{
+            width: 51px;
+            height: 30px;
+            background: #33cd5f;
+            border-color: #33cd5f;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            border-radius: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <ul class="list">
+            <li class="item">
+                <lable class="toggle toggle-1">
+                    <input type="checkbox" checked/>
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </lable>
+            </li>
+            <li class="item">
+                <lable class="toggle toggle-2">
+                    <input type="checkbox" checked/>
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </lable>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

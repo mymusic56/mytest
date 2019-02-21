@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+
+<script>
+    var m = new Map();
+    var s = new Set();
+    console.log('你的浏览器支持Map和Set！');
+
+
+    function vvv() {
+        console.log("eeeeeeee")
+    }
+
+    window.vvv();
+
+    var [a,b,c] = [1, 'xiaoming', 10.333];
+    // let [a, b, c] = [1, 2, 3];
+    console.log(a)
+    console.log(b)
+    console.log(c)
+
+    var [,,d] = ['hello', 'JavaScript', 'ES6'];
+    console.log(d);
+
+
+    let [x, [y, z]] = ['hello', ['JavaScript', 'ES6']];
+    console.log(x)
+    console.log(y)
+    console.log(z)
+
+
+    var person = {
+        name: '小明',
+        age: 20,
+        gender: 'male',
+        passport: 'G-12345678',
+        school: 'No.4 middle school'
+    };
+
+    // 把passport属性赋值给变量id:
+    let {name, passport:id} = person;
+    console.log(name)
+    console.log(id)
+</script>
+</html>
