@@ -4,65 +4,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Title</title>
+
     <style>
-        .toggle input{
+        .mytoggle {
+            position: relative;
+            display: block;
+            width: 45px;
+        }
+        .mytoggle input{
             display: none;
         }
+        .mytoggle .track{
+            width: 45px;
+            height: 25px;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            border-radius: 15px;
+        }
+
+        .mytoggle .handle {
+            background-color: #fff;
+            position: absolute;
+            top: 1px;
+            width: 22px;
+            height: 22px;
+            -webkit-border-radius: 22px;
+            -moz-border-radius: 22px;
+            border-radius: 22px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.35), 0 1px 1px rgba(0, 0, 0, 0.15);
+
+            -webkit-transition: 0.3s cubic-bezier(0, 1.1, 1, 1.1);
+            transition: 0.3s cubic-bezier(0, 1.1, 1, 1.1);/*https://www.jianshu.com/p/d999f090d333 贝塞尔曲线*/
+            -webkit-transition-property: background-color, transform;
+            transition-property: background-color, transform;
+        }
+
+        /*.mytoggle input:checked + .track .handle {*/
+        /*-webkit-transform: translate3d(20px, 0, 0);*/
+        /*transform: translate3d(20px, 0, 0);*/
+        /*background-color: #fff;*/
+        /*}*/
+
+        /*.mytoggle input:checked + .track {*/
+        /*background: #33cd5f;*/
+        /*border-color: #33cd5f;*/
+        /*}*/
+
+        .mytoggle-active .track{
+            background: #33cd5f;
+            border-color: #33cd5f;
+        }
+        .mytoggle-active .handle{
+            -webkit-transform: translate3d(20px, 0, 0);
+            transform: translate3d(20px, 0, 0);
+            z-index: 1000;
+        }
+    </style>
+
+    <style>
         .item{
             width: 100%;
             height: 50px;
             border: 1px solid #DDDDDD;
             position: relative;
         }
-        .toggle{
+
+        .mytoggle {
             position: absolute;
-            top: 10px;
             right: 10px;
+            top: 10px;
         }
-
-        .toggle-1 .track{
-            width: 50px;
-            height: 30px;
-            background: #33cd5f;
-            border-color: #33cd5f;
-            -webkit-border-radius: 15px;
-            -moz-border-radius: 15px;
-            border-radius: 15px;
-        }
-
-        .toggle-2 .track{
-            width: 51px;
-            height: 30px;
-            background: #33cd5f;
-            border-color: #33cd5f;
-            -webkit-border-radius: 15px;
-            -moz-border-radius: 15px;
-            border-radius: 15px;
-        }
-
     </style>
+
 </head>
 <body>
     <div class="content">
         <ul class="list">
             <li class="item">
-                <lable class="toggle toggle-1">
-                    <input type="checkbox" checked/>
+                <label class="mytoggle mytoggle-active" data-id="1">
+                    <input type="checkbox"/>
                     <div class="track">
                         <div class="handle"></div>
                     </div>
-                </lable>
+                </label>
             </li>
             <li class="item">
-                <lable class="toggle toggle-2">
-                    <input type="checkbox" checked/>
+                <label class="mytoggle" data-id="2">
+                    <input type="checkbox"/>
                     <div class="track">
                         <div class="handle"></div>
                     </div>
-                </lable>
+                </label>
+            </li>
+            <li class="item">
+                <label class="mytoggle"  data-id="3">
+                    <input type="checkbox"/>
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
             </li>
         </ul>
     </div>
 
+    <!--<script src="../lib/jquery-2.1.1.min.js"></script>-->
+<script>
+    //为什么会有两次点击事件，是哪里写得不对吗？
+    var toggleList = document.querySelectorAll(".mytoggle");
+    var len = toggleList.length;
+    for(var i=0; i <len; i++) {
+        toggleList[i].addEventListener("click",function (e) {
+            e.preventDefault();//默认事件绑定为冒泡事件，当label点击事件会将点击事件会触发input点击事件，该事件会传至父节点label，又产生一次点击事件
+            var className = "mytoggle-active";
+            var classVal = this.getAttribute("class");
+            console.log(classVal.includes(className), classVal)
+            if (classVal.includes(className)) {
+                classVal = classVal.replace(' ', '');
+                this.className = classVal.replace(className, '');
+            } else {
+                this.setAttribute("class", classVal.concat(" "+className));
+            }
+        })
+    };
+
+   /*$(".mytoggle").on("click", function (e) {
+       e.preventDefault();
+       console.log($(this).hasClass("mytoggle-active"), $(this).attr("data-id"))
+       if ($(this).hasClass("mytoggle-active")) {
+           $(this).removeClass("mytoggle-active");
+       } else {
+           $(this).addClass("mytoggle-active");
+       }
+   });*/
+</script>
 </body>
 </html>
