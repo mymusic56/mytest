@@ -11,13 +11,13 @@ $ws->set([
  * @var $response \Swoole\Http\Response
  */
 $ws->on('open', 'onOpen');
-function onOpen ($ws, $request) {
+function onOpen (swoole_websocket_server $ws, $request) {
     echo "server: handshake success with fd{$request->fd}\n";
     $ws->push($request->fd, "hello, welcome\n");
 }
 
 $ws->on('message', 'onMessage');
-function onMessage($ws, $frame) {
+function onMessage(swoole_websocket_server$ws, $frame) {
     echo "receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n";
     $ws->push($frame->fd, "server: {$frame->data} iiiiiiiiiiiiii");
 }
@@ -31,7 +31,7 @@ $ws->on('request', function($request, $response){
     $response->end('<h1>success</h1>');
 });
 
-$ws->on('close', function ($ws, $fd) {
+$ws->on('close', function (swoole_websocket_server $ws, $fd) {
     echo "client-{$fd} is closed\n";
 });
 

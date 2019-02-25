@@ -23,7 +23,9 @@ $serv = new swoole_server("0.0.0.0", 9501);
   1359 pts/0    S+     0:00          \_ php tcp.php
  */
 $serv->set([
-    'worker_num' => 2
+    'worker_num' => 2,
+    'heartbeat_idle_time' => 10,
+    'heartbeat_check_interval' => 3,
 ]);
 
 //监听连接进入事件
@@ -43,7 +45,7 @@ $serv->on('connect', function ($serv, $fd, $from_id) {
  * $from_id，TCP连接所在的Reactor线程ID
  * $data，收到的数据内容，可能是文本或者二进制内容
  */
-$serv->on('receive', function ($serv, $fd, $from_id, $data) {
+$serv->on('receive', function (swoole_server $serv, $fd, $from_id, $data) {
     $serv->send($fd, "Server:-------  {$fd}, ThreadId: {$from_id} ".$data);
 });
 
