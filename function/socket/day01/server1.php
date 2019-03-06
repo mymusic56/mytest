@@ -20,11 +20,15 @@ while (($sock = socket_accept($master)) !== false) {
         die;
     }
 
-    var_dump($buf);
+    //var_dump($buf);
 
-    $data = "123456";
+    $header = "HTTP/1.1 200 OK\r\n";
+    $header .= "Content-Type: text/html;charset=utf-8\r\n";
+    $header .= "Connection: Keep-Alive\r\n";
+    $header .= "Server: MyServer\r\n\r\n";
+    $data = $header."123456";
 
-    var_dump($data);
+    echo "client ".$sock." connected\r\n";
     socket_write($sock, $data, strlen($data));
 //    socket_send($sock, $data, strlen($data), 0);
     socket_close($sock);
