@@ -2,6 +2,10 @@
 
 require_once 'HTTP.php';
 
+/**
+ * 多进程阻塞模型
+ * Class Server
+ */
 class Server
 {
     private $master;
@@ -34,6 +38,10 @@ class Server
         $this->master = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
         socket_bind($this->master, $this->addr, $this->port);
         socket_listen($this->master);
+
+//        $local_socket = "tcp://{$this->addr}:{$this->port}";
+//        $this->master = stream_socket_server($local_socket);
+
         //创建一个新的socket于客户端进行通信
         $this->fork();
     }
@@ -65,15 +73,15 @@ class Server
     private function accept()
     {
         while (($sock = socket_accept($this->master)) !== false) {
-
-            call_user_func($this->onConnect, $sock);
+            $pid = posix_getpid();
+            call_user_func($this->onConnect, $sock, $pid);
 
             $bytes = socket_recv($sock, $buf, 1024, 0);
 
             if ($bytes === false) {
-                $this->outPutError();
+                $this->outPutError($sock);
             }
-            call_user_func($this->onReceive, $this, $sock, $buf);
+            call_user_func($this->onReceive, $this, $sock, $pid, $buf);
 
             socket_close($sock);
         }
@@ -87,32 +95,32 @@ class Server
 //        socket_send($sock, $data, strlen($data), 0);
     }
 
-    private function outPutError()
+    private function outPutError($sock)
     {
         echo "socket_recv(): error";
         echo '<pre>';
         $errNo = socket_last_error();
         echo '<pre>';
         echo socket_strerror($errNo);
-        die;
+        $this->send($sock, socket_strerror($errNo).' 错误码:'.$errNo);
     }
 }
 
 $server = new Server();
 $server->set([
-    'worker_num' => 5
+    'worker_num' => 2
 ]);
 
 $server->onWorkerStart = function ($pid) {
     echo "进程ID ".$pid."启动\r\n";
 };
 
-$server->onConnect = function ($sock) {
-    echo "sock ".$sock."连接\r\n";
+$server->onConnect = function ($sock, $pid) {
+    echo "sock ".$sock."连接,处理进程:{$pid}, \r\n";
 };
 
-$server->onReceive = function (Server $server, $sock, $message) {
-    echo "sock ".$sock."接收信息：{$message}\r\n";
+$server->onReceive = function (Server $server, $sock, $pid, $message) {
+    echo "sock ".$sock.",处理进程:{$pid}, 接收信息：\r\n\r\n";
     $data = date('Y-m-d H:i:s');
     $server->send($sock, $data);
 };
