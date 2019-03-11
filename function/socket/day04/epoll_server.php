@@ -43,32 +43,6 @@ class Server
     private function fork()
     {
         $this->accept();
-//        $counts = isset($this->config['worker_num']) ? $this->config['worker_num'] : 1;
-//        for ($i = 1; $i <= $counts; $i ++) {
-//            $pid = pcntl_fork();
-//            if ($pid > 0) {
-//                if ($this->onWorkerStart) {
-//                    call_user_func($this->onWorkerStart, $pid);
-//                }
-//            } elseif ($pid === 0) {
-//                $this->accept();
-//            } else {
-//                echo "进程创建错误！！！\r\n";
-//            }
-//
-//            //子进程退出监听
-//            while (true) {
-//                $pid = pcntl_wait($status);
-//                if ($pid > 0) {
-//
-//                } elseif ($pid == -1) {
-//                    echo "进程返回error， status: {$status}\r\n";
-//                } elseif ($pid === 0) {
-//                    break;
-//                }
-//            }
-//            echo "子进程全部退出\r\n";
-//        }
     }
 
     private function accept()
@@ -76,7 +50,7 @@ class Server
         //使用swoole_event_add将socket加入到事件监听后，底层会自动将该socket设置为非阻塞模式
         swoole_event_add($this->master, function ($fp) {
             //创建一个新的socket于客户端进行通信
-            $clientSocket = stream_socket_accept($fp);
+            $clientSocket = stream_socket_accept($fp);//等待超时警告怎么解决？？？
             $pid = posix_getpid();
             if ($clientSocket && is_callable('onConnect')) {
                 call_user_func($this->onConnect, $clientSocket, $pid);
@@ -121,9 +95,9 @@ class Server
     }
 }
 
-$server = new workserver();
+$server = new Server();
 $server->set([
-    'worker_num' => 1
+    'worker_num' => 2
 ]);
 
 $server->onWorkerStart = function ($pid) {
@@ -134,13 +108,13 @@ $server->onConnect = function ($sock, $pid) {
     echo "sock ".$sock."连接,处理进程:{$pid}, \r\n";
 };
 
-$server->onReceive = function (workserver $server, $sock, $pid, $message) {
+$server->onReceive = function (Server $server, $sock, $pid, $message) {
 //    echo "sock ".$sock.",处理进程:{$pid}, 接收信息：\r\n\r\n";
     $data = date('Y-m-d H:i:s');
     $server->send($sock, $data);
 };
 
-$server->onClose = function (workserver $server, $sock) {
+$server->onClose = function (Server $server, $sock) {
     echo "sock {$sock} close\r\n";
 };
 

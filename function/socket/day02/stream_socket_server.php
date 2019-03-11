@@ -3,7 +3,8 @@
 require_once 'HTTP.php';
 
 /**
- * 多进程阻塞模型
+ * stream_socket_server
+ * 超时问题怎么解决
  * Class Server
  */
 class Server
@@ -20,11 +21,11 @@ class Server
 
     public $onWorkerStart = null;
 
-    private $config = [];
+    private $config = ['worker_num' => 1];
 
     public function __construct($addr='0.0.0.0', $port=9501)
     {
-        $this->addr = $addr;
+        $this->addr = "tcp://{$addr}:{$port}";
         $this->port = $port;
     }
 
@@ -35,67 +36,63 @@ class Server
 
     public function start()
     {
-        $this->master = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-        socket_bind($this->master, $this->addr, $this->port);
-        socket_listen($this->master);
-
-//        $local_socket = "tcp://{$this->addr}:{$this->port}";
-//        $this->master = stream_socket_server($local_socket);
-
-        //创建一个新的socket于客户端进行通信
+        $this->master = stream_socket_server($this->addr);
         $this->fork();
     }
 
     private function fork()
     {
-        $count = isset($this->config['worker_num']) ? $this->config['worker_num'] : 1;
-        for ($i=1; $i<=$count; $i++) {
+        $counts = $this->config['worker_num'];
+        for ($i = 1; $i <= $counts; $i++) {
             $pid = pcntl_fork();
-            if ($pid) {
+            if ($pid > 0) {
 
+            } elseif ($pid === 0) {
+                $pid = posix_getpid();
                 if ($this->onWorkerStart) {
                     call_user_func($this->onWorkerStart, $pid);
                 }
-            } elseif ($pid==0){
                 $this->accept();
             } else {
-                throw new Exception("进程初始化错误！");
+                echo "进程创建错误！！！\r\n";
             }
         }
 
-        while (($pid = pcntl_wait($status)) > 0) {
-            echo "子进程{$pid}退出,status:".$status."\r\n";
+        //子进程退出监听
+        for ($i = 0; $i < $this->config['worker_num']; $i++) {
+            $pid = pcntl_wait($status);
+            if ($pid > 0) {
+                echo "子进程{$pid}退出,status:".$status."\r\n";
+            } elseif ($pid == -1) {
+                echo "进程返回error， status: {$status}\r\n";
+            } elseif ($pid == 0) {
+            }
         }
-
         echo "子进程全部退出\r\n";
     }
 
     private function accept()
     {
-//        $a = 1;
-        while (($sock = socket_accept($this->master)) !== false) {
-//            $a++;
+        while (true) {
+            $clientSocket = stream_socket_accept($this->master);
             $pid = posix_getpid();
-//            echo "PID: {$pid}, a={$a}\r\n";
-            call_user_func($this->onConnect, $sock, $pid);
-
-            $bytes = socket_recv($sock, $buf, 1024, 0);
-
-            if ($bytes === false) {
-                $this->outPutError($sock);
+            if ($clientSocket) {
+                call_user_func($this->onConnect, $clientSocket, $pid);
+                $buffer = fread($clientSocket, 65535);
+                if ($buffer) {
+                    call_user_func($this->onReceive, $this, $clientSocket, $pid, $buffer);
+                }
+                fclose($clientSocket);
             }
-            call_user_func($this->onReceive, $this, $sock, $pid, $buf);
-
-            socket_close($sock);
         }
+
     }
 
     public function send($sock, $message)
     {
         $data = HTTP::encode($message);
         echo "client ".$sock." connected\r\n";
-        socket_write($sock, $data, strlen($data));
-//        socket_send($sock, $data, strlen($data), 0);
+        fwrite($sock, $data, strlen($data));
     }
 
     private function outPutError($sock)
@@ -123,13 +120,13 @@ $server->onConnect = function ($sock, $pid) {
 };
 
 $server->onReceive = function (Server $server, $sock, $pid, $message) {
-    echo "sock ".$sock.",处理进程:{$pid}, 接收信息：\r\n\r\n";
+//    echo "sock ".$sock.",处理进程:{$pid}, 接收信息：\r\n\r\n";
     $data = date('Y-m-d H:i:s');
     $server->send($sock, $data);
 };
 
-$server->onClose = function () {
-
+$server->onClose = function (Server $server, $sock) {
+    echo "sock {$sock} close\r\n";
 };
 
 

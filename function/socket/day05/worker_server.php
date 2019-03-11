@@ -20,7 +20,7 @@ class Server
 
     public $onWorkerStart = null;
 
-    private $config = [];
+    private $config = ['worker_num' => 1];
 
     public function __construct($addr='0.0.0.0', $port=9501)
     {
@@ -40,9 +40,8 @@ class Server
 
     private function fork()
     {
-        $this->accept();
-        $counts = isset($this->config['worker_num']) ? $this->config['worker_num'] : 1;
-        for ($i = 1; $i <= $counts; $i ++) {
+        $counts = $this->config['worker_num'];
+        for ($i = 1; $i <= $counts; $i++) {
             $pid = pcntl_fork();
             if ($pid > 0) {
                 if ($this->onWorkerStart) {
@@ -50,23 +49,23 @@ class Server
                 }
             } elseif ($pid === 0) {
                 $this->accept();
+                exit(0);//这里的退出是否会结束进程
             } else {
                 echo "进程创建错误！！！\r\n";
             }
-
-            //子进程退出监听
-            while (true) {
-                $pid = pcntl_wait($status);
-                if ($pid > 0) {
-
-                } elseif ($pid == -1) {
-                    echo "进程返回error， status: {$status}\r\n";
-                } elseif ($pid === 0) {
-                    break;
-                }
-            }
-            echo "子进程全部退出\r\n";
         }
+        //子进程退出监听
+        for ($i = 0; $i < $this->config['worker_num']; $i++) {
+            $pid = pcntl_wait($status);
+            var_dump($i);
+            if ($pid > 0) {
+                echo "子进程{$pid}退出,status:".$status."\r\n";
+            } elseif ($pid == -1) {
+                echo "进程返回error， status: {$status}\r\n";
+            } elseif ($pid == 0) {
+            }
+        }
+        echo "子进程全部退出\r\n";
     }
 
     private function accept()
@@ -85,11 +84,11 @@ class Server
 //        stream_context_set_option($context, 'socket', 'so_reuseport', 1);//选项内容和stream_context_create()一致
 
         //使用swoole_event_add将socket加入到事件监听后，底层会自动将该socket设置为非阻塞模式
-        swoole_event_add((int)$this->master, function ($fp) {
+        swoole_event_add($this->master, function ($fp) {
             //创建一个新的socket于客户端进行通信
             $clientSocket = stream_socket_accept($fp);
-            $pid = posix_getpid();
             if ($clientSocket && is_callable('onConnect')) {
+                $pid = posix_getpid();
                 call_user_func($this->onConnect, $clientSocket, $pid);
             }
 
@@ -97,7 +96,7 @@ class Server
                 $buffer = fread($fp, 65535);
                 $pid = posix_getpid();
                 if (empty($buffer)) {
-                    if (!is_resource($fp) || !feof($fp)) {
+                    if (!is_resource($fp) || feof($fp)) {
                         fclose($fp);
                     }
                 } else {
@@ -111,7 +110,6 @@ class Server
             });
         });
 
-        echo "异步非阻塞\r\n";
     }
 
     public function send($sock, $message)
@@ -132,9 +130,9 @@ class Server
     }
 }
 
-$server = new workserver();
+$server = new Server();
 $server->set([
-    'worker_num' => 2
+    'worker_num' => 4
 ]);
 
 $server->onWorkerStart = function ($pid) {
@@ -145,13 +143,13 @@ $server->onConnect = function ($sock, $pid) {
     echo "sock ".$sock."连接,处理进程:{$pid}, \r\n";
 };
 
-$server->onReceive = function (workserver $server, $sock, $pid, $message) {
+$server->onReceive = function (Server $server, $sock, $pid, $message) {
 //    echo "sock ".$sock.",处理进程:{$pid}, 接收信息：\r\n\r\n";
     $data = date('Y-m-d H:i:s');
     $server->send($sock, $data);
 };
 
-$server->onClose = function (workserver $server, $sock) {
+$server->onClose = function (Server $server, $sock) {
     echo "sock {$sock} close\r\n";
 };
 
