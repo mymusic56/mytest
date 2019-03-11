@@ -57,7 +57,6 @@ class Server
         //子进程退出监听
         for ($i = 0; $i < $this->config['worker_num']; $i++) {
             $pid = pcntl_wait($status);
-            var_dump($i);
             if ($pid > 0) {
                 echo "子进程{$pid}退出,status:".$status."\r\n";
             } elseif ($pid == -1) {

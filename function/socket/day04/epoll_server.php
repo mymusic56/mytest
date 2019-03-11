@@ -3,7 +3,7 @@
 require_once '../day03/HTTP.php';
 
 /**
- * epoll(swoole_event_add事件)实现非阻塞模式
+ * epoll(swoole_event_add事件)
  * Class Server
  */
 class Server
@@ -50,7 +50,7 @@ class Server
         //使用swoole_event_add将socket加入到事件监听后，底层会自动将该socket设置为非阻塞模式
         swoole_event_add($this->master, function ($fp) {
             //创建一个新的socket于客户端进行通信
-            $clientSocket = stream_socket_accept($fp);//等待超时警告怎么解决？？？
+            $clientSocket = stream_socket_accept($fp);//解决了等待超时问题
             $pid = posix_getpid();
             if ($clientSocket && is_callable('onConnect')) {
                 call_user_func($this->onConnect, $clientSocket, $pid);

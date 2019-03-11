@@ -4,7 +4,7 @@ require_once 'HTTP.php';
 
 /**
  * stream_socket_server
- * 超时问题怎么解决
+ * 超时问题怎么解决(select、epoll解决)
  * Class Server
  */
 class Server
