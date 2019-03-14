@@ -2,9 +2,8 @@
 
 /**
  * 1. 对父进程的信号进行处理，实现子进程重启操作
- * kill -10 $parentPid
- *
- * 2. 通过swoole_event_add() 监视文件变化失败？？？？
+ *  kill -10 $parentPid
+ * 2. 单独一个进程监听文件是否被修改
  * Class SignalTest
  */
 class SignalTest
@@ -13,39 +12,26 @@ class SignalTest
     private $workerNum = 3;
     private $masterPid;
 
+    private $inotify;
+
     public function start()
     {
-        $pid = $this->masterPid = posix_getpid();
-        $this->watch();
         //监控文件变化
-        /*include 'inotify.php';
-        $notify = new FileInotify();
-        $notify->onEvents = function ($ev_mask) use ($pid) {
+        include 'inotify01.php';
+        $this->inotify = new FileInotify();
+
+        $pid = pcntl_fork();
+        if ($pid == 0) {
+            $this->masterPid = posix_getpid();
+            $this->fork($this->workerNum);
+            //只对父进程安装信号处理， 不会处理子进程的信号
+            $this->monitorWorkers();
+        }
+        $this->inotify->onEvents = function ($ev_mask) use($pid) {
             //文件被修改，重启进程
             posix_kill($pid, SIGUSR1);
         };
-        $notify->watch();*/
-
-        $this->fork($this->workerNum);
-        //只对父进程安装信号处理， 不会处理子进程的信号
-//        $this->monitorWorkers();
-    }
-
-    /**
-     * 监视文件变化
-     */
-    public function watch()
-    {
-        $init = inotify_init();
-        inotify_add_watch($init, './', IN_MODIFY);
-        swoole_event_add($init, function ($fd) {
-            $events = inotify_read($fd);
-            if ($events) {
-                echo "文件被修改，重新加载\r\n";
-                $pid = posix_getpid();
-                posix_kill($pid, SIGUSR1);
-            }
-        });
+        $this->inotify->watch();
     }
 
     public function monitorWorkers()
@@ -71,10 +57,13 @@ class SignalTest
             //如何维护子进程数量？
             //向主进程reload信号，kill子进程时，也会监听到子进程退出，
             //这样无论何种原因的子进程退出，都会再次创建新的子进程，导致程序无法关闭
-            //那种情况才是正常退出？？
-            if ($pid > 0 && $this->masterPid != $pid && count($this->workerPids) < $this->workerNum) {
-//                echo "子进程: {$pid} 意外退出，重新创建进程 \r\n";
-//                $this->fork(1);
+            //哪种情况才是正常退出？？
+            //子进程ID列表里存在，表示异常退出
+            $index = array_search($pid, $this->workerPids);
+            if ($pid > 0 && $this->masterPid != $pid && $index !== false) {
+                echo "子进程: {$pid} 意外退出，重新创建进程 \r\n";
+                unset($this->workerPids[$index]);
+                $this->fork(1);
             }
 
             if ($pid == 0) {
@@ -107,6 +96,8 @@ class SignalTest
     {
         $this->output("关闭程序");
         $this->reload(false);
+        //关闭文件监听
+        $this->inotify->unWatch();
         posix_kill($this->masterPid, SIGKILL);
     }
 
