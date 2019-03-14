@@ -57,6 +57,8 @@ class Server
             }
 
             swoole_event_add($clientSocket, function ($fp) {
+                //在可读事件回调函数中必须使用fread、recv等函数读取socket缓存区中的数据，否则事件会持续触发，如果不希望继续读取必须使用Swoole\Event::del移除事件监听
+                //epool默认以条件触发方式工作，只要缓冲区有数据，epoll_wait()通知主进程或者线程。
                 $buffer = fread($fp, 65535);
                 $pid = posix_getpid();
                 if (empty($buffer)) {

@@ -3,7 +3,7 @@
 require_once 'HTTP.php';
 
 /**
- * select单进程非阻塞模式
+ * I/O复用： select单进程非阻塞模式
  * Class Server
  */
 class Server
