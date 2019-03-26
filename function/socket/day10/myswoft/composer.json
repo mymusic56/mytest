@@ -1,0 +1,25 @@
+{
+  "name": "myswoft",
+  "description": "my frame myswoft",
+  "keywords": [
+    "php",
+    "swoole",
+    "myswoft"
+  ],
+  "authors": [
+    {
+      "name": "mymusic56",
+      "email": "961272668@qq.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Swoft\\": "swoft/",
+      "App\\": "app/"
+    }
+  },
+  "require": {
+    "php": ">=7.0",
+    "ext-swoole": ">=4.0"
+  }
+}
