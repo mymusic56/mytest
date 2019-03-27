@@ -5,3 +5,8 @@
  * Date: 2019/3/26
  * Time: 23:54
  */
+return [
+    'database' => [
+
+    ]
+];
