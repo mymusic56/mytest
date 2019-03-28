@@ -80,6 +80,7 @@ class HttpServer
             $result = Route::getInstance()->dispatch($request, $response);
             $response->header('Content-Type', 'application/json; charset=utf-8');
             $response->header('Content-Type', 'text/html; charset=utf-8');
+            echo $result."\r\n";
             $response->end($result);
         } catch (\Exception $e) {
             var_dump($e->getMessage());
