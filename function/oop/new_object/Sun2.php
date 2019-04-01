@@ -1,7 +1,7 @@
 <?php
 
 
-class Sun2
+class Sun2 extends Father
 {
 
 }
