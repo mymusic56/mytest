@@ -18,10 +18,10 @@ class HttpServer
     /**
      * @var $server \Swoole\Http\Server
      */
-    private $server;
-    private $config;
-    private $host;
-    private $port;
+    protected $server;
+    protected $config;
+    protected $host;
+    protected $port;
 
 
     public function __construct($host, $port, $config=null)
@@ -38,6 +38,10 @@ class HttpServer
         $this->server = new \swoole_http_server($this->host, $this->port);
         $this->server->set($this->config);
         $this->addEventListener();
+
+        //收集自定义监听事件
+        Event::collectEvent();
+
         $this->server->start();
     }
 

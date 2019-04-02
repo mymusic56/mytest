@@ -15,6 +15,12 @@ class Config
 
     public static function get($name)
     {
+        if (strpos($name, '.') !== false) {
+            list($model, $key) = explode('.', $name);
+            if (isset(self::$config[$model]) && isset(self::$config[$model][$key])) {
+                return self::$config[$model][$key]??false;
+            }
+        }
         $value = isset(self::$config[$name]) ? self::$config[$name]: false;
         return $value;
     }
@@ -35,5 +41,6 @@ class Config
         } else {
             self::$config += include $path;
         }
+        var_dump(self::$config);
     }
 }
