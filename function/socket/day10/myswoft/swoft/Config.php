@@ -41,6 +41,5 @@ class Config
         } else {
             self::$config += include $path;
         }
-        var_dump(self::$config);
     }
 }
