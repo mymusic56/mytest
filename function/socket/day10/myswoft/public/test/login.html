@@ -12,15 +12,17 @@
 
     function createWs(url, token){
         if ("WebSocket" in window) {
+            // var ws = new WebSocket("ws://"+url);
             var ws = new WebSocket("ws://"+url, [token]);
-            ws.open = function () {
+            ws.onopen = function () {
                 console.log("握手完成")
-                ws.send()
+                ws.send('{"c":"echo", "data":{}}');
             };
 
             ws.onmessage = function (evt) {
                 console.log("新消息：")
-                console.log(evt.data);
+                var data = JSON.parse(evt.data);
+                console.log(data);
             }
             ws.onclose = function (evt) {
                 console.log("连接关闭")
@@ -35,7 +37,7 @@
         var username = prompt("请输入用户名");
         $.ajax({
             type: "POST",
-            url: "http://192.168.88.141:9800/im",
+            url: "http://192.168.152.128:9800/im",
             dataType: "json",
             data: {type: 'login', username: username},
             success: function (result) {

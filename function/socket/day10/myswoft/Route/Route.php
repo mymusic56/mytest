@@ -8,6 +8,7 @@
  * Time: 20:13
  */
 require_once '../vendor/autoload.php';
+require_once dirname(__DIR__).'/swoft/base.php';
 
 class Route
 {
@@ -42,16 +43,9 @@ class Route
 
     private function queryUser($username,$pwd)
     {
-        $swoole_mysql = new Swoole\Coroutine\MySQL();
-        $swoole_mysql->connect([
-            'host' => '192.168.13.69',
-            'port' => 3306,
-            'user' => 'root',
-            'password' => '123456',
-            'database' => 'mytest',
-        ]);
+        $swoole_mysql = \Swoft\Db\MySql::getInstance();
         $res = $swoole_mysql->query("select * from users where `name`='{$username}'");
-        return $res;
+        return empty($res) ? null : $res[0];
     }
 
     /**
@@ -81,9 +75,11 @@ class Route
                 //iss（签发者）, exp（过期时间戳）, sub（面向的用户）, aud（接收方）, iat（签发时间）。
                 $time = time();
                 mt_srand();
+                $url = $this->getIMserver();
                 $token = [
                     "iss" => "http://example.org",
                     "aud" => "http://example.com",
+                    "host" => $url,
                     "iat" => $time,
                     "nbf" => $time,
                     "exp" => $time+7200,
@@ -91,7 +87,6 @@ class Route
                 ];
                 $key = 'zhang123456';
                 $token_jwt = \Firebase\JWT\JWT::encode($token, $key);
-                $url = $this->getIMserver();
                 $response->end(json_encode(['status' => 1, 'token' => $token_jwt, 'url' => $url]));
             }
 
@@ -147,5 +142,6 @@ class Route
     }
 }
 
+\Swoft\Config::load();
 $route = new Route();
 $route->run();

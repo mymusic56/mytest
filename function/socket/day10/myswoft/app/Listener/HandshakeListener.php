@@ -20,13 +20,18 @@ use Swoft\Log\Log;
 class HandshakeListener implements EventInterface
 {
 
+    private $data;
+    private $host;
+
     public function handler($event)
     {
         Log::wirte("新的连接到达");
         /* @var $response \swoole_http_response */
         /* @var $request \swoole_http_request */
+        /* @var $redis \Redis */
         $request = $event['request'];
         $response = $event['response'];
+        $redis = $event['redis'];
         // print_r( $request->header );
         //如果不满足我某些自定义的需求条件，那么返回end输出，返回false，握手失败
         //客户端握手，验证token
@@ -34,6 +39,17 @@ class HandshakeListener implements EventInterface
             $response->end($msg);
             return false;
         }
+
+        //存储用户和fd的关系
+        //向指定用户发送消息： 根据用户ID，找到用户所在主机、fd
+        $flag1 = $redis->hSet('user_fd', $this->data->id, json_encode(['host' => $this->host, 'fd' => $request->fd]));
+
+        //主机 fd 对应的用户ID
+        $flag2 = $redis->hSet($this->host, $request->fd, $this->data->id);
+        if ($flag1 === false && $flag2 !== false) {
+            Log::wirte("用户fd保存失败");
+        }
+        $this->userinfo = null;
 
         // websocket握手连接算法验证
         $secWebSocketKey = $request->header['sec-websocket-key'];
@@ -67,7 +83,7 @@ class HandshakeListener implements EventInterface
         }
 
         $response->status(101);
-        $response->end('握手成功');
+        $response->end();
     }
 
     private function checkToken($header)
@@ -83,9 +99,12 @@ class HandshakeListener implements EventInterface
             return '授权内容无效';
         }
 
-        if ($tokenArr['exp'] < time()) {
+        if (!isset($tokenArr->exp) || $tokenArr->exp < time()) {
             return 'token过期';
         }
+
+        $this->data = $tokenArr->data;
+        $this->host = $tokenArr->host;
 
         return true;
     }

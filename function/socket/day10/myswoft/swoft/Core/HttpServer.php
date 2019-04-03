@@ -24,6 +24,8 @@ class HttpServer
     protected $host;
     protected $port;
 
+    protected $redis;
+
 
     public function __construct($host, $port, $config=null)
     {
@@ -32,6 +34,10 @@ class HttpServer
         if ($config) {
             $this->config = $config;
         }
+
+        $this->redis = new \Redis();
+        $this->redis->connect(Config::get('redis.host'), Config::get('redis.port'));
+        $this->redis->auth(Config::get('redis.password'));
     }
 
     public function start()
