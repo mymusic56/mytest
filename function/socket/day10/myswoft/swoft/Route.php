@@ -38,6 +38,7 @@ class Route
     public function dispatch(Request $request, Response $response)
     {
         $server = $request->server;
+//        var_dump($server);
         if ($server['path_info'] == '/favicon.ico') {
             return '1234';
         }

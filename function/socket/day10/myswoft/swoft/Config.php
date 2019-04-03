@@ -27,6 +27,12 @@ class Config
 
     public static function set($name, $value)
     {
+        if (strpos($name, '.') !== false) {
+            list($model, $key) = explode('.', $name);
+            if (isset(self::$config[$model]) && isset(self::$config[$model][$key])) {
+                self::$config[$model][$key] = $value;
+            }
+        }
         self::$config[$name] = $value;
     }
 

@@ -10,6 +10,7 @@ namespace Swoft\Core;
 
 
 use Swoft\Config;
+use Swoft\Log\Log;
 use Swoft\Reload\FileMd5;
 use Swoft\Route;
 
@@ -56,7 +57,7 @@ class HttpServer
 
     public function onStart()
     {
-        echo "Server start...\r\n";
+        Log::wirte("Http Server start, host: $this->host Port: $this->port");
         $fileMd5 = FileMd5::getInstance();
         $fileMd5->watchDir = [APP_PATH, SWOFT_PATH];
         $fileMd5->reload();
@@ -67,6 +68,8 @@ class HttpServer
                 $this->server->reload();
             }
         });
+
+        Event::trigger('serverstart', ['server' => $this->server]);
     }
 
     public function onWorkerStart()

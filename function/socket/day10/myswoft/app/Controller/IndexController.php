@@ -15,6 +15,6 @@ class IndexController
 {
     public function index(Request $request)
     {
-        return '你好，这是index().';
+        return "你好，这是index().\r\n";
     }
 }

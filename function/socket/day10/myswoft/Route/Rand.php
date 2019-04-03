@@ -9,13 +9,13 @@
 class Rand
 {
 
-    private static $index;
+    private static $index = 0;
 
     public static function randServer($list)
     {
         $index = self::$index;
         $count = count($list);
-        if ($index > $count - 1) {
+        if ($index >= $count - 1) {
             self::$index = 0;
         } else {
             self::$index = $index+1;

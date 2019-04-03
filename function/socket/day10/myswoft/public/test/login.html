@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>登录模拟页面</h3>
+</body>
+<script src="../lib/zepto.min.js"></script>
+<script>
+
+    function createWs(url, token){
+        if ("WebSocket" in window) {
+            var ws = new WebSocket("ws://"+url, [token]);
+            ws.open = function () {
+                console.log("握手完成")
+                ws.send()
+            };
+
+            ws.onmessage = function (evt) {
+                console.log("新消息：")
+                console.log(evt.data);
+            }
+            ws.onclose = function (evt) {
+                console.log("连接关闭")
+            }
+        } else {
+            alert("浏览器不支持Websocket")
+        }
+    }
+
+    //登录，获取IM-server地址
+    $(function () {
+        var username = prompt("请输入用户名");
+        $.ajax({
+            type: "POST",
+            url: "http://192.168.88.141:9800/im",
+            dataType: "json",
+            data: {type: 'login', username: username},
+            success: function (result) {
+                if (result.status == 1) {
+                    createWs(result.url, result.token)
+                }
+            }
+        });
+    });
+
+</script>
+</html>

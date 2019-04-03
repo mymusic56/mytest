@@ -1,6 +1,8 @@
 <?php
 namespace Swoft;
+use Swoft\Command\Command;
 use Swoft\Core\HttpServer;
+use Swoft\Core\WebsocketServer;
 
 /**
  * Created by PhpStorm.
@@ -12,9 +14,12 @@ Class App
 {
     public static function run()
     {
+        //检查输入参数
+        $command = Command::parseCommand();
+
         self::checkEnv();
         self::init();
-        self::execute();
+        self::execute($command['server'], $command['action'], $command['port']);
     }
 
     private static function checkEnv()
@@ -25,16 +30,30 @@ Class App
 
     private static function init()
     {
-        //检查输入参数
 
         //加载核心配置
         Config::load();
     }
 
-    private static function execute()
+    private static function execute($serverType, $action, $port)
     {
-        $httpConfig = Config::get('http');
-        $http = new HttpServer($httpConfig['host'], $httpConfig['port'], $httpConfig['swoole_settings']);
-        $http->start();
+        if ($action == 'start') {
+            if ($serverType == 'http') {
+                if ($port > 0) {
+                    Config::set('http.port', $port);
+                }
+                $config = Config::get('http');
+                $server = new HttpServer($config['host'], $config['port'], $config['swoole_settings']);
+            } else {
+                if ($port > 0) {
+                    Config::set('ws.port', $port);
+                }
+                $config = Config::get('ws');
+                $server = new WebsocketServer($config['host'], $config['port'], $config['swoole_settings']);
+            }
+            $server->start();
+        }
+
+        die('命令不存在');
     }
 }
