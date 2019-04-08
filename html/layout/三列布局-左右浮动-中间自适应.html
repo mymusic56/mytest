@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三列布局-左右浮动-中间自适应</title>
+    <style>
+        .left {
+            width: 300px;
+            height: 500px;
+            background: skyblue;
+            float: left;
+        }
+
+        .right {
+            width: 300px;
+            height: 500px;
+            background: greenyellow;
+            float: right;
+        }
+
+        .main {
+            height: 500px;
+            margin-left: 300px;
+            margin-right: 300px;
+            background: darkseagreen;
+        }
+
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<h3>实现思路</h3>
+<p>1.左右宽度固定+浮动</p>
+<p>2.中间区域实际使用margin挤出来的</p>
+<p>3.DOM顺序不能乱，必须先写两侧，再写中间</p>
+<div class="left">左侧</div>
+<div class="right">右侧</div>
+<div class="main">主体</div>
+</body>
+</html>

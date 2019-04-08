@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>两列布局-左右固定-自己撑开父级块</title>
+    <style>
+        .container {
+            width: 960px;
+            margin: 0 auto;/*上下0 左右自动，实现居中显示*/
+            background: yellow;
+            overflow: hidden;
+        }
+
+        .clear {
+            -ms-zoom: 1;/*IE浏览器专属属性*/
+        }
+        .clear:after {
+            content: "";
+            display: block;
+            clear: both;
+
+        }
+
+        .left {
+            width: 400px;
+            height: 500px;
+            background: skyblue;
+            float: left;
+        }
+
+        .right {
+            width: 400px;
+            height: 500px;
+            background: green;
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+<p>问题： clear样式没有看出差别？？？</p>
+<div class="container clear">
+    <div class="left">左侧</div>
+    <div class="right">右侧</div>
+</div>
+</body>
+</html>

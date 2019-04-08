@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container {
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+
+        .left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 600px;
+            background: skyblue;
+        }
+
+        .right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 600px;
+            background: greenyellow;
+        }
+
+        .main {
+            height: 600px;
+            margin-left: 200px;
+            margin-right: 200px;
+            background: seagreen;
+
+        }
+
+    </style>
+</head>
+<body>
+<p>实现思路<br/>
+1. 添加定位父级，并设置定位属性<br/>
+2. 左右设置宽度+绝对定位<br/>
+3. 主体部分通过margin进行左右挤压实现居中效果（DOM位置关系无关）<br/>
+<div class="container">
+    <div class="left">左侧</div>
+    <div class="right">右侧</div>
+    <div class="main">内容</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,ul,li {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url(qq/img/bg.png);
+            background-repeat: no-repeat;
+            background-position: 0 40px;
+            background-color: #E9E9E9;
+        }
+
+        .top {
+            width: 100%;
+            height: 40px;
+            background-color: black;
+            position: fixed;
+            z-index: 999;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;/*让容器居中显示*/
+        }
+
+        .container .header {
+            background-color: #a0a0a0;
+            height: 200px;
+        }
+
+        /*使用左右绝对定位*/
+        .main {
+            position: relative;
+            /*background-color: yellowgreen;*/
+        }
+
+        .main .left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: green;
+            width: 200px;
+            height: 500px;
+        }
+
+        .main .right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: green;
+            width: 200px;
+            height: 500px;
+        }
+
+        .main .middle {
+            margin-left: 210px;
+            margin-right: 210px;
+            background-color: skyblue;
+            height: 900px;
+        }
+
+        .footer {
+            background-color: deepskyblue;
+            height: 40px;
+            margin: 10px 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="top">顶部</div>
+<div class="container">
+    <div class="header">头部</div>
+    <!--
+        main没有被middle的高度撑开是怎么回事？
+            对main设置了高度
+    -->
+    <div class="main">
+        <div class="left">左</div>
+        <div class="middle">中</div>
+        <div class="right">右</div>
+    </div>
+    <div class="footer">底部</div>
+</div>
+</body>
+</html>

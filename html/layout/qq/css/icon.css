@@ -1,0 +1,34 @@
+.ui-icon {
+    display: inline-block;
+    background: url(../img/icon-2.png) no-repeat;
+    background-size: 154px 952px;
+    width: 16px;
+    height: 16px;
+}
+
+.sp-friend-feed {
+    background-position: -120px -522px;
+}
+.sp-special {
+    background-position: -84px -35px;
+}
+
+.sp-famous {
+    background-position: -120px -936px;
+}
+
+.sp-old-day {
+    background-position: -102px -720px;
+}
+
+.sp-tx-class {
+    background-position: -138px -18px;
+}
+
+.sp-with-me {
+    background-position: -84px -486px;
+}
+
+.sp-app-game {
+    background-position: -120px -738px;
+}

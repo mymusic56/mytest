@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/icon.css">
+    <style>
+        /*主体架构布局*/
+        body,ul,li {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        body {
+            background-image: url("img/bg.png");
+            background-repeat: no-repeat;
+            background-position: 0 40px;
+            background-color: #e8e8e8;
+        }
+
+        .top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: #000000;
+            z-index: 999;
+            /*margin-left: 100px;*/
+            /*margin-right: 100px;*/
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            z-index: -1;
+        }
+
+        .container .header {
+            height: 300px;
+            margin-top: 40px;
+        }
+
+        .container .main {
+            position: relative;
+        }
+
+        .container .main .left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 170px;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+
+        .container .main .right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 600px;
+            background-color: #2E2D3C;
+            border-radius: 5px;
+        }
+
+        .container .main .middle {
+            margin-left: 180px;
+            margin-right: 310px;
+            background-color: greenyellow;
+            height: 800px;
+            border-radius: 5px;
+        }
+
+        .footer {
+            height: 50px;
+            background-color: lightblue;
+            margin: 10px 0;
+        }
+
+        /*顶部*/
+        .top .logo {
+            /*background: url("img/ico.png") no-repeat;
+            background-position: 20px 0;
+            background-size: 30px;
+            height: 40px;
+            width: 50px;*/
+        }
+
+        .top ul {
+            display: block;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .top ul li {
+            width: 100px;
+            height: 40px;
+            color: #ffffff;
+            font-size: 16px;
+            text-align: center;
+            float: left;
+            margin-left: 10px;
+            line-height: 40px;
+        }
+
+        .top ul li:first-child {
+            background: url(img/ico.png) no-repeat;
+            background-size: 650px 41px;
+            background-position: 0 0;
+
+        }
+        .top ul li:last-child {
+            float: right;
+        }
+
+        .top ul li:hover {
+            background-color: grey;
+        }
+
+        /*头部*/
+        .container .header .user-info {
+            /*position: absolute;*/
+            /*bottom: 100px;*/
+            padding-top: 150px;
+        }
+        .container .header .user-info .photo {
+            width: 100px;
+            float: left;
+            margin-top: 20px;
+        }
+        .container .header .user-info .photo img{
+            width: 100px;
+        }
+        .container .header .user-info .user-nav {
+            float: left;
+            padding-left: 10px;
+        }
+
+        .container .header .user-info .user-nav .user-name{
+            font-size: 20px;
+            color: blue;
+            margin-left: 20px;
+        }
+
+        .container .header .user-info .user-nav .user-detail {
+            margin-left: 20px;
+            height: 20px;
+            color: #a0a0a0;
+            font-size: 14px;
+            line-height: 20px;
+        }
+        .container .header .user-info .user-nav .user-detail img {
+            height: 20px;
+        }
+
+
+        .container .header .user-info .user-nav .user-menu li{
+            float: left;
+            width: 70px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .container .header .user-info .user-nav .user-menu li:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /*左侧*/
+        .container .main .left ul li {
+            height: 30px;
+            font-size: 14px;
+            line-height: 30px;
+            text-align: left;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        .container .main .left ul li:hover {
+            background-color: #f6f6f6;
+        }
+
+        .container .main .left ul li .qz-left {
+            width: 16px;
+            height: 16px;
+            padding: 0;
+            margin-left: 10px;
+            margin-right: 10px;
+            float: left;
+            margin-top: 3px;
+        }
+
+        /*中部*/
+
+    </style>
+</head>
+<body>
+<div class="top">
+    <ul>
+        <li></li>
+        <li>个人中心</li>
+        <li>我的主页</li>
+        <li>好友</li>
+        <li>设置</li>
+    </ul>
+
+</div>
+<div class="container">
+    <div class="header">
+        <div class="user-info">
+            <div class="user-head-title"></div>
+            <div class="photo">
+                <img src="img/photo.gif" />
+            </div>
+            <div class="user-nav">
+                <p class="user-name">努力的菜鸟</p>
+                <div class="user-detail">
+                    <img src="img/vip1.png"/>
+                    <span>开通黄钻-成长速度更快</span>
+                    <img src="img/vip2.png"/>
+                </div>
+                <ul class="user-menu">
+                    <li>主页</li>
+                    <li>日志</li>
+                    <li>留言板</li>
+                    <li>说说</li>
+                    <li>个人档</li>
+                    <li>音乐</li>
+                    <li>更多</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="left">
+            <ul>
+                <li><div class="qz-left"><i class="ui-icon sp-friend-feed"></i></div><div class="qz-main">好友动态</div></li>
+                <li><div class="qz-left"><i class="ui-icon sp-special"></i></div><div class="qz-main">特别关心</div></li>
+                <li><div class="qz-left"><i class="ui-icon sp-with-me"></i></div><div class="qz-main">与我相关</div></li>
+                <li><div class="qz-left"><i class="ui-icon sp-famous"></i></div><div class="qz-main">空间达人</div></li>
+                <li><div class="qz-left"><i class="ui-icon sp-old-day"></i></div><div class="qz-main">那年今日</div></li>
+                <li><div class="qz-left"><i class="ui-icon sp-tx-class"></i></div><div class="qz-main">腾讯课堂</div></li>
+                <li><div class="qz-left"><i class="ui-icon sp-app-game"></i></div><div class="qz-main">游戏应用</div></li>
+            </ul>
+        </div>
+        <div class="middle"></div>
+        <div class="right"></div>
+    </div>
+    <div class="footer"></div>
+</div>
+</body>
+</html>
