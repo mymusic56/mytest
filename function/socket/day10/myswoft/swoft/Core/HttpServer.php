@@ -34,10 +34,6 @@ class HttpServer
         if ($config) {
             $this->config = $config;
         }
-
-        $this->redis = new \Redis();
-        $this->redis->connect(Config::get('redis.host'), Config::get('redis.port'));
-        $this->redis->auth(Config::get('redis.password'));
     }
 
     public function start()
@@ -83,6 +79,10 @@ class HttpServer
         //加载项目配置
         Config::load(APP_PATH.DS.'Config');
 
+        $this->redis = new \Redis();
+        $this->redis->connect(Config::get('redis.host'), Config::get('redis.port'));
+        $this->redis->auth(Config::get('redis.password'));
+
         //加载路由
         include_once APP_PATH.DS.'route.php';
     }
@@ -102,6 +102,22 @@ class HttpServer
         }
         //分发
     }
-    public function onTask(){}
+    public function onTask(\swoole_server $serv, int $task_id, int $src_worker_id, $data)
+    {
+        Log::wirte("Tasker进程接收到数据：");
+//        Log::wirte("#{$serv->worker_id}\tonTask: [PID={$serv->worker_pid}]: task_id=$task_id, data_len=".strlen($data).".");
+//        $serv->finish($data);
+        Log::wirte($data);
+        $data = json_decode($data, true);
+        if (isset($data['data']['task'])) {
+            $class = "App\\Task\\".ucfirst($data['data']['task']);
+            $obj = new $class;
+            $redis = $this->redis;
+            $obj->handler($serv, $task_id, $data['data'], $redis);
+        } else {
+            Log::wirte("未指定Task任务");
+        }
+
+    }
     public function onFinish(){}
 }

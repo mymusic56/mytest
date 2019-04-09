@@ -6,6 +6,9 @@
 </head>
 <body>
 <h3>登录模拟页面</h3>
+<div class="container">
+
+</div>
 </body>
 <script src="../lib/zepto.min.js"></script>
 <script>
@@ -16,7 +19,10 @@
             var ws = new WebSocket("ws://"+url, [token]);
             ws.onopen = function () {
                 console.log("握手完成")
-                ws.send('{"c":"echo", "data":{}}');
+                ws.send('{"type":"echo", "data":{}}');
+                setInterval(function () {
+                    ws.send("ping");
+                }, 5000)
             };
 
             ws.onmessage = function (evt) {
@@ -37,7 +43,7 @@
         var username = prompt("请输入用户名");
         $.ajax({
             type: "POST",
-            url: "http://192.168.152.128:9800/im",
+            url: "http://192.168.152.129:9800/im",
             dataType: "json",
             data: {type: 'login', username: username},
             success: function (result) {

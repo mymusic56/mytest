@@ -45,6 +45,7 @@ class Route
     {
         $swoole_mysql = \Swoft\Db\MySql::getInstance();
         $res = $swoole_mysql->query("select * from users where `name`='{$username}'");
+        var_dump("select * from users where `name`='{$username}'", $res);
         return empty($res) ? null : $res[0];
     }
 
@@ -104,12 +105,14 @@ class Route
      */
     public function onMessage(swoole_websocket_server $server, swoole_websocket_frame $frame)
     {
-        echo "注册IM-server";
-        $data = $frame->data;
-        if ($data) {
-            $data = json_decode($data, true);
-            if ($data && $data['type'] == 'register') {
+
+        $request_data = $frame->data;
+        if ($request_data) {
+            $request_data = json_decode($request_data, true);
+            if ($request_data && $request_data['type'] == 'register') {
+                echo "注册IM-server \r\n";
                 $key = 'im-server';
+                $data = $request_data['data'];
                 $member = $data['host'].':'.$data['port'];
                 echo "$member\r\n";
                 $this->redis->sAdd($key, $member);
@@ -127,6 +130,33 @@ class Route
                 });
                 $return = json_encode(['status' => 1, 'msg' => '注册成功']);
                 $server->push($fd, $return);
+            } elseif ($request_data && $request_data['type'] == 'sendmsg') {
+                //将消息发送给其他服务器
+                var_dump("接收 server： {$request_data['data']['from_server']} 发来的群发消息");
+                echo json_encode($request_data, JSON_UNESCAPED_UNICODE).PHP_EOL;
+                go(function () use ($request_data) {
+                    //获取服务器列表
+                    $serverList = $this->redis->sMembers('im-server');
+                    $from_server = $request_data['data']['from_server'];
+                    foreach ($serverList as $item) {
+                        //过滤掉发送消息的server
+                        if ($from_server == $item) {
+                            echo "过滤服务器： {$item}".PHP_EOL;
+                            continue;
+                        }
+
+                        //发送websocket请求
+                        list($host, $port) = explode(':', $item);
+                        $client = new \Swoole\Coroutine\Http\Client($host, $port);
+                        $ret = $client->upgrade('/');
+                        if ($ret) {
+                            $request_data['data']['from_server'] = '192.168.152.129:9800';
+                            $client->push(json_encode($request_data));
+                        }
+
+                        echo "发送消息给： {$item}".PHP_EOL;
+                    }
+                });
             }
         }
     }

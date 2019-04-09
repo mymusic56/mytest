@@ -9,6 +9,7 @@
 namespace App\Listener;
 
 use Firebase\JWT\JWT;
+use Swoft\Core\Event;
 use Swoft\Event\EventInterface;
 use Swoft\Log\Log;
 
@@ -28,28 +29,35 @@ class HandshakeListener implements EventInterface
         Log::wirte("新的连接到达");
         /* @var $response \swoole_http_response */
         /* @var $request \swoole_http_request */
+        /* @var $server \swoole_websocket_server */
         /* @var $redis \Redis */
         $request = $event['request'];
+        $server = $event['server'];
         $response = $event['response'];
         $redis = $event['redis'];
         // print_r( $request->header );
         //如果不满足我某些自定义的需求条件，那么返回end输出，返回false，握手失败
-        //客户端握手，验证token
-        if (($msg = $this->checkToken($request->header)) !== true) {
-            $response->end($msg);
-            return false;
-        }
+        if (isset($request->header['sec-websocket-protocol'])) {
+            //客户端握手，验证token
+            if (($msg = $this->checkToken($request->header)) !== true) {
+                $response->end($msg);
+                return false;
+            }
+            //存储用户和fd的关系
+            //向指定用户发送消息： 根据用户ID，找到用户所在主机、fd
+            $flag1 = $redis->hSet('user_fd', $this->data->id, json_encode(['host' => $this->host, 'fd' => $request->fd]));
 
-        //存储用户和fd的关系
-        //向指定用户发送消息： 根据用户ID，找到用户所在主机、fd
-        $flag1 = $redis->hSet('user_fd', $this->data->id, json_encode(['host' => $this->host, 'fd' => $request->fd]));
+            //主机 fd 对应的用户ID
+            var_dump('============1:'.$this->data->id);
+            $flag2 = $redis->hSet($this->host, $request->fd, $this->data->id);
+            if ($flag1 === false && $flag2 !== false) {
+                Log::wirte("用户fd保存失败");
+            }
+            $this->userinfo = null;
 
-        //主机 fd 对应的用户ID
-        $flag2 = $redis->hSet($this->host, $request->fd, $this->data->id);
-        if ($flag1 === false && $flag2 !== false) {
-            Log::wirte("用户fd保存失败");
+            //触发上线业务逻辑
+            Event::trigger('user.online', ['server' => $server, 'request' => $request, 'response' => $response, 'redis' => $redis]);
         }
-        $this->userinfo = null;
 
         // websocket握手连接算法验证
         $secWebSocketKey = $request->header['sec-websocket-key'];
@@ -58,7 +66,7 @@ class HandshakeListener implements EventInterface
             $response->end();
             return false;
         }
-        echo $request->header['sec-websocket-key'];
+//        echo $request->header['sec-websocket-key'];
         $key = base64_encode(sha1(
             $request->header['sec-websocket-key'] . '258EAFA5-E914-47DA-95CA-C5AB0DC85B11',
             true
@@ -94,7 +102,7 @@ class HandshakeListener implements EventInterface
 
         $token = $header['sec-websocket-protocol'];
         $tokenArr = JWT::decode($token, 'zhang123456',array('HS256'));
-
+        var_dump($tokenArr->data->id);
         if (!$tokenArr) {
             return '授权内容无效';
         }
@@ -104,6 +112,7 @@ class HandshakeListener implements EventInterface
         }
 
         $this->data = $tokenArr->data;
+        var_dump($tokenArr->data);
         $this->host = $tokenArr->host;
 
         return true;

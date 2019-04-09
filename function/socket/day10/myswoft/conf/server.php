@@ -8,12 +8,12 @@
  */
 return [
     'route' => [
-        'host' => '192.168.88.141',
+        'host' => '192.168.152.129',
         'port' => 9800
     ],
     'http' => [
         'host' => '0.0.0.0',
-        'ip' => '192.168.88.141',
+        'ip' => '192.168.152.129',
         'port' => 9501,
         'swoole_settings' => [
             'worker_num' => 2,
@@ -32,7 +32,7 @@ return [
     ],
     'ws' => [
         'host' => '0.0.0.0',
-        'ip' => '192.168.88.141',
+        'ip' => '192.168.152.129',
         'port' => 9501,
         'enable_http' => true,//启用HTTP server
         'swoole_settings' => [

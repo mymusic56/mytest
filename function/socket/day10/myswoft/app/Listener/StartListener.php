@@ -34,9 +34,11 @@ class StartListener implements EventInterface
                 $ret = $cli->upgrade("/");
                 if ($ret) {
                     $data = [
-                        'host' => Config::get('ws.ip'),
-                        'port' => Config::get('ws.port'),
-                        'type' => 'register'
+                        'type' => 'register',
+                        'data' => [
+                            'host' => Config::get('ws.ip'),
+                            'port' => Config::get('ws.port'),
+                        ]
                     ];
                     $cli->push(json_encode($data));
                     $rec = $cli->recv();

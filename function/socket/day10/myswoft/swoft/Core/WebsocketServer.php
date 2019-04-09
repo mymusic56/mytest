@@ -46,9 +46,11 @@ class WebsocketServer extends HttpServer
 
     public function onMessage(\swoole_websocket_server $server, \swoole_websocket_frame $frame)
     {
-        $controller = isset($frame->data['c']) ? ucfirst($frame->data['c']) : 'Echo';
-        $action = isset($frame->data['a']) ? $frame->data['a'] : 'index';
-        $class = "App\\Websocket\\{$controller}Controller";
+        echo "接收到socket消息： ".$frame->data.PHP_EOL;
+        $data = json_decode($frame->data, true);
+        $controller = isset($data['type']) ? ucfirst($data['type']) : 'Echo';
+        $action = isset($data['a']) ? $data['a'] : 'index';
+        $class = "App\\Websocket\\{$controller}Websocket";
 
         if (!class_exists($class)) {
             $server->push($frame->fd, json_encode(['status' => -1, 'msg' => '路由不存在(1)', 'result' => []], JSON_UNESCAPED_UNICODE), 1);
@@ -66,6 +68,7 @@ class WebsocketServer extends HttpServer
     {
         //通过使用$server->connection_info($fd)获取连接信息，返回的数组中有一项为 websocket_status，根据此状态可以判断是否为WebSocket客户端。
         Event::trigger('ws.handler', ['server' => $this->server, 'request' => $request, 'response' => $response, 'redis' => $this->redis]);
+        //        $this->onOpen($this->server, $request);
     }
 
     public function onOpen(\swoole_websocket_server $server, \swoole_http_request $request)
@@ -76,16 +79,7 @@ class WebsocketServer extends HttpServer
 
     public function onClose(\swoole_server $server, int $fd, int $reactorId)
     {
-        Log::wirte("删除fd: $fd");
-        $key = Config::get('ws.ip').":".Config::get('ws.port');
-        //找到用户ID
-        $user_id = $this->redis->hGet($key, $fd);
-        if ($user_id) {
-            //删除fd 对应的用户
-            $flag = $this->redis->hDel($key, $fd);
-            //删除用户 对应的主机信息
-            $flag = $this->redis->hDel('user_fd', $user_id);
-        }
-        $server->close($fd);
+        Event::trigger('ws.close', ['server' => $server, 'redis' => $this->redis, 'fd' => $fd, 'reactor_id' => $reactorId]);
+        Event::trigger('user.offline', ['server' => $server, 'redis' => $this->redis, 'fd' => $fd, 'reactor_id' => $reactorId]);
     }
 }
