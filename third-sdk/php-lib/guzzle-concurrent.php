@@ -8,7 +8,7 @@ use GuzzleHttp\Promise;
  * 实现原理，参考：https://segmentfault.com/p/1210000010203531/read
  */
 
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';
 $t1 = microtime(true);
 $client = new Client(['base_uri' => 'http://rec.qm.com/']);
 

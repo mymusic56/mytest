@@ -79,7 +79,8 @@ class HttpServer
         //加载项目配置
         Config::load(APP_PATH.DS.'Config');
 
-        $this->redis = new \Redis();
+        $this->redis = new \Swoole\Redis();
+//        $this->redis = new \Redis();
         $this->redis->connect(Config::get('redis.host'), Config::get('redis.port'));
         $this->redis->auth(Config::get('redis.password'));
 

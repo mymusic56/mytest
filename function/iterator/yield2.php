@@ -1,6 +1,8 @@
 <?php
-
-file_put_contents(__DIR__ . '/log', '');
+/**
+ * yield除了可以返回迭代器内部的值， 还可以通过send从外部为迭代器设置值
+ */
+file_put_contents(__DIR__ . '/log', "12345\r\n");
 function logger($fileName) {
     $fileHandle = fopen($fileName, 'a');
     while (true) {

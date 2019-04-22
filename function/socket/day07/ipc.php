@@ -1,4 +1,6 @@
 <?php
+//消息队列实现进程间通信
+
 //ipcs  provides  information  on the inter-process communication facilities
 // for which the calling process has read access.
 
