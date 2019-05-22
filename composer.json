@@ -1,4 +1,11 @@
 {
+    "name": "mymusic56/mytest",
+    "authors": [
+        {
+            "name": "mymusic56",
+            "email": "961272668@q.com"
+        }
+    ],
 	"require" : {
 		"guzzlehttp/guzzle" : "^6.3",
 		"monolog/monolog" : "1.2.*",
@@ -9,9 +16,19 @@
 		"predis/predis" : "^1.1",
 		"mongodb/mongodb" : "^1.2",
 		"james-heinrich/getid3": "^1.9",
-		"firebase/php-jwt": "^5.0"
+		"firebase/php-jwt": "^5.0",
+		"jaeger/querylist": "^4.1",
+		"phpunit/phpunit": "^7.5",
+        "doctrine/annotations": "^1.6",
+        "jpush/jpush": "^3.6",
+        "ptrofimov/beanstalk_console": "^1.7"
 	},
 	"require-dev" : {
 		"eaglewu/swoole-ide-helper" : "dev-master"
+	},
+	"autoload": {
+		"psr-4": {
+			"annotation\\": "function/oop/annotation"
+		}
 	}
 }

@@ -16,6 +16,18 @@ class ClosureTest {
 	    
 		return "SUM: $a + $b";
 	}
+
+    public function getCountV2($a, $b, $callable)
+    {
+        if (is_callable($callable)) {
+            $data = call_user_func($callable, $a, $b);
+            if($data){
+                return $data['msg'].$data['result'];
+            }
+        }
+
+        return "SUM: $a + $b";
+    }
 }
 $a = new ClosureTest();
 
@@ -24,4 +36,42 @@ $a->calculate = function ($a, $b){
     $data['result'] = $a*$b;
     return $data;
 };
+
 var_dump($a->getCount(3,2));
+
+$res = $a->getCountV2(3, 2, function ($a, $b) {
+    $data['msg'] = "$a x $b = ";
+    $data['result'] = $a*$b;
+    return $data;
+});
+
+var_dump($res);
+
+$func = function ($a, $b) {
+    $data['msg'] = "$a x $b = ";
+    $data['result'] = $a*$b;
+    return $data['msg'].$data['result'];
+};
+
+var_dump($func(3,2));
+
+# bindTo
+class User{
+    private $name ;
+    function __construct ( $name ){
+        $this ->name = $name ;
+    }
+}
+
+$func = function () {
+    return "Hello " . $this ->name;
+};
+
+$obj = new User('admin');
+
+$dataUser = $func->bindTo($obj,'User');
+echo $dataUser();//Hello admin
+echo PHP_EOL;
+
+$dataObj = $func->bindTo($obj,$obj);
+echo $dataObj();die;//Hello admin

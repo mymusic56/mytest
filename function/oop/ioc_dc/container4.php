@@ -68,6 +68,11 @@ class DbRedis implements IRedis
     }
 }
 
+class Request
+{
+    public static $uri = 'uri';
+}
+
 class controller
 {
     public $mysql;
@@ -168,6 +173,7 @@ $app->bind('IMysql', 'DbMysql');
 $app->bind('IRedis', 'DbRedis');
 $app->bind('controller', 'Controller');
 $controller = $app->make('controller');
+$request = new Request();
 $controller->action();
 
 //$mysql = $app->make('mysql');
