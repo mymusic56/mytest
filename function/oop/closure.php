@@ -55,6 +55,7 @@ $func = function ($a, $b) {
 
 var_dump($func(3,2));
 
+echo "-----------------------bindTo-------------------------".PHP_EOL;
 # bindTo
 class User{
     private $name ;
@@ -74,4 +75,20 @@ echo $dataUser();//Hello admin
 echo PHP_EOL;
 
 $dataObj = $func->bindTo($obj,$obj);
-echo $dataObj();die;//Hello admin
+echo $dataObj();//Hello admin
+
+echo "-----------------------invoke-------------------------".PHP_EOL;
+# invoke
+$func = function (string $a, array $arr) {
+    return 'variable: '.$a.', arr'.json_encode($arr);
+};
+
+$ref = new ReflectionFunction($func);
+$args = ['a', ['name' => 'zhangsan', 'age' => 12]];
+$res = $ref->invokeArgs($args);
+var_dump($res);
+
+$args = ['args0'=>'a', 'args1' =>['name' => 'zhangsan', 'age' => 12]];
+extract($args);
+$res = call_user_func($func, $args0, $args1);
+var_dump($res);

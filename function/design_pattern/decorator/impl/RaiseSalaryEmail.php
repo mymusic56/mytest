@@ -1,8 +1,9 @@
 <?php
 
 
-class MainEmail implements EmailBody
+class RaiseSalaryEmail implements EmailBody
 {
+
     /**
      * @return mixed
      */

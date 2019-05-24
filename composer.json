@@ -8,7 +8,7 @@
     ],
 	"require" : {
 		"guzzlehttp/guzzle" : "^6.3",
-		"monolog/monolog" : "1.2.*",
+		"monolog/monolog" : "^1.24",
 		"telesign/telesign" : "^2.2",
 		"pda/pheanstalk" : "^3.1",
 		"workerman/workerman" : "^3.5",
@@ -21,7 +21,10 @@
 		"phpunit/phpunit": "^7.5",
         "doctrine/annotations": "^1.6",
         "jpush/jpush": "^3.6",
-        "ptrofimov/beanstalk_console": "^1.7"
+        "ptrofimov/beanstalk_console": "^1.7",
+        "php-amqplib/php-amqplib": "^2.9",
+        "php-ffmpeg/php-ffmpeg": "^0.14.0",
+        "php-ffmpeg/extras": "^0.3.1"
 	},
 	"require-dev" : {
 		"eaglewu/swoole-ide-helper" : "dev-master"
