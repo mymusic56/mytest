@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script type="application/javascript" src="a.js"></script>-->
+    <script type="application/javascript" src="../../html/lib/require-2.3.6.js"></script>
+    <!-- 为什么使用data-main属性后，配置paths后，仍然是在当前目录下查找JS文件？？？？ -->
+    <script type="application/javascript" src="require-config.js"></script>
+    <script type="application/javascript">
+        require(["myframe", "jquery", "respond"], function ($) {
+            //处理加载完成后的逻辑
+            console.log("加载完毕");
+        });
+        var time = 5;
+
+        var timer = setInterval(function () {
+            time--;
+            $("#time").text(time);
+        }, 1000);
+
+        setTimeout(function () {
+            console.log("1111111111");
+            clearInterval(timer);
+            window.Myframe("#id").innerHTML = "修改测试结果";
+        }, time*1000);
+    </script>
+</head>
+<body>
+<h3>Test Require JS</h3>
+<div id="id">等<span id="time" style="color: red">5</span>秒中后看变化。。。</div>
+</body>
+</html>

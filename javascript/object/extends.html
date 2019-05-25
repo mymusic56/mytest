@@ -26,10 +26,13 @@
 			return "重写";
 		}
 		var b = new Sub();
-		console.log("a:"+a.showName()+",b:"+b.showName());
+		var c = new Super();
+		console.log("a:"+a.showName()+",b:"+b.showName()+", c:"+c.showName());
 		/**
+		 * a:重写,b:重写, c:super 可以看到重写Sub.showName后，已生成的对象a的值也发生的变化
+		 * 原因： 原型只有一个。
 		 * 弊端：
-		 * 	被继承者中的方法被重写后，其他对象的值也会受影响
+		 * 	被继承者中的方法被重写后，所有的对象的值也会受影响
 		 */
 		
 		console.log("------------------------------原型链继承-------------------------------")
