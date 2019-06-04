@@ -12,4 +12,33 @@ use Doctrine\Common\Annotations\Annotation;
 class ControllerMapping
 {
     public $controllerName;
+
+    /**
+     * @var string
+     * @Annotation\Required()
+     */
+    private $prefix = '';
+
+    /**
+     * Controller constructor.
+     *
+     * @param array $values
+     */
+    public function __construct(array $values)
+    {
+        if (isset($values['value'])) {
+            $this->prefix = $values['value'];
+        }
+        if (isset($values['prefix'])) {
+            $this->prefix = $values['prefix'];
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrefix(): string
+    {
+        return $this->prefix;
+    }
 }

@@ -17,7 +17,18 @@ class DemoController
      */
     public $controllerName;
 
+    /**
+     * @RequestMapping("index")
+     */
     public function indexAction()
+    {
+
+    }
+
+    /**
+     * @RequestMapping("/demo/view")
+     */
+    public function viewAction()
     {
 
     }
