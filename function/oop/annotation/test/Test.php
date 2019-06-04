@@ -1,10 +1,11 @@
 <?php
 namespace annotation\test;
-require_once '../../../../vendor/autoload.php';
+$loader = require_once '../../../../vendor/autoload.php';
 
 use annotation\annotation\mapping\ControllerMapping;
 use annotation\annotation\mapping\PropertyMappping;
 use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\Common\Annotations\AnnotationRegistry;
 
 /*
  *
@@ -12,10 +13,10 @@ use Doctrine\Common\Annotations\AnnotationReader;
  * 可能存在其他自动加载器。
  * swoole是如何加载的？swoole为什么能够直接加载？
  */
-class_exists('annotation\annotation\mapping\PropertyMappping');
-class_exists('annotation\annotation\mapping\ControllerMapping');
-class_exists('annotation\annotation\mapping\RequestMapping');
-
+//class_exists('annotation\annotation\mapping\PropertyMappping');
+//class_exists('annotation\annotation\mapping\ControllerMapping');
+//class_exists('annotation\annotation\mapping\RequestMapping');
+AnnotationRegistry::registerLoader([$loader, 'loadClass']);
 
 $rc = new \ReflectionClass(DemoController::class);
 $property = $rc->getProperty('controllerName');
