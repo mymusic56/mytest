@@ -33,12 +33,14 @@ $myAnnotation = $reader->getPropertyAnnotation(
 var_dump($myAnnotation->propertyName);
 
 # 解析控制器，方法
+//一个类上可以有多个注解
 $classAnnotations = $reader->getClassAnnotations($rc);
 foreach ($classAnnotations as $classAnnotation) {
     $routePrefix = $classAnnotation->getPrefix();
     var_dump("控制器： ".$routePrefix);
     $methods = $rc->getMethods();
     foreach ($methods as $method) {
+        //一个方法上可以有多个注解
         $methodAnnotations = $reader->getMethodAnnotations($method);
         foreach ($methodAnnotations as $methodAnnotation) {
             $routePath = $methodAnnotation->getRoute();

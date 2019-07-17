@@ -38,6 +38,10 @@ class Server
     public function start()
     {
         $this->master = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+
+        //设置端口重用， 可以服用还处于TIME_WAIT的端口， socket_stream_create()可以通过添加socket_context_create()上下文实现。
+        socket_set_option($this->master, SOL_SOCKET, SO_REUSEADDR, 1);
+
         socket_bind($this->master, $this->addr, $this->port);
         socket_listen($this->master);
         
