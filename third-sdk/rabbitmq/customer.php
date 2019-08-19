@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '../../vendor/autoload.php';
+//require_once __DIR__ . '../../vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
@@ -17,19 +17,21 @@ try {
     var_dump($e->getMessage());
 }
 
-$routing_key = 'task_queue';
+$routing_key = 'hello';
 
 $callback_func = function(AMQPEnvelope $message, AMQPQueue $q) use (&$max_jobs) {
     echo " [x] Received: ", $message->getBody(), PHP_EOL;
-    sleep(sleep(substr_count($message->getBody(), '.')));
+//    sleep(sleep(substr_count($message->getBody(), '.')));
     echo " [X] Done", PHP_EOL;
-    $q->ack($message->getDeliveryTag());
+    $tag = $message->getDeliveryTag();
+    var_dump($tag);
+    $q->ack($tag);
 };
 
 try{
     $queue = new AMQPQueue($channel);
     $queue->setName($routing_key);
-    $queue->setFlags(AMQP_DURABLE);
+    $queue->setFlags(AMQP_NOPARAM);
     $queue->declareQueue();
 
 
