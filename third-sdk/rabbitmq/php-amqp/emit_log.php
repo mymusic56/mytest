@@ -7,6 +7,7 @@ $connection->setLogin('guest');
 $connection->setPassword('guest');
 $connection->connect();
 
+
 //Create and declare channel
 $channel = new AMQPChannel($connection);
 

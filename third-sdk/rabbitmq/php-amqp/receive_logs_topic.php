@@ -1,6 +1,5 @@
 <?php
 
-
 //Establish Connection
 $connection = new AMQPConnection();
 $connection->setHost('127.0.0.1');
@@ -22,7 +21,7 @@ if(empty($binding_keys)) {
 echo " [*] Waiting for logs. To exit press CTRL+C", PHP_EOL;
 $callback_func = function(AMQPEnvelope $message, AMQPQueue $q) {
 	echo sprintf(" [X] [%s] %s",$message->getRoutingKey(),$message->getBody()), PHP_EOL;
-	$q->nack($message->getDeliveryTag());
+//	$q->nack($message->getDeliveryTag());
 	return true;
 };
 
@@ -41,6 +40,7 @@ try {
 	//Declare Queue
 	$queue = new AMQPQueue($channel);
 	$queue->setFlags(AMQP_EXCLUSIVE);
+    $queue->setFlags(AMQP_DURABLE);
 	$queue->declareQueue();
 	foreach($binding_keys as $binding_key) {
 		$queue->bind($exchange_name, $binding_key);

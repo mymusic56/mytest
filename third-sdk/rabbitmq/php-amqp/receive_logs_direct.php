@@ -12,18 +12,20 @@ $connection->connect();
 $channel = new AMQPChannel($connection);
 
 
+$binding_keys = array_slice($argv,1);
+if(empty($binding_keys)) {
+    file_put_contents('php://stderr', "Usage: {$argv[0]} [info] [warning] [error]\n");
+    exit(1);
+}
+
 echo " [*] Waiting for logs. To exit press CTRL+C", PHP_EOL;
 $callback_func = function(AMQPEnvelope $message, AMQPQueue $q) {
 	echo sprintf(" [X] [%s] %s",$message->getRoutingKey(),$message->getBody()), PHP_EOL;
 	$q->nack($message->getDeliveryTag());
 	return true;
 };
-	
-$severities = array_slice($argv,1);
-if(empty($severities)) {
-	file_put_contents('php://stderr', "Usage: {$argv[0]} [info] [warning] [error]\n");
-	exit(1);
-}
+
+
 
 try {
 	//Declare Exchange
@@ -39,7 +41,7 @@ try {
 	$queue = new AMQPQueue($channel);
 	$queue->setFlags(AMQP_EXCLUSIVE);
 	$queue->declareQueue();
-	foreach($severities as $routing_key) {
+	foreach($binding_keys as $routing_key) {
 		$queue->bind($exchange_name, $routing_key);
 	}
 

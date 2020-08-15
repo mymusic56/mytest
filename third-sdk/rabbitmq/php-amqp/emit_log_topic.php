@@ -26,8 +26,8 @@ try {
 	$exchange->setName($exchange_name);
 	$exchange->declareExchange();
 
-	$exchange->publish($message, $routing_key);
-	echo " [x] Sent {$routing_key}:{$message}", PHP_EOL;
+	$res = $exchange->publish($message, $routing_key);
+	echo " [x] Sent {$routing_key}:{$message},result={$res}", PHP_EOL;
 } catch(Exception $ex) {
 	print_r($ex);
 }
