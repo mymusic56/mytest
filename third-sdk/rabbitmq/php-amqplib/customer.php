@@ -35,9 +35,13 @@ function rbtConsume()
     echo " [*] Waiting for logs. To exit press CTRL+C\n";
 
     $callback = function (AMQPMessage $msg) {
-        echo ' [x] ', $msg->delivery_info['routing_key'], ':', $msg->body, "\n";
-
-        sleep(15);
+        $time = time();
+        $body = json_decode($msg->body, true);
+        if (empty($body['time'])) {
+            $body['time'] = $time;
+        }
+        echo ' [x] ', 'time:['.date('Y-m-dd H:i:s').'] ', '延迟：'.($time - $body['time']).'S, ', $msg->delivery_info['routing_key'], ':', $msg->body, "\n";
+        sleep(3);
         //开启ACK模式，需要主动通知
         $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
     };
