@@ -25,8 +25,8 @@ function curl_proxy_http($url)
     return $body;
 }
 
-$url = 'http://home.mytest.com/test.php';
-$url = 'http://adminsignature.nineton.cn/test.php';
+$url = 'http://home.mytest.com/array_add.php';
+$url = 'http://adminsignature.nineton.cn/array_add.php';
 var_dump($url);
 $res = curl_proxy_http($url);
 var_dump($res);

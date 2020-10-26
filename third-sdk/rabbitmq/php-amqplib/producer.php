@@ -1,8 +1,11 @@
 <?php
 
+require '../../../vendor/autoload.php';
+
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Exchange\AMQPExchangeType;
 use PhpAmqpLib\Message\AMQPMessage;
+use PhpAmqpLib\Wire\AMQPTable;
 
 /**
  * Created by PhpStorm.

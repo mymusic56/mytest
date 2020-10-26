@@ -4,23 +4,30 @@ namespace annotation\test;
 use annotation\annotation\mapping\ControllerMapping;
 use annotation\annotation\mapping\PropertyMappping;
 use annotation\annotation\mapping\RequestMapping;
+use annotation\annotation\mapping\Inject;
 
 /**
  * Created by PhpStorm.
  * User: zhang
- * @ControllerMapping("Demo")
+ * @ControllerMapping("demo")
  */
 class DemoController
 {
+    /**
+     * @Inject()
+     * @var $user User
+     */
+    private $user;
+
     /**
      * @PropertyMappping(propertyName="This is my property name.")
      */
     public $controllerName;
 
     /**
-     * @RequestMapping("index")
+     * @RequestMapping(route="index", params={"id"="\d+", "name"="lisi"})
      */
-    public function indexAction()
+    public function indexAction($id, $name='')
     {
 
     }
@@ -31,5 +38,13 @@ class DemoController
     public function viewAction()
     {
 
+    }
+
+    /**
+     *
+     */
+    public function getNameAction()
+    {
+        return $this->user->getName();
     }
 }

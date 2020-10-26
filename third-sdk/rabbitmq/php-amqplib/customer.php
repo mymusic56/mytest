@@ -6,6 +6,8 @@
  * Time: 18:00
  */
 
+require '../../../vendor/autoload.php';
+
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Exchange\AMQPExchangeType;
 use PhpAmqpLib\Message\AMQPMessage;
@@ -43,6 +45,9 @@ function rbtConsume()
         echo ' [x] ', 'time:['.date('Y-m-dd H:i:s').'] ', '延迟：'.($time - $body['time']).'S, ', $msg->delivery_info['routing_key'], ':', $msg->body, "\n";
         sleep(3);
         //开启ACK模式，需要主动通知
+        /**
+         * @var $channel \PhpAmqpLib\Channel\AMQPChannel
+         */
         $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
     };
 

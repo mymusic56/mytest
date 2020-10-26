@@ -8,6 +8,9 @@
 
 class User
 {
+    /**
+     * @var string
+     */
     public $name;
     public $age;
     public $gender;
@@ -15,6 +18,11 @@ class User
     public function info()
     {
         return "User::info()";
+    }
+
+    public function __invoke()
+    {
+        echo "User::__invoke()" . PHP_EOL;
     }
 
     public function __call($name, $arguments)
@@ -29,7 +37,7 @@ class User
 
     public function __construct($name, $age, $gender)
     {
-        echo "__construct()" . PHP_EOL;
+        echo "User::__construct()" . PHP_EOL;
         $this->name = $name;
         $this->age = $age;
         $this->gender = $gender;
@@ -37,7 +45,7 @@ class User
 
     public function __destruct()
     {
-        echo "__distruct()" . PHP_EOL;
+        echo "User::__distruct()" . PHP_EOL;
     }
 
     /**
@@ -46,7 +54,7 @@ class User
      */
     public function __sleep()
     {
-        echo "__sleep()" . PHP_EOL;
+        echo "User::__sleep()" . PHP_EOL;
         return ['name', 'age', 'gender'];
     }
 
@@ -55,7 +63,22 @@ class User
      */
     public function __wakeup()
     {
-        echo "__wakeup()" . PHP_EOL;
+        echo "User::__wakeup()" . PHP_EOL;
+    }
+
+    public function __get($name)
+    {
+        echo "属性: $name 不存在" . PHP_EOL;
+    }
+
+    public function __set($name, $value)
+    {
+        echo "给不存在的属性: $name ， 赋值：$value" . PHP_EOL;
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 
 }

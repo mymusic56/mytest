@@ -27,4 +27,3 @@ var_dump($job);
 
 //执行顺序： doHighBackground > doBackground > doLowBackground
 //执行结果： 3 1 2
-

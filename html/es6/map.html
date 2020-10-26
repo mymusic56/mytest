@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var map = new Map();
+        map.set(1, '张三')
+        map.set(2, '李四')
+
+        function f1() {
+            for (let [key, val] of map) {
+                console.log(key + " = " + val)
+            }
+        }
+
+        function f2() {
+            for (let [key, val] of map.entries()) {
+                console.log(key + " = " + val)
+            }
+        }
+
+        f1();
+        f2();
+        function f3() {
+
+            for (let key of map.keys()) {
+                console.log(key)
+            }
+        }
+        f3();
+        function f4() {
+            console.log("--------------------f4()----------------");
+            for (let val of map.values()) {
+                console.log(val)
+            }
+        }
+        f4();
+        console.log("--------------------forEach()----------------");
+        map.forEach(function (val, key) {
+            console.log(key + " = " + val)
+        }, map)
+
+        var kvArray = [["key1", "value1"], ["key2", "value2"]];
+
+        // Map 构造函数可以将一个 二维 键值对数组转换成一个 Map 对象
+        var myMap = new Map(kvArray);
+        console.log(myMap);
+
+        // 使用 Array.from 函数可以将一个 Map 对象转换成一个二维键值对数组
+        var outArray = Array.from(myMap);
+        console.log(outArray);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

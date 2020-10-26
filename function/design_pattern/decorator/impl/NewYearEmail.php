@@ -8,8 +8,8 @@ class NewYearEmail extends EmailBodyDecorator
      */
     public function body()
     {
-        var_dump('元旦快乐');
         $this->emailBody->body();
+        var_dump('元旦快乐');
     }
 
 }

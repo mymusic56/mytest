@@ -14,7 +14,6 @@
 		"workerman/workerman" : "^3.5",
 		"facebook/webdriver" : "^1.6",
 		"predis/predis" : "^1.1",
-		"mongodb/mongodb" : "^1.2",
 		"james-heinrich/getid3": "^1.9",
 		"firebase/php-jwt": "^5.0",
 		"jaeger/querylist": "^4.1",
@@ -25,12 +24,10 @@
         "php-amqplib/php-amqplib": "^2.9",
         "php-ffmpeg/php-ffmpeg": "^0.14.0",
         "php-ffmpeg/extras": "^0.3.1",
-        "ezyang/htmlpurifier": "^4.10",
-		"ext-posix": "*",
-		"ext-sockets": "*",
-		"ext-pcntl": "*",
-		"ext-json": "*",
-		"ext-libevent": "*"
+        "slim/slim": "^3.0",
+        "xingwenge/canal_php": "^1.0",
+        "box/spout": "2.7.3",
+        "mongodb/mongodb": "1.6.1"
 	},
 	"require-dev" : {
 		"eaglewu/swoole-ide-helper" : "dev-master"
