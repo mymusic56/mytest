@@ -23,17 +23,9 @@ if (empty($binding_keys)) {
     exit(1);
 }
 
-$queue_name = '';
-
-if (!$durable) {
-    list($queue_name, ,) = $channel->queue_declare("", false, $durable, false, false);
-}
-
+list($queue_name, ,) = $channel->queue_declare("", false, $durable, false, false);
 
 foreach ($binding_keys as $binding_key) {
-    if ($durable) {
-        list($queue_name, ,) = $channel->queue_declare("topic_logs.".$binding_key, false, $durable, false, false);
-    }
     $channel->queue_bind($queue_name, 'topic_logs', $binding_key);
 }
 

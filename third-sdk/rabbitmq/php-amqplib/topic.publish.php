@@ -60,5 +60,5 @@ $connection->close();
  * php topic.subscribe.php "*.error"
  *
  * 订阅用户相关错误信息
- * php topic.subscribe.php "*user.error"
+ * php topic.subscribe.php "user.error"
  */

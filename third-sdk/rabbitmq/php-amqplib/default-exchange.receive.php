@@ -15,7 +15,10 @@ $no_ack = false;
 $connection = new AMQPStreamConnection('rabbit3.7-m', 5672, 'guest', 'guest');
 $channel = $connection->channel();
 
-$channel->queue_declare('test-2', false, false, false, false);
+$arguments = new \PhpAmqpLib\Wire\AMQPTable();
+$arguments->set('x-max-priority', 255);
+
+$channel->queue_declare('test-2', false, false, false, false, false, $arguments);
 
 echo " [*] Waiting for messages. To exit press CTRL+C\n";
 
@@ -30,7 +33,7 @@ $callback = function (\PhpAmqpLib\Message\AMQPMessage $msg) {
 };
 
 /*
- * 每次只从队列中取出一条消息
+ * 预载入信息设置， 首次连接的时候只从队列中取出N条消息
  */
 $channel->basic_qos(null, 2, null);
 

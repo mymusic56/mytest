@@ -11,13 +11,23 @@ use PhpAmqpLib\Message\AMQPMessage;
 $connection = new AMQPStreamConnection('rabbit3.7-m', 5672, 'guest', 'guest');
 $channel = $connection->channel();
 
-/**
- * 1. 默认交换机使用 direct， durable:	true
- * 2. 路由名称保持和队列名称相同
- */
-$channel->queue_declare('test-2', false, false, false, false);
+$arguments = new \PhpAmqpLib\Wire\AMQPTable();
+$arguments->set('x-max-priority', 255);
 
-$msg = new AMQPMessage('Hello World!'.date('Y-m-d H:i:s'));
+/**
+ * 默认交换机
+ * 1. 交换机类型 direct， durable:    true
+ * 2. 绑定交换机到路由名称和队列名称相同
+ * 3. 可以在使用的时候才声明  队列
+ */
+//$channel->queue_declare('test-2', false, false, false, false, false, $arguments);
+
+$priority = 12;
+$properties = [
+    //权重越大，优先处理
+    'priority' => $priority
+];
+$msg = new AMQPMessage('Hello World!' . date('Y-m-d H:i:s') . ', priority: ' . $priority, $properties);
 
 $channel->basic_publish($msg, '', 'test-2');
 

@@ -25,8 +25,10 @@ function rbtConsume()
      * exclusive: 是否排他，false,允许多个客户端监听同一个队列
      *
      */
-    list($queue_name, ,) = $channel->queue_declare("order_consumer", false, true, false, false);
+    list($queue_name, ,) = $channel->queue_declare("order_customer3", false, true, false, false);
 
+    $binding_keys = ['*.*.info'];
+    $binding_keys = ['*.*.error'];
     $binding_keys = ['order.#'];
 //        $binding_keys = ['*.*.user'];
 
@@ -43,7 +45,6 @@ function rbtConsume()
             $body['time'] = $time;
         }
         echo ' [x] ', 'time:['.date('Y-m-dd H:i:s').'] ', '延迟：'.($time - $body['time']).'S, ', $msg->delivery_info['routing_key'], ':', $msg->body, "\n";
-        sleep(3);
         //开启ACK模式，需要主动通知
         /**
          * @var $channel \PhpAmqpLib\Channel\AMQPChannel
